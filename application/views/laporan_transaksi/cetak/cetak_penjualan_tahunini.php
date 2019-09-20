@@ -1,0 +1,59 @@
+<h4 style="text-align: center;">
+  <br><h1><B>PT. Jatim Herbal Perkasa</B></h1>
+  Pasar, Sengon, Kec. Mantingan, Kabupaten Ngawi, Jawa Timur 
+  <br>
+  Telp. 085883680093
+</h4>
+<h5 style="text-align: center;">
+  <hr>
+  <br><h4>LAPORAN PENJUALAN JAMU TAHUN INI</h4>
+</h5>
+<hr>
+<br>
+<table border-collapse: collapse class="tabel" align="center">
+  <thead>
+   <tr align="center"  bgcolor="yellow">
+      <th>tanggal</th>
+      <th>nofaktur</th>
+      <th>penjual</th>
+      <th>pelanggan</th>
+      <th>total</th>
+      <th>kategori</th>
+  </tr> 
+  </thead>
+  <tbody>
+    <?php foreach ($laporan_transaksi as $t): ?>
+      <tr>
+        <td>
+          <?php echo $t->tangal?>
+        </td>
+        <td>
+          <?php echo $t->nofaktur?>
+        </td>
+        <td>
+          <?php echo $t->penjual?>
+        </td>
+        <td>
+          <?php echo $t->pelanggan?>
+        </td>
+        <td>
+          <?php echo $t->total?>
+        </td>
+        <td>
+          <?php echo $t->kategori?>
+        </td>
+      </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+<br>
+<h4 align="right">
+  <h4>Ngawi, <?php $tgl=date('d-m-Y'); echo $tgl;?></h4>
+  <br>Penanggung Jawab
+  <br>
+  <br>
+  <br>
+  <p>
+    Bapak
+  </p>
+</h4>
