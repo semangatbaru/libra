@@ -38,6 +38,7 @@
                                             <label class="col-sm-2 control-label">Pemesanan</label>
                                             <div class="col-sm-5">
                                                 <input type="text" class="form-control"  name="kode_pemesanan" placeholder="" id="kode_pemesanan">
+                                                
                                                 <input type="hidden" class="form-control" readonly name="id_user" placeholder="" id="id_user" value="<?php echo $this->session->userdata("id_user"); ?>">
 
                                             </div>

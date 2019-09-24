@@ -13,6 +13,11 @@ class User extends CI_Controller {
 		}
 	
 	}
+	public function setCode()
+    {
+        $data = $this->M_User->kode();
+        echo json_encode($data);
+    }
 	public function index()
 	{
 		$this->load->view("user");

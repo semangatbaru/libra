@@ -5,7 +5,7 @@ class User_m extends CI_Model
     public function login($post)
     {
         $this->db->select('*');
-        $this->db->from('login');
+        $this->db->from('tb_user');
         $this->db->where('username', $post['username']);
         $query = $this->db->get();
         return $query->result_array();

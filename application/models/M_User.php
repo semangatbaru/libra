@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class M_User extends CI_Model
 {
     // deklarasi variable
-    private $_table = "login";
+    private $_table = "tb_user";
     public $id_user;
     public $username;
     public $password;
@@ -25,7 +25,26 @@ class M_User extends CI_Model
         ];
     }
     //kode
-    
+    public function kode()
+     {
+          $this->db->select('RIGHT(tb_user.id_user, 1) as id_user', FALSE);
+          $this->db->order_by('id_user', 'DESC');
+          $this->db->limit(1);
+          $query = $this->db->get('tb_user');  //cek dulu apakah ada sudah ada kode di tabel.    
+          if ($query->num_rows() <> 0) {
+               //cek kode jika telah tersedia    
+               $data = $query->row();
+               $kode = intval($data->id_user) + 1;
+          } else {
+               $kode = 1;  //cek jika kode belum terdapat pada table
+          }
+          $id_user = $this->session->userdata("id_user");
+          $tgl = date('dmY');
+          $D = date('d');
+          $batas = str_pad($kode,  STR_PAD_LEFT);
+          $kodetampil = "P".$batas; //format kode
+          return $kodetampil;
+     }
 
     //menampilkan data
     public function ambil_data()

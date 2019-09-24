@@ -227,9 +227,25 @@
     })
 
     //crud
-
+    setCode()
     showRecord(); //munculkan data
-    
+    //function kode
+    function setCode() {
+      var id_user = $('#id_user').val();
+      $.ajax({
+          type: "GET",
+          url: "<?php echo site_url('User/setCode') ?>",
+          dataType: "JSON",
+          data: {
+              id_user: id_user
+          },
+          success: function(data) {
+              $('[name="id_user"]').val(data);
+              
+          }
+      });
+      return false;
+    }
     
     //function showdata
     function showRecord(){
@@ -262,11 +278,7 @@
       document.getElementById('username').value="";
       document.getElementById('password').value="";
     }
-    $("#username").keyup(function(){
-      var username = $(this).val();
-      var res = username.substring(0, 3);
-      $('#id_user').val( res);
-    });
+    
     
 
 
