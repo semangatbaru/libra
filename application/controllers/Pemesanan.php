@@ -17,9 +17,9 @@ class Pemesanan extends CI_Controller
     }
     public function index()
     {
-        $data["pelanggan"] = $this->M_pemesanan->ambil_data();
-        $data["barang"] = $this->M_pemesanan->ambilBarang();
-        $this->load->view("pemesanan", $data);
+        // $data["pelanggan"] = $this->M_pemesanan->ambil_data();
+        // $data["barang"] = $this->M_pemesanan->ambilBarang();
+        $this->load->view("pemesanan");
     }
     public function setCode()
     {

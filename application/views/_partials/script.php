@@ -51,9 +51,8 @@
 <script src="<?php echo base_url('assets/') ?>bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="<?php echo base_url('assets/') ?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<script>
- 
-</script>
+<!-- dropzone -->
+<link rel="stylesheet" href="<?php echo base_url('assets/') ?>dropzone.min.js">
 <!-- Select2 -->
 <script src="<?php echo base_url('assets/') ?>bower_components/select2/dist/js/select2.full.min.js"></script>
 <script>

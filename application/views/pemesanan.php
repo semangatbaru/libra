@@ -2,8 +2,22 @@
 <html lang="en">
 
 <head>
-    <title>Pemesanan | JHP</title>
+    <title>Pemesanan | Libra</title>
     <?php $this->load->view('_partials/head') ?>
+    <style type="text/css">
+
+    body{
+        background-color: #E8E9EC;
+    }
+
+    .dropzone {
+        border: 2px dashed #0087F7;
+    }
+    .margin {
+        margin-top: 50px;
+    }
+
+    </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -26,7 +40,7 @@
             <!-- Main content -->
             <section class="content">
                 <div class="row">
-                    <div class="col-xs-8 col-sm-offset-1">
+                    <div class="col-xs-7 ">
                         <div class="box box-info">
                             <!-- <form enctype="multipart/form-data" class="form-horizontal" method="post" id="formnya" > -->
                             <div class="box-header">
@@ -35,14 +49,31 @@
                                     <div class="box-body">
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Pemesanan</label>
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control"  name="kode_pemesanan" placeholder="" id="kode_pemesanan">
+                                            <label class="col-sm-2 control-label ">Nama Pemesan</label>
+                                            <div class="col-sm-3 ">
+                                                <input type="text" class="form-control"  name="jumlah" placeholder="Nama Pemesan" id="jumlah">
+                                            </div>    
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <!-- kontrol baris kedua -->
+                                            <label class="col-sm-2 control-label">Data Barang</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control"  name="nama_barang" placeholder="Nama Barang" id="nama_barang">
                                                 
                                                 <input type="hidden" class="form-control" readonly name="id_user" placeholder="" id="id_user" value="<?php echo $this->session->userdata("id_user"); ?>">
-
                                             </div>
-                                            <div class="col-sm-3 ">
+                                            <div class="col-sm-2">
+                                                <input type="text" class="form-control"  name="jumlah" placeholder="Jumlah" id="jumlah">
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control"  name="harga" placeholder="Harga" id="harga">
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <button class="add_keranjang btn btn-flat  btn-success" name="keranjang" id="keranjang">Tambah</button>
+                                            </div>
+
+                                            <!-- <div class="col-sm-3 ">
                                                 <div class="input-group">
 
                                                     <div class="input-group">
@@ -52,12 +83,29 @@
                                                         <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask readonly="readonly">
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
-                                        <div class="form-group">
+                                        
+                                        <div class="col-sm-6 col-sm-offset-2">
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Nama Barang</th>
+                                                        <th>Jumlah</th>
+                                                        <th>Harga</th>
+                                                        <th>Subtotal</th>
+                                                        <th>Pilihan</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="detailCart">
+                                                </tbody>
+                                            </table>
                                         </div>
+                                    
+                                        
 
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label class="col-sm-2 control-label">Nama Pelanggan</label>
                                             <div class="col-sm-3">
                                                 <select class="form-control select2 j" style="width: 100%;" name="id_pelanggan" id="id_pelanggan">
@@ -76,11 +124,7 @@
                                                 <input type="hidden" class="form-control" id="pesan" name="pesan">
                                                 
                                             </div>
-                                            <div class="col-sm-3">
-                                                
-                                                <textarea class="form-control" readonly rows="3"name="deskripsi" id="log" placeholder=""></textarea>
-                                                
-                                            </div>
+                                            
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Nama Barang</label>
@@ -100,16 +144,16 @@
                                                 <input type="hidden" class="form-control" id="name" name="name">
                                                 <input type="number" class="form-control" name="qty" placeholder="Jumlah" id="qty">
                                             </div>
-                                        </div>
+                                        </div> -->
 
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="col-md-3 col-sm-offset-5">
                                                 <button class="add_keranjang btn btn-info" name="keranjang" id="keranjang">Tambah</button>
-                                                <button class=" btn btn-info" name="psn" id="psn">psn</button>
+                                                
                                             </div>
-                                        </div>
+                                        </div> -->
 
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="col-sm-8 col-sm-offset-2">
                                                 <table class="table table-striped table-bordered">
                                                     <thead>
@@ -126,10 +170,52 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>
+                                        </div> -->
+
+                                        <!-- <div class="form-group">
+                                            <div class="col-sm-12 dropzone dz-message">
+                                                <h3>Masukkan Gambar</h3></center>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- </form> -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- table baru -->
+                    <div class="col-xs-5 ">
+                        <div class="box box-info">
+                            <!-- <form enctype="multipart/form-data" class="form-horizontal" method="post" id="formnya" > -->
+                            <div class="box-header">
+
+                                <div class="form-horizontal">
+                                    <div class="box-body">
+
+                                        <!-- <div class="form-group">
+                                            <div class="col-sm-4 ">
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Id</th>
+                                                            <th>Nama Barang</th>
+                                                            <th>Jumlah</th>
+                                                            <th>Harga</th>
+                                                            <th>Subtotal</th>
+                                                            <th>Pilihan</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="detailCart">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div> -->
 
                                         <div class="form-group">
-                                            <div class="col-sm-3 ">
+                                            <!-- <div class="col-sm-3 ">
                                                 <input type="hidden" class="form-control" id="total" name="total">
                                                 <input type="hidden" class="form-control" id="hargaAwal" name="hargaAwal">
                                             </div>
@@ -145,11 +231,15 @@
 
                                             <div class="col-sm-3 col-sm-offset-1">
                                                 <input type="text" class="form-control" id="kembalian" name="kembalian" placeholder="Kembalian">
-                                            </div>
+                                            </div> 
 
                                             <div class="col-sm-3 col-sm-offset-1">
                                                 <button type="submit" class="btn btn-warning" name="pemesanan" id="pemesanan">Pesan</button>
+                                            </div> -->
+                                            <div class="col-sm-12 dropzone dz-message">
+                                                <h3>Masukkan Gambar</h3></center>
                                             </div>
+                                        
                                         </div>
                                     </div>
                                 </div>
@@ -159,6 +249,9 @@
                         <!-- /.col -->
                     </div>
                     <!-- /.row -->
+
+                </div>
+                
             </section>
             <!-- /.content -->
         </div>
@@ -170,103 +263,7 @@
     <!-- ./wrapper -->
 
     <?php $this->load->view('_partials/script'); ?>
-    <script type="text/javascript">
-    function startApp() {
-        //create websocket client
-        var client = new WebSocket("ws://192.168.43.1:8989");
-
-        //onOpen handler
-        client.onopen = function (event) {
-            var log = document.getElementById("log");
-            log.textContent = log.textContent + "\n" + "Koneksi ke server berhasil";	
-        };
-
-        //onClose handler
-        client.onclose = function (event) {
-            var log = document.getElementById("log");
-            log.textContent = log.textContent + "\n" + "Koneksi ke server terputus";	
-        };
-
-        //onError handler
-        client.onerror = function (event) {
-            var log = document.getElementById("log");
-            log.textContent = log.textContent + "\n" + "Koneksi ke server error";	
-        };
-
-        //onMessage handler
-        client.onmessage = function (event) {
-            var response = JSON.parse(event.data);
-
-            switch (response.type) {
-                case "success" :
-                // suskses mengirim sms ke server
-                alert(response.message);
-                break;
-
-                case "error" :
-                // gagal mengirim sms ke server
-                alert(response.message);
-                break;
-
-                case "notification" :
-                // laporan status pengiriman sms
-                var log = document.getElementById("log");
-                if (response.success) {
-                    log.textContent = log.textContent + "\n" + "Laporan Sukses: "+ response.message;
-                } else {
-                    log.textContent = log.textContent + "\n" + "Laporan gagal : "+ response.message;
-                }
-                break;
-
-                case "received" :
-                // menerima sms
-                if (confirm("SMS dari" + response.from + " :\n"
-                    + response.message + "\n" +
-                    "Apakah ingin dibalas?")) {
-                    document.getElementById("to").value = response.from;
-                }
-                break;
-            }
-        };
-
-        // aksi tombol Send SMS
-        document.getElementById("pemesanan").onclick = function (){
-            
-            //mengambil value no tujuan
-            var to = document.getElementById("nohp").value;
-
-            //mengambil value isi pesan SMS
-            var message = document.getElementById("pesan").value;
-            
-            var splits = to.split(",");
-            if (splits.length == 1) {
-                // bukan broadcast
-
-                //membuat json
-            var json = {
-                to: to,
-                message: message
-            };
-
-            //mengirim ke server via websocket
-            client.send(JSON.stringify(json));
-
-            } else {
-                //broadcast
-
-                //membuat json broadcast
-                var json = {
-                    to: splits,
-                    message: message
-                };
-
-                //mengirim ke server via websocket
-                client.send(JSON.stringify(json));
-            }
-        }
-    }
-    window.onload = startApp;
-           
+    <script type="text/javascript">     
         $(document).ready(function(e) {
 
             //set kode
