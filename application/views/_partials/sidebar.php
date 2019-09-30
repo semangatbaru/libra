@@ -14,47 +14,28 @@
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Home</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            <i class="fa fa-dashboard"></i> 
+            <span>Home</span>
+            
           </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('Barang') ?>"><i class="fa fa-circle-o"></i> Data Barang</a></li>
-            <li><a href="<?php echo site_url('Barangmasuk') ?>"><i class="fa fa-circle-o"></i> Data Barang Masuk</a></li>
-            <li><a href="<?php echo site_url('Pelanggan') ?>"><i class="fa fa-circle-o"></i> Data Pelanggan</a></li>
-            <li><a href="<?php echo site_url('Transaksi') ?>"><i class="fa fa-circle-o"></i> Transaksi</a></li>
-            <li><a href="<?php echo site_url('Pemesanan') ?>"><i class="fa fa-circle-o"></i> Pemesanan</a></li>
+            
+            <li><a href="<?php echo site_url('Barangmasuk') ?>"> Data Barang Masuk</a></li>
+            <li><a href="<?php echo site_url('Pelanggan') ?>"> Data Pelanggan</a></li>
+            <li><a href="<?php echo site_url('Pemesanan') ?>"> Pemesanan</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-folder"></i>
-            <span>Menu</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('Auth') ?>"><i class="fa fa-circle-o"></i> Login</a></li>
 
-            <li><a href="<?php echo site_url('User') ?>"><i class="fa fa-circle-o"></i> Register</a></li>
-
-          </ul>
-        </li>
+    <ul class="sidebar-menu" data-widget="tree">        
         <li class="treeview">
-          <a href="#">
+          <a>
             <i class="fa fa-book"></i>
             <span>Laporan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+
           </a>
-          <ul class="treeview-menu">
-             <li><a href="<?php echo site_url('Laporan_Barang') ?>"><i class="fa fa-circle-o"></i> Barang </a></li>
-            <li><a href="<?php echo site_url('Laporan_Pemesanan') ?>"><i class="fa fa-circle-o"></i> Pemesanan </a></li>
-            <li><a href="<?php echo site_url('Laporan_Transaksi') ?>"><i class="fa fa-circle-o"></i> Transaksi </a></li>
-            <li><a href="<?php echo site_url('Laporan_Angsuran') ?>"><i class="fa fa-circle-o"></i> Angsuran </a></li>
+              <li><a href="<?php echo site_url('Laporan_Pemesanan') ?>"> Pemesanan </a></li>
+            <li><a href="<?php echo site_url('Laporan_Transaksi') ?>"> Data Belanja </a></li>
+            <li><a href="<?php echo site_url('Laporan_Angsuran') ?>"> Debit </a></li>
+            <li><a href="<?php echo site_url('Laporan_Angsuran') ?>"> Kredit </a></li>
           </ul>
         </li>
         <li class="header"><a href="<?php echo site_url('auth/logout'); ?>"><span class="glyphicon glyphicon-arrow-left"><span>Keluar </a>
