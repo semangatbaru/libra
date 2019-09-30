@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Sep 2019 pada 13.11
+-- Waktu pembuatan: 30 Sep 2019 pada 04.41
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.2
 
@@ -86,7 +86,8 @@ CREATE TABLE `detail_belanja` (
 
 CREATE TABLE `detail_gambar` (
   `id_pemesanan` varchar(15) NOT NULL,
-  `nama_gambar` varchar(255) NOT NULL
+  `nama_gambar` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -183,7 +184,7 @@ DELIMITER ;
 CREATE TABLE `tb_user` (
   `id_user` varchar(2) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `passsword` text NOT NULL,
+  `password` text NOT NULL,
   `level` enum('admin','kasir','karyawan') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -191,8 +192,9 @@ CREATE TABLE `tb_user` (
 -- Dumping data untuk tabel `tb_user`
 --
 
-INSERT INTO `tb_user` (`id_user`, `username`, `passsword`, `level`) VALUES
-('1', 'stay', 'stay', 'admin');
+INSERT INTO `tb_user` (`id_user`, `username`, `password`, `level`) VALUES
+('1', 'stay', 'stay', 'admin'),
+('P2', 'staydev', '$2y$10$gwd7zh79bu7jf8DYuSD.CegeaFK7geKR.fNKuyxwyCMhS4aQ/TkNi', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -258,12 +260,6 @@ ALTER TABLE `barangmasuk`
 --
 ALTER TABLE `detail_belanja`
   ADD CONSTRAINT `detail_belanja_ibfk_1` FOREIGN KEY (`id_barangmasuk`) REFERENCES `barangmasuk` (`id_barangmasuk`) ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `detail_gambar`
---
-ALTER TABLE `detail_gambar`
-  ADD CONSTRAINT `detail_gambar_ibfk_1` FOREIGN KEY (`id_pemesanan`) REFERENCES `pemesanan` (`id_pemesanan`) ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `detail_pemesanan`
