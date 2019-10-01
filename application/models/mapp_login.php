@@ -7,7 +7,7 @@ class mapp_login extends CI_Model{
 
     function login_api($username, $password)
     {
-        $result = $this->db->query("SELECT * FROM tb_user WHERE username='$username' and password='$password'");
+        $result = $this->db->query("SELECT * FROM user WHERE username='$username' and password='$password'");
         return $result->result();
     }
 }

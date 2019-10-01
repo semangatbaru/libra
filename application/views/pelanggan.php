@@ -57,7 +57,7 @@
                     <div class="form-group">
                       <label  class="col-sm-2 control-label">No HP</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control aturan" id="nohp"  name="nohp" placeholder="nohp">
+                        <input type="text" class="form-control aturan" id="hp"  name="hp" placeholder="hp">
                       </div>
                     </div>
 
@@ -67,21 +67,6 @@
                         <input type="text" class="form-control aturan" id="alamat"  name="alamat" placeholder="Alamat">
                       </div>
                     </div>
-
-                    <div class="form-group">
-                      <label  class="col-sm-2 control-label">Email</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control aturan" id="email"  name="email" placeholder="Email">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label  class="col-sm-2 control-label">Password</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control aturan" id="password"  name="password" placeholder="Password">
-                      </div>
-                    </div>
-                    
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer">
@@ -120,25 +105,13 @@
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">No Hp</label>
                             <div class="col-md-10">
-                              <input type="text" name="nohp_edit" id="nohp_edit" class="form-control" placeholder="No Hp">
+                              <input type="text" name="hp_edit" id="hp_edit" class="form-control" placeholder="No Hp">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Alamat</label>
                             <div class="col-md-10">
                               <input type="text" name="alamat_edit" id="alamat_edit" class="form-control" placeholder="Alamat">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Email</label>
-                            <div class="col-md-10">
-                              <input type="text" name="email_edit" id="email_edit" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Password</label>
-                            <div class="col-md-10">
-                              <input type="password" name="password_edit" id="password_edit" class="form-control" placeholder="Price">
                             </div>
                         </div>
                   </div>
@@ -152,7 +125,7 @@
           </form>
         <!--END MODAL EDIT-->
           <!-- form table -->
-          <div class="box ">
+          <div class="box">
             <div class="box-header">
               <button class="btn btn-info click-tambah"><li class="fa fa-plus"></li> Tambah</button>
               <br><br>
@@ -167,7 +140,6 @@
                   <th>Nama</th>
                   <th>No Hp</th>
                   <th>Alamat</th>
-                  <th>Email</th>
                   <th>Aksi</th>
                 </tr>
                 </thead>
@@ -294,11 +266,11 @@
             html += '<tr>'+
                       '<td>'+(i+1)+'</td>'+
                       '<td>'+data[i].nama+'</td>'+
-                      '<td>'+data[i].nohp+'</td>'+
+                      '<td>'+data[i].hp+'</td>'+
                       '<td>'+data[i].alamat+'</td>'+
-                      '<td>'+data[i].email+'</td>'+
                       '<td style="text-align:right;">'+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-id_pelanggan="'+data[i].id_pelanggan+'" data-nama="'+data[i].nama+'" data-nohp="'+data[i].nohp+'" data-alamat="'+data[i].alamat+'" data-email="'+data[i].email+'" data-password="'+data[i].password+'">Edit</a>'+' '+
+                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-id_pelanggan="'+data[i].id_pelanggan+'" data-nama="'+data[i].nama+'" data-hp="'+data[i].hp+'" data-alamat="'+data[i].alamat+'">Edit</a>'+
+
                         '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id_pelanggan="'+data[i].id_pelanggan+'">Delete</a>'+
                       '</td>'+
                     '</tr>';
@@ -311,7 +283,7 @@
     //function kosongan
     function kosong(){
       document.getElementById('nama').value="";
-      document.getElementById('password').value="";
+      
     }
     
 
@@ -321,23 +293,20 @@
       
       var id_pelanggan = $('#id_pelanggan').val();
       var nama = $('#nama').val();
-      var nohp = $('#nohp').val();
+      var hp = $('#hp').val();
       var alamat = $('#alamat').val();
-      var email = $('#email').val();
-      var password = $('#password').val();
       $.ajax({
         type: "POST",
         url: '<?php echo site_url('Pelanggan/add') ?>',
         dataType: "JSON",
-        data: {id_pelanggan:id_pelanggan, nama:nama, nohp:nohp, alamat:alamat, email:email, password:password},
+        data: {id_pelanggan:id_pelanggan, nama:nama, hp:hp, alamat:alamat,},
         success: function(data){
           $('[name="id_pelanggan"]').val("");
           $('[name="nama"]').val("");
-          $('[name="nohp"]').val("");
+          $('[name="hp"]').val("");
           $('[name="alamat"]').val("");
-          $('[name="email"]').val("");
-          $('[name="password"]').val("");
           showRecord();
+          setCode();
         }
       });
       
@@ -351,40 +320,32 @@
       kosong();
       var id_pelanggan = $(this).data('id_pelanggan');
       var nama = $(this).data('nama');
-      var nohp = $(this).data('nohp');
+      var hp = $(this).data('hp');
       var alamat = $(this).data('alamat');
-      var email = $(this).data('email');
-      var password = $(this).data('password');
       
       $('#Modal_Edit').modal('show');
       $('[name="id_pelanggan_edit"]').val(id_pelanggan);
       $('[name="nama_edit"]').val(nama);
-      $('[name="nohp_edit"]').val(nohp);
+      $('[name="hp_edit"]').val(hp);
       $('[name="alamat_edit"]').val(alamat);
-      $('[name="email_edit"]').val(email);
-      $('[name="password_edit"]').val(password);
     });
 
      //update record to database
     $('#btn_update').on('click',function(){
       var id_pelanggan = $('#id_pelanggan_edit').val();
       var nama = $('#nama_edit').val();
-      var nohp = $('#nohp_edit').val();
+      var hp = $('#hp_edit').val();
       var alamat = $('#alamat_edit').val();
-      var email = $('#email_edit').val();
-      var password = $('#password_edit').val();
       $.ajax({
           type : "POST",
           url  : "<?php echo site_url('Pelanggan/edit')?>",
           dataType : "JSON",
-          data : {id_pelanggan:id_pelanggan, nama:nama, nohp:nohp, alamat:alamat, email:email, password:password},
+          data : {id_pelanggan:id_pelanggan, nama:nama, hp:hp, alamat:alamat,},
           success: function(data){
               $('[name="id_pelanggan_edit"]').val("");
               $('[name="nama_edit"]').val("");
-              $('[name="nohp_edit"]').val("");
+              $('[name="hp_edit"]').val("");
               $('[name="alamat_edit"]').val("");
-              $('[name="email_edit"]').val("");
-              $('[name="password_edit"]').val("");
               $('#Modal_Edit').modal('hide');
               showRecord();
           }
