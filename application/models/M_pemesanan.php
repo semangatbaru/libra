@@ -11,24 +11,24 @@ class M_pemesanan extends CI_Model
 
      public function kode()
      {
-          $this->db->select('RIGHT(pemesanan.kode_pemesanan, 4) as kode_pemesanan', FALSE);
+          $this->db->select('RIGHT(pemesanan.id_pemesanan, 2) as id_pemesanan', FALSE);
           date_default_timezone_set("asia/jakarta");
           $this->db->where("tanggal =  date(now())");
-          $this->db->order_by('kode_pemesanan', 'DESC');
+          $this->db->order_by('id_pemesanan', 'DESC');
           $this->db->limit(1);
           $query = $this->db->get('pemesanan');  //cek dulu apakah ada sudah ada kode di tabel.    
           if ($query->num_rows() <> 0) {
                //cek kode jika telah tersedia    
                $data = $query->row();
-               $kode = intval($data->kode_pemesanan) + 1;
+               $kode = intval($data->id_pemesanan) + 1;
           } else {
                $kode = 1;  //cek jika kode belum terdapat pada table
           }
           $id_user = $this->session->userdata("id_user");
           $tgl = date('dmY');
           $D = date('d');
-          $batas = str_pad($kode, 4, "0", STR_PAD_LEFT);
-          $kodetampil = "PS".$batas; //format kode
+          $batas = str_pad($kode, 2, "0", STR_PAD_LEFT);
+          $kodetampil = "PS".$tgl.$batas; //format kode
           return $kodetampil;
      }
 

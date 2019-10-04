@@ -51,7 +51,8 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label ">Nama Pemesan</label>
                                             <div class="col-sm-3 ">
-                                                <input type="text" class="form-control"  name="jumlah" placeholder="Nama Pemesan" id="jumlah">
+                                                <input type="text" class="form-control"  name="id_pelanggan" placeholder="Nama Pemesan" id="id_pelanggan">
+                                                <input type="text" class="form-control"  name="id_pemesanan" placeholder="ID Pemesan" id="id_pemesanan">
                                             </div>    
                                         </div>
                                         
@@ -236,8 +237,8 @@
                                             <div class="col-sm-3 col-sm-offset-1">
                                                 <button type="submit" class="btn btn-warning" name="pemesanan" id="pemesanan">Pesan</button>
                                             </div> -->
-                                            <div class="col-sm-12 dropzone dz-message">
-                                                <h3>Masukkan Gambar</h3></center>
+                                            <div class="col-sm-12 dropzone ">
+                                                <center><h3 class="dz-message">Masukkan Gambar</h3></center>
                                             </div>
                                         
                                         </div>
@@ -270,22 +271,46 @@
             setCode();
 
             date();
+            dropzone();
             setTotal();
+            function dropzone() {
+                var foto_upload= new Dropzone(".dropzone",{
+                url: "<?php echo base_url('Pemesanan/proses_upload') ?>",
+                maxFilesize: 2,
+                method:"post",
+                acceptedFiles:"image/*",
+                paramName:"userfile",
+                dictInvalidFileType:"Type file ini tidak dizinkan",
+                addRemoveLinks:true,
+                });
+
+
+                //Event ketika Memulai mengupload
+                foto_upload.on("sending",function(a,b,c){
+                    a.token=Math.random();
+                    c.append("token_foto",a.token); //Menmpersiapkan token untuk masing masing foto
+                });
+            };
+
+            
+
+
+            
             
 
             
 
             function setCode() {
-                var kode_pemesanan = $('#kode_pemesanan').val();
+                var id_pemesanan = $('#id_pemesanan').val();
                 $.ajax({
                     type: "POST",
                     url: "<?php echo site_url('Pemesanan/setCode') ?>",
                     dataType: "JSON",
                     data: {
-                        kode_pemesanan: kode_pemesanan
+                        id_pemesanan: id_pemesanan
                     },
                     success: function(data) {
-                        $('[name="kode_pemesanan"]').val(data);
+                        $('[name="id_pemesanan"]').val(data);
                         
                     }
                 });
