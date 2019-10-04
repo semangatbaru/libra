@@ -98,19 +98,4 @@ class Pemesanan extends CI_Controller
         $data = $this->M_pemesanan->kredit();
         echo json_encode($data);
     }
-
-    function proses_upload(){
-
-        $config['upload_path']   = './upload/product/';
-        $config['allowed_types'] = 'gif|jpg|png|ico';
-        $this->load->library('upload',$config);
-
-        if($this->upload->do_upload('userfile')){
-        	$token=$this->input->post('token_foto');
-        	$nama=$this->upload->data('file_name');
-        	$this->db->insert('foto',array('nama_foto'=>$nama,'token'=>$token));
-        }
-
-
-	}
 }
