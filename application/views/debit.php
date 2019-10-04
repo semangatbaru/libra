@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 <html lang="en">
 <head>
-<title>Laporan Angsuran | JHP</title>
+<title>Debit</title>
   <?php $this->load->view('_partials/head')?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -101,7 +101,7 @@
           <div class="box ">
             <div class="box-header">
               <br><br>
-              <h3 class="box-title">Laporan Angsuran</h3>
+              <h3 class="box-title">Debit</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-header with-border">
