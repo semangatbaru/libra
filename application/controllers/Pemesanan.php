@@ -24,7 +24,7 @@ class Pemesanan extends CI_Controller
     public function setCode()
     {
         $data = $this->M_pemesanan->kode();
-        echo json_encode($data);
+        echo json_encode($data); 
     }
 
     function getPelanggan()
