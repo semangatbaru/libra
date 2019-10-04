@@ -54,7 +54,7 @@ class M_pemesanan extends CI_Model
      }
      public function keranjang()
      {
-          $id = $this->input->post('id');
+          $id = $this->input->post('id');    
           $qty = $this->input->post('qty');
           $price = $this->input->post('price');
           $name = $this->input->post('name');
@@ -66,7 +66,7 @@ class M_pemesanan extends CI_Model
           );
 
           $this->cart->insert($grosir);
-          echo $this->show();
+          echo $this->show(); 
      }
      public function show()
      {
@@ -75,14 +75,14 @@ class M_pemesanan extends CI_Model
                # code...
                $output .= '
                     <tr>
-                         <td>' . $items['id'] . '</td>
+                         <td>'.$items['id'].'</td> 
                          <td>' . $items['name'] . '</td>
                          <td>' . $items['qty'] . '</td>
                          <td>' . number_format($items['price']) . '</td>
                          <td>
-                              <div class="col-md-8">
+                              <div class="col-md-10">
                               <div class="form-group">
-                                   <input type="text" id="subtotal" name="subtotal" value="' . $items['subtotal'] . '" class="form-control" style="text-align:right;margin-bottom:5px;" readonly>
+                                   <input type="text" id="subtotal" name="subtotal" value="' . $items['subtotal'] .  '" class="form-control" style="text-align:right;margin-bottom:5px;" readonly>
                               </div>
                          </div>
                          </td>
