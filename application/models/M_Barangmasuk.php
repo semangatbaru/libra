@@ -1,75 +1,76 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_Barangmasuk extends CI_Model {
-     private $_tableB = "barang";
-     private $_tT = "barangmasuk";
-     private $_dbm = "detail_barangmasuk";
+class M_barangmasuk extends CI_Model {
+     private $_table = "pelanggan";
+     private $_tT = "pemesanan";
+     private $_tDT = "barangmasuk";
 
-     public function kode(){
-          $this->db->select('MAX(RIGHT(barangmasuk.id_barangmasuk,3)) as id_barangmasuk', FALSE);
-          
-          $this->db->order_by('id_barangmasuk','DESC');    
-          $this->db->limit(1);    
-          $query = $this->db->get('barangmasuk');  //cek dulu apakah ada sudah ada kode di tabel.    
-               if($query->num_rows() <> 0){      
-               //cek kode jika telah tersedia    
-               $data = $query->row();      
-               $kode = intval($data->id_barangmasuk) + 1; 
-          }
-          else{      
-               $kode = 1;  //cek jika kode belum terdapat pada table
-          }
-          $tgl=date('dmY'); 
-          $batas = str_pad($kode, 3, "0", STR_PAD_LEFT);    
-          $kodetampil = "B".$batas;  //format kode
-          return $kodetampil;
-     }
+    public function get_pemesanan()
+    {
+    $query = $this->db->get('pemesanan');
+    return $query->result();
+    }
 
- 
-     public function ambil_data()
+    public function keranjang()
      {
-         return $this->db->get($this->_table)->result();
-     }
+             
+          $namabarang = $this->input->post('namabarang');
+          $jumlah = $this->input->post('jumlah');
+          $hargabeli = $this->input->post('hargabeli');
+          $detail = array(
+               'namabarang'    => $namabarang,
+               'jumlah'   => $jumlah,
+               'hargabeli'      => $hargabeli
+          );
+
+        $this->cart->insert($detail);
+          echo $this->show(); 
+        }
+
+     public function show()
+     {
+          $output = '';
+          foreach ($this->cart->contents() as $items) {
+               # code...
+               $output .= '
+                    <tr>
+                         <td>' . $items['namabarang'] . '</td>
+                         <td>' . $items['jumlah'] . '</td>
+                         <td>' . number_format($items['hargabeli']) . '</td>
+                         <td>
+                              <div class="col-md-10">
+                              <div class="form-group">
+                                   <input type="text" id="subtotal" name="subtotal" value="' . $items['subtotal'] .  '" class="form-control" style="text-align:right;margin-bottom:5px;" readonly>
+                              </div>
+                         </div>
+                         </td>
+                              <td><button type="button" id="' . $items['namabarang'] . '" class="hapus_cart btn btn-danger btn-xs">Batal</button></td>
+                    </tr>
+          ';
+          }
+          return $output;
+     }    
      
-     function searchBarang(){
-          $hasil=$this->db->query("SELECT * FROM barang");
-          return $hasil;
-     }
-     public function ambilBarang()
+    public function load()
      {
-         return $this->db->get($this->_tableB)->result();
-     }
-
-     public function insTr(){
-          date_default_timezone_set('Asia/Jakarta');
-
-          $id_barangmasuk = $this->input->post('id_barangmasuk');
-         
-          $id_user = $this->session->userdata("id_user");
-          $tgl=date('Y-m-d');
-          $tanggal = $tgl; 
-        
-          $barangmasuk = array(
-               'id_barangmasuk'=>$id_barangmasuk,
-               'id_user'=>$id_user,
-               'tanggal'=>$tanggal,
-                );
-          $result = $this->db->insert($this->_tT, $barangmasuk);
-          return $result;
-          
-     }
-       function detail(){
-          if ($cart = $this->cart->contents()){
-               $id_barangmasuk = $this->input->post('id_barangmasuk');
-               foreach ($cart as $item){
-                    $data_detail = array('id_barangmasuk' =>$id_barangmasuk,
-                                   'id_barang' => $item['id'],
-                                   'jumlah' => $item['qty'],
-                                   );
-                    $this->db->insert($this->_dbm, $data_detail);
+          echo $this->show();
+     }      
+               
+ function detail()
+     {
+          if ($cart = $this->cart->contents()) {
+               $namabarang = $this->input->post('namabarang');
+               foreach ($cart as $item) {
+                    $data_detail = array(
+                         
+                         'namabarang' => $item['namabarang'],
+                         'jumlah' => $item['jumlah'],
+                         'hargabeli' => $item['hargabeli'],
+                    );
+                    $this->db->insert($this->_tDT, $data_detail);
                }
           }
      }
-
 }
+

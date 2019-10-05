@@ -34,12 +34,20 @@
                       <div style="text-align: center;">
                     <span style=" font-size: 20px;">Data Barang Masuk</span>
                     </div>
-                        <br>                         
+                        <br>      
+
 
                         <div class="form-group">
-                        <label  class="col-sm-2 control-label">No Faktur</label>
+                        <label  class="col-sm-2 control-label">No Order</label>
                         <div class="col-sm-3">
-                            <input type="id_barangmasuk" class="form-control" name="id_barangmasuk"  id="id_barangmasuk" readonly="">                           
+                            <select class="form-control select2 " style="width: 100%;" name="id_pemesanan" id="id_pemesanan">
+                                <option> Pilih No order</option>
+                                <?php foreach($barangmasuk as $p){ ?>
+            <option  value="<?php echo $p->id_pemesanan; ?>"> <?php echo $p->id_pemesanan;?>    </option>
+                  <?php } ?>
+                                
+                                </select>
+                                                       
                             </div>
                        <!--  <div class="col-sm-3">
                             <input type="text" class="form-control" readonly name="sid" placeholder=""  >
@@ -64,29 +72,34 @@
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Nama Barang</label>
                             <div id="name" name="name" class="col-sm-3">
-                                <select class="form-control select2 " style="width: 100%;" name="namaBarang" id="namaBarang">
-                                <option value="">Pilih Barang</option>
-                                <?php foreach ($barang as $b): ?>
-                                    <option data-namabarang="<?php echo $b->namabarang ?>" data-stok="<?php echo $b->stok ?>" data-harga="<?php echo $b->harga ?>" value="<?php echo $b->id_barang?>"><?php echo $b->namabarang;?></option>
-                                <?php endforeach;?>
-                                </select>
-                            
+                                <input  class="form-control"  id="namabarang" name="namabarang">     
                             </div>
                             <label  class="col-sm-2 control-label">User</label>
                             <div class="col-sm-3">
-                            <input type="id_user" class="form-control" name="id_user" value="<?php echo $this->session->userdata("id_user"); ?>" readonly>
+                            <input type="id_user" class="form-control" name="id_user" value="<?php echo $this->session->userdata("username"); ?>" readonly>
                          </div>
                         </div>
 
-                        <div class="form-group">
+                                                <div class="form-group">
+                            <label  class="col-sm-2 control-label">Jumlah</label>
+                            <div id="qty" name="qty" class="col-sm-3">
+                            <input  class="form-control"  id="jumlah" name="jumlah">     
+                            </div>
+                            <label  class="col-sm-2 control-label">Harga Beli</label>
+                            <div class="col-sm-3">
+                            <input id="hargabeli" class="form-control" name="hargabeli" >
+                         </div>
+                        </div>
+
+                        <!-- <div class="form-group">
                             <label  class="col-sm-2 control-label">Jumlah</label>
                             <div class="col-sm-2">
                                  <input type="number" class="form-control"  id="qty" name="qty">  
                             
                             </div>
-                         
+                         --> 
 
-                         <div class="form-group">
+                         <!-- <div class="form-group">
                             <label  class="col-sm-2 control-label"></label>
                             <div class="col-sm-3">
                                  <input type="hidden" class="form-control"  id="stok" name="stok" readonly="">  
@@ -97,7 +110,7 @@
                             <input type="hidden" class="form-control"  id="price" name="price" placeholder="Jumlah">
                             </div>
                         
-                          
+                          --> 
                         <div class="form-group">
                         <div class="col-md-5 col-sm-offset-5">
                             <button type="submit" class="add_keranjang btn btn-info" name="keranjang" id="keranjang">Tambah</button>
@@ -109,9 +122,10 @@
                             <table  class="table table-striped table-bordered" >
                             <thead>
                             <tr>
-                                <th>ID Barang</th>
                                 <th>Nama Barang</th>                
                                 <th>Jumlah</th>
+                                <th>Harga Beli</th>
+                                <th>Subtotal</th>
                                 <th>Pilihan</th>          
                             </tr>
                             </thead>
@@ -130,7 +144,7 @@
                        
 
                         <div class="col-sm-5 col-sm-offset-5">
-                            <button  type="submit" class="btn btn-warning" name="transaksi" id="transaksi">Tambah</button>
+                            <button  type="submit" class="btn btn-warning" name="transaksi" id="transaksi">Simpan</button>
                         </div>
                         </div>   
                     </div>
@@ -159,12 +173,12 @@
     setCode();
     date();
     function setCode(){
-        var nofaktur = $('#id_barangmasuk').val();
+        var id_pemesanan = $('#id_barangmasuk').val();
         $.ajax({
             type: "POST",
             url: "<?php echo site_url('Barangmasuk/setCode') ?>",
             dataType: "JSON",
-            data:{nofaktur:nofaktur},
+            data:{id_pemesanan:id_pemesanan},
             success : function(data){
                 $('[name="id_barangmasuk"]').val(data);
             }
@@ -186,37 +200,26 @@
         today = dd+'/'+mm+'/'+yyyy;
         $('[name="tanggal"]').val(today); 
     }
-    //function replace at
+
     String.prototype.replaceAt=function(index, replacement) {
     return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
     }
-    //getStokBarang
-    $("#namaBarang").change(function(){
-        var stok = $(this).find(":selected").data("stok");
-        $('#stok').val(stok);
-        var harga = $(this).find(":selected").data("harga");
-        $('#price').val(harga);
-        var namaB = $(this).find(":selected").data("namabarang");
-        $('#name').val(namaB);
-    })  
+    
     function kosong(){
-      document.getElementById('namaBarang').value="";
-      document.getElementById('stok').value="";
-      document.getElementById('price').value="";
-      document.getElementById('name').value="";
-      document.getElementById('qty').value="";
-    }
+      document.getElementById('namabarang').value="";
+      document.getElementById('jumlah').value="";
+      document.getElementById('hargabeli').value="";
+       }
     //
     $(".add_keranjang").click(function(){
-        var id = $("#namaBarang").val();
-        var name = $("#name").val();
-        var qty = $("#qty").val();
-        var price = $("#price").val();
-       
+        var namabarang = $("#namabarang").val();
+        var jumlah = $("#jumlah").val();
+        var hargabeli = $("#hargabeli").val();
+        
         $.ajax({
             url : "<?php echo base_url(); ?>Barangmasuk/Cart",
             method : "POST",
-            data : {id : id, name : name, qty : qty, price : price },
+            data : {namabarang : namabarang, jumlah : jumlah, hargabeli : hargabeli },
             success: function(data){
                 $("#detailCart").html(data);
                 kosong();
@@ -265,6 +268,7 @@
             });
     });
   }); //akhir
+     //akhir
 </script>
 <!-- Script -->
 
