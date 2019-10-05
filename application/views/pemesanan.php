@@ -52,6 +52,7 @@
                                             <label class="col-sm-2 control-label ">Nama Pemesan</label>
                                             <div class="col-sm-3 ">
                                                 <input type="text" class="form-control"  name="namapemesan" placeholder="Nama Pemesan" id="namapemesan">
+                                                <input type="text" class="form-control"  name="id_pemesanan" placeholder="Nama Pemesan" id="id_pemesanan">
                                             </div>    
                                         </div>
                                         
@@ -150,7 +151,7 @@
         $(document).ready(function(e) {
 
             //set kode
-            // setCode();
+            setCode();
 
             // date();
             // setTotal();
@@ -160,16 +161,16 @@
             
 
             function setCode() {
-                var kode_pemesanan = $('#kode_pemesanan').val();
+                var id_pemesanan = $('#id_pemesanan').val();
                 $.ajax({
                     type: "POST",
                     url: "<?php echo site_url('Pemesanan/setCode') ?>",
                     dataType: "JSON",
                     data: {
-                        kode_pemesanan: kode_pemesanan
+                        id_pemesanan: id_pemesanan
                     },
                     success: function(data) {
-                        $('[name="kode_pemesanan"]').val(data);
+                        $('[name="id_pemesanan"]').val(data);
                         
                     }
                 });
