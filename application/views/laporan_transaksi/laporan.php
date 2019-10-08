@@ -25,11 +25,75 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12 col-sm-offset-0"   >
+
+          <!-- form detail -->
+           <!-- MODAL DETAIL -->
+          <form>
+            <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Belanja</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Kode Belanja</label>
+                            <div class="col-md-10">
+                              <input type="text" name="id_pelanggan_edit" id="id_pelanggan_edit" class="form-control" placeholder="Id Pelanggan" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">No Order</label>
+                            <div class="col-md-10">
+                              <input type="text" name="nama_edit" id="nama_edit" class="form-control" placeholder="Nama">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Total Belanja</label>
+                            <div class="col-md-10">
+                              <input type="text" name="nohp_edit" id="nohp_edit" class="form-control" placeholder="No Hp">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Tanggal</label>
+                            <div class="col-md-10">
+                              <input type="text" name="alamat_edit" id="alamat_edit" class="form-control" placeholder="Alamat">
+                            </div>
+                        </div>
+                      <div class="box-body">
+                        <table id="example1" class="table  table-striped" >
+                        <thead>
+                        <tr>
+                        <th>Nama Barang</th>
+                        <th>Jumlah</th>
+                        <th>Harga Beli</th>
+                        <th>Sub Total</th>
+                        </tr>
+                        </thead>
+                          <tbody id="showData">
+
+                          </tbody>
+                        </table>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" type="submit" id="btn_update" class="btn btn-primary">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        <!--END MODAL DETAIL-->
+
           <!-- form table -->
           <div class="box ">
             <div class="box-header">
               <br><br>
-              <h3 class="box-title">Laporan Transaksi</h3>
+             <!-- <h3 class="box-title">Data Belanja</h3>-->
             </div>
             <!-- /.box-header -->
             <div class="box-header with-border">
@@ -52,15 +116,14 @@
               </div>
             </div>
             <div class="box-body">
-              <table id="example1" class="table  table-striped" >
+               <table id="example1" class="table  table-striped" >
                 <thead>
                 <tr>
-                  <th>tanggal</th>
-                  <th>nofaktur</th>
-                  <th>penjual</th>
-                  <th>pelanggan</th>
-                  <th>total</th>
-                  <th>kategori</th>
+                  <th>No</th>
+                  <th>Kode Belanja</th>
+                  <th>Total Belanja</th>
+                  <th>Status</th>
+                  <th>Opsi</th>
                 </tr>
                 </thead>
                 <tbody id="showData">

@@ -110,9 +110,9 @@
                                         <table  class="table table-striped table-bordered" >
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>Nama Barang</th>                
-                                                    <th>Jumlah</th>
+                                                    <th>No</th>
+                                                    <th>Kode Belanja</th>                
+                                                    <th>Total Belanja</th>
                                                     <th>Harga</th>
                                                     <th>Subtotal</th>                
                                                     <th>Pilihan</th>          
