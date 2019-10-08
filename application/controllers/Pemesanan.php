@@ -98,4 +98,38 @@ class Pemesanan extends CI_Controller
         $data = $this->M_pemesanan->kredit();
         echo json_encode($data);
     }
+    //Untuk proses upload foto
+	function proses_upload(){
+
+        $config['upload_path']   = './upload/';
+        $config['allowed_types'] = 'gif|jpg|png|ico';
+        $this->load->library('upload',$config);
+
+        if($this->upload->do_upload('userfile')){
+            $id_pemesanan=$this->input->post('id_pemesanan');
+            $token=$this->input->post('token_foto');
+        	$nama=$this->upload->data('file_name');
+        	$this->db->insert('detail_gambar',array('id_pemesanan'=>$id_pemesanan,'nama_gambar'=>$nama,'token'=>$token));
+        }
+    }
+    function remove_foto(){
+
+		//Ambil token foto
+		$token=$this->input->post('token');
+
+		
+		$foto=$this->db->get_where('detail_gambar',array('token'=>$token));
+
+
+		if($foto->num_rows()>0){
+			$hasil=$foto->row();
+			$nama_gambar=$hasil->nama_gambar;
+			if(file_exists($file='./upload/'.$nama_gambar)){
+				unlink($file);
+			}
+			$this->db->delete('detail_gambar',array('token'=>$token));
+
+		}
+		echo "{}";
+	}
 }

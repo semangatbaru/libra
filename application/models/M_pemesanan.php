@@ -69,11 +69,13 @@ class M_pemesanan extends CI_Model
      public function show()
      {
           $output = '';
+          $no = 0;
           foreach ($this->cart->contents() as $items) {
                # code...
+               $no++;
                $output .= '
                     <tr>
-                         <td>'.$items['id'].'</td> 
+                         <td>'.$no.'</td> 
                          <td>' . $items['name'] . '</td>
                          <td>' . $items['qty'] . '</td>
                          <td>' . number_format($items['price']) . '</td>

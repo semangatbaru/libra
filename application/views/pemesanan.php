@@ -112,7 +112,7 @@
                         <div class="box box-info">
                             <!-- <form enctype="multipart/form-data" class="form-horizontal" method="post" id="formnya" > -->
                             <div class="box-header">
-
+                            <center><h3 class="box-title">Tambah Gambar</h3></center>
                                 <div class="form-horizontal">
                                     <div class="box-body">
 
@@ -121,7 +121,6 @@
                                         <div class="form-group">
                                             
                                             <div class="col-sm-12 dropzone dz-message">
-                                                <h3>Masukkan Gambar</h3></center>
                                             </div>
                                         
                                         </div>
@@ -148,14 +147,85 @@
 
     <?php $this->load->view('_partials/script'); ?>
     <script type="text/javascript">     
+        Dropzone.autoDiscover = false;
+
+        var foto_upload= new Dropzone(".dropzone",{
+        url: "<?php echo base_url('Pemesanan/proses_upload') ?>",
+        maxFilesize: 2,
+        method:"post",
+        acceptedFiles:"image/*",
+        paramName:"userfile",
+        dictInvalidFileType:"Type file ini tidak dizinkan",
+        addRemoveLinks:true,
+        });
+
+
+        //Event ketika Memulai mengupload
+        foto_upload.on("sending",function(a,b,c){
+            a.token=Math.random();
+            b.id_pemesanan = $('#id_pemesanan').val();
+            c.append("token_foto",a.token); //Menmpersiapkan token untuk masing masing foto
+            c.append("id_pemesanan",b.id_pemesanan); 
+        });
+
+
+        //Event ketika foto dihapus
+        foto_upload.on("removedfile",function(a){
+            var token=a.token;
+            $.ajax({
+                type:"post",
+                data:{token:token},
+                url:"<?php echo base_url('Pemesanan/remove_foto') ?>",
+                cache:false,
+                dataType: 'json',
+                success: function(){
+                    console.log("Foto terhapus");
+                },
+                error: function(){
+                    console.log("Error");
+
+                }
+            });
+        });
+    
         $(document).ready(function(e) {
+
+
+            
 
             //set kode
             setCode();
 
             // date();
             // setTotal();
-            setKremen()
+            //setKremen()
+
+            //nama barang
+            $("#name").keyup(function(){
+                var replaceSpace = $(this).val(); 
+                var data = replaceSpace.replace(/ /g, ".");
+                $('[name="id"]').val(data);
+            })
+            
+            //jumlah barang
+            $("#qty").keyup(function(){
+                var qty = $(this).val(); 
+                var numbers = /^[0-9]+$/;
+                if(!qty.match(numbers)){
+                
+                document.getElementById('qty').value = "";
+                }
+            })
+
+            //harga barang
+            $("#price").keyup(function(){
+                var numbers = /^[0-9]+$/;
+                var price = $(this).val(); 
+                if(!price.match(numbers)){
+                
+                document.getElementById('price').value = "";
+                }
+            })
             
 
             
@@ -176,23 +246,10 @@
                 });
                 return false;
             }
-            function setKremen() {
-                var id = $('#id').val();
-                if (id <=0) {
-                    document.getElementById('id').value = 1;    
-                }
-
-                
-                
-            }
+           
             
 
-            $(".kremen").click(function() {
-                
-                
-                
-            })
-
+            
             //set total
             function setTotal() {
                 var total = $('#total').val();
