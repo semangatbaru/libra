@@ -6,13 +6,11 @@ class M_Pelanggan extends CI_Model {
     private $_table = "pelanggan";
     public $id_pelanggan;
     public $nama;
-    public $nohp;
-    public $alamat;
-    public $email;
-    public $password;
-
-    public function kode(){
-        $this->db->select('MAX(RIGHT(pelanggan.id_pelanggan,3)) as id_pelanggan', FALSE);
+    public $hp;
+    public $alamat; 
+ 
+     public function kode(){
+        $this->db->select('MAX(RIGHT(pelanggan.id_pelanggan,2)) as id_pelanggan', FALSE);
         
         $this->db->order_by('id_pelanggan','DESC');    
         $this->db->limit(1);    
@@ -26,7 +24,7 @@ class M_Pelanggan extends CI_Model {
              $kode = 1;  //cek jika kode belum terdapat pada table
         }
         $tgl=date('dmY'); 
-        $batas = str_pad($kode, 3, "0", STR_PAD_LEFT);    
+        $batas = str_pad($kode, 2, "0", STR_PAD_LEFT);    
         $kodetampil = "C".$batas;  //format kode
         return $kodetampil;
    }
@@ -36,8 +34,7 @@ class M_Pelanggan extends CI_Model {
         return[
             [`field` => `nama`,
             `rules` => `required`],
-            [`field` => `password`,
-            `rules` => `required`],
+            
         ];
     }
 
@@ -49,26 +46,21 @@ class M_Pelanggan extends CI_Model {
     //create
     public function save(){
         $post = $this->input->post();
-        $encrypt =$post["password"];
         $this->id_pelanggan = $post["id_pelanggan"];
         $this->nama = $post["nama"];
-		$this->nohp = $post["nohp"];
+		$this->hp = $post["hp"];
 		$this->alamat = $post["alamat"];
-        $this->email = $post["email"];
-		$this->password = password_hash($encrypt, PASSWORD_BCRYPT);
 
 		$this->db->insert($this->_table,$this);
     }
     //Update data
 	public function update(){
         $post = $this->input->post();
-        $encrypt =$post["password"];
+  
 		$this->id_pelanggan = $post["id_pelanggan"];
         $this->nama = $post["nama"];
-        $this->nohp = $post["nohp"];
+        $this->hp = $post["hp"];
         $this->alamat = $post["alamat"];
-        $this->email = $post["email"];
-        $this->password = password_hash($encrypt, PASSWORD_BCRYPT);
 
 		$this->db->update($this->_table, $this, array('id_pelanggan'=>$post['id_pelanggan']));
 	}

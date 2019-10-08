@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Laporan_Angsuran extends CI_Controller {
+class Debit extends CI_Controller {
     
     function __construct(){
 		parent::__construct();
@@ -14,7 +14,7 @@ class Laporan_Angsuran extends CI_Controller {
 	}
 	public function index(){
 
-		$this->load->view("laporan_angsuran");
+		$this->load->view("debit");
 	}
 	public function getAll(){
 		$data=$this->M_Laporan_Angsuran->ambil_data();
