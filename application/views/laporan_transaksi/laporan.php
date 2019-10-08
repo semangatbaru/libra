@@ -24,77 +24,103 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-xs-12 col-sm-offset-0"   >
+        <div class="col-xs-10 col-sm-offset-1"   >
+
 
           <!-- form detail -->
-           <!-- MODAL DETAIL -->
+           <!-- Modal ambil -->
           <form>
-            <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="Modal_Ambil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail Belanja</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Laporan Angsuran</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Kode Belanja</label>
-                            <div class="col-md-10">
-                              <input type="text" name="id_pelanggan_edit" id="id_pelanggan_edit" class="form-control" placeholder="Id Pelanggan" readonly>
-                            </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label"> Kode Pemesanan</label>
+                        <div class="col-md-5">
+                          <input type="text" name="kode_pemesanan" id="kode_pemesanan" class="form-control"  >
+                          <input type="text" name="kode_pemesanan2" id="kode_pemesanan2" class="form-control"  readonly>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label">No Order</label>
-                            <div class="col-md-10">
-                              <input type="text" name="nama_edit" id="nama_edit" class="form-control" placeholder="Nama">
-                            </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label"> Kode Transaksin</label>
+                        <div class="col-md-5">
+                          <input type="text" name="nofaktur" id="nofaktur" class="form-control"  readonly>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Total Belanja</label>
-                            <div class="col-md-10">
-                              <input type="text" name="nohp_edit" id="nohp_edit" class="form-control" placeholder="No Hp">
-                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label">Data Pemesan</label>
+                        <div class="col-md-2">
+                        Nama<input type="text" class="form-control"  name="nama" placeholder="" id="nama">
+                        
+                        Alamat<input type="text" class="form-control"  name="alamat" placeholder="" id="alamat">
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Tanggal</label>
-                            <div class="col-md-10">
-                              <input type="text" name="alamat_edit" id="alamat_edit" class="form-control" placeholder="Alamat">
-                            </div>
+                        <div class="col-md-2">
+                        Total<input type="text" class="form-control"  name="total" placeholder="" id="total">
+                        Sisa<input type="text" class="form-control"  name="sisa" placeholder="" id="sisa">
                         </div>
-                      <div class="box-body">
-                        <table id="example1" class="table  table-striped" >
-                        <thead>
-                        <tr>
-                        <th>Nama Barang</th>
-                        <th>Jumlah</th>
-                        <th>Harga Beli</th>
-                        <th>Sub Total</th>
-                        </tr>
-                        </thead>
-                          <tbody id="showData">
-
-                          </tbody>
-                        </table>
-                      </div>
+                        <div class="col-md-2">
+                        Dp<input type="text" class="form-control"  name="bayar" placeholder="" id="bayar">
+                        <input type="hidden" class="form-control"  name="bayarA" placeholder="" id="bayarA">
+                        <input type="hidden" class="form-control"  name="sisaA" placeholder="" id="sisaA">
+                        <input type="hidden" class="form-control"  name="kategori" placeholder="" id="kategori">
+                        </div>
+                        <div class="col-md-2">
+                        BayarLagi<input type="text" class="form-control"  name="bayarL" placeholder="" id="bayarL">
+                        
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3 col-sm-offset-5"> 
+                        <label  class="control-label">Kredit</label><input type="checkbox" class="minimal"  id="kondisi" name="kondisi" >  
+                        </div>
+                    </div>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" type="submit" id="btn_update" class="btn btn-primary">Update</button>
+                    <button type="button" type="submit" id="btn_ambil" class="btn btn-primary">Update</button>
                   </div>
                 </div>
               </div>
             </div>
           </form>
-        <!--END MODAL DETAIL-->
+          <!-- / Modal ambil -->
 
           <!-- form table -->
           <div class="box ">
             <div class="box-header">
-              <br><br>
-             <!-- <h3 class="box-title">Data Belanja</h3>-->
-            </div>
+                <div style="text-align: center;">
+                    <span style=" font-size: 20px;">Data Barang Masuk</span>
+                    </div>
+                    <br>
+                    <label  class="col-sm-1 control-label">Tanggal</label> 
+                        <div class="col-sm-3 ">
+                        <div class="input-group">
+                                
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  readonly="readonly" >
+                            </div>
+                        </div>
+                        </div>
+                      </div>
+
+                     <div class="form-group">
+                       <label class="col-sm-1 control-label">Total</label>
+                          <div class="col-sm-3">
+                          <input type="text" class="form-control"  name="qty" id="qty">
+                          </div>
+                        </div>
+                                                  
             <!-- /.box-header -->
             <div class="box-header with-border">
               <div class="form-group">
