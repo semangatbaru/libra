@@ -75,7 +75,7 @@ class M_pemesanan extends CI_Model
                $no++;
                $output .= '
                     <tr>
-                         <td>'.$no.'</td> 
+                         <td>' . $no .'</td> 
                          <td>' . $items['name'] . '</td>
                          <td>' . $items['qty'] . '</td>
                          <td>' . number_format($items['price']) . '</td>
@@ -90,6 +90,12 @@ class M_pemesanan extends CI_Model
                     </tr>
           ';
           }
+          $output .= '
+            <tr>
+                <th colspan="3">Total</th>
+                <th colspan="2" align="right">'.'Rp '.number_format($this->cart->total()).'</th>
+            </tr>
+        ';
           return $output;
      }
      public function load()

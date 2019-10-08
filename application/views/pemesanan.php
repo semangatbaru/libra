@@ -52,7 +52,7 @@
                                             <label class="col-sm-2 control-label ">Nama Pemesan</label>
                                             <div class="col-sm-3 ">
                                                 <input type="text" class="form-control"  name="namapemesan" placeholder="Nama Pemesan" id="namapemesan">
-                                                <input type="text" class="form-control"  name="id_pemesanan" placeholder="Nama Pemesan" id="id_pemesanan">
+                                                <input type="hidden" class="form-control"  name="id_pemesanan" placeholder="Nama Pemesan" id="id_pemesanan">
                                             </div>    
                                         </div>
                                         
@@ -62,7 +62,7 @@
                                             <div class="col-sm-3">
                                                 <input type="text" class="form-control"  name="name" placeholder="Nama Barang" id="name">
                                                 
-                                                <input type="text" class="form-control" readonly name="id" placeholder="nomor" id="id" value="">
+                                                <input type="hidden" class="form-control" readonly name="id" placeholder="nomor" id="id" value="">
                                             </div>
                                             <div class="col-sm-2">
                                                 <input type="text" class="form-control"  name="qty" placeholder="Jumlah" id="qty">
@@ -73,9 +73,6 @@
                                             <div class="col-xs-2">
                                                 <button class="add_keranjang btn btn-flat  btn-success" name="keranjang" id="keranjang">Tambah</button>
                                             </div>
-                                            
-
-                                           
                                         </div>
                                         
                                         <div class="col-sm-12 ">
@@ -94,10 +91,19 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    
+                                        <div class="form-group ">
+                                            <div class="col-sm-4 col-sm-offset-2">
+                                                <input type="text" class="form-control"  name="bayar" placeholder="Bayar" id="bayar">
+                                                
+                                            </div>    
+                                            <div class="col-sm-4 ">
+                                                <input type="text" class="form-control"  name="kembalian" placeholder="Kembalian" id="kembalian" readonly>
+                                            </div>    
+                                        </div>
                                         
-
-                                        
+                                        <div class="col-md-12 col-sm-offset-1 ">
+                                            <button style="padding:6px 210px 6px 210px" class="btn   btn-social btn-instagram" name="keranjang" id="keranjang">Pesan</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

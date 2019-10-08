@@ -94,7 +94,13 @@ class M_Transaksi extends CI_Model {
                               <td><button type="button" id="'.$items['rowid'].'" class="hapus_cart btn btn-danger btn-xs">Batal</button></td>
                     </tr>
           ';
-		}
+          }
+          $output .= '
+            <tr>
+                <th colspan="3">Total</th>
+                <th colspan="2">'.'Rp '.number_format($this->cart->total()).'</th>
+            </tr>
+          ';
                return $output;
      }
      public function load(){
