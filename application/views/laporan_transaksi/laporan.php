@@ -34,10 +34,24 @@
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
+                    <
                     <h5 class="modal-title" id="exampleModalLabel">Kode Belanja</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
+                     <label  class="col-sm-1 control-label">Tanggal</label> 
+                        <div class="col-sm-3 ">
+                        <div class="input-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                                </div>
+                                
+                                <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  readonly="readonly" >
+                            </div>
+                        </div>
+                        </div>
+
                   </div>
                   <div class="modal-body">
                     <div class="form-group row">
