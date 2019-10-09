@@ -100,7 +100,12 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label " id="datapemesan">Nama Pemesan</label>
                                             <div class="col-sm-3 ">
-                                                <input type="text" class="form-control"  name="namapemesan" placeholder="Nama Pemesan" id="namapemesan">
+                                                 <select class="form-control select2 j" style="width: 100%;" name="id_pelanggan" id="id_pelanggan">
+                                                    <option value="" disable >Cari Pelanggan</option>
+                                                    <?php foreach ($pelanggan as $p): ?>
+                                                        <option data-nohp="<?php echo $p->hp ?>" data-alamat="<?php echo $p->alamat ?>" data-nama="<?php echo $p->nama ?>" value="<?php echo $p->id_pelanggan?>"><?php echo $p->nama;?></option>
+                                                    <?php endforeach;?>
+                                                </select>
                                                 <input type="hidden" class="form-control"  name="id_pemesanan" placeholder="Nama Pemesan" id="id_pemesanan">
                                             </div>    
                                         </div>

@@ -17,16 +17,15 @@ class Pemesanan extends CI_Controller
     }
     public function index()
     {
-        // $data["pelanggan"] = $this->M_pemesanan->ambil_data();
-        // $data["barang"] = $this->M_pemesanan->ambilBarang();
-        $this->load->view("pemesanan");
+        $data["pelanggan"] = $this->M_pemesanan->ambil_data();
+        $this->load->view("pemesanan",$data);
     }
     public function setCode()
     {
         $data = $this->M_pemesanan->kode();
         echo json_encode($data); 
     }
-
+   
     function getPelanggan()
     {
         if (isset($_GET['term'])) {
