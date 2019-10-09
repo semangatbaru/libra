@@ -34,7 +34,7 @@
           </a>
               <li><a href="<?php echo site_url('Laporan_Pemesanan') ?>"> Pemesanan </a></li>
             <li><a href="<?php echo site_url('Laporan_Transaksi') ?>"> Data Belanja </a></li>
-            <li><a href="<?php echo site_url('Laporan_Debit') ?>"> Debit </a></li>
+            <li><a href="<?php echo site_url('Debit') ?>"> Debit </a></li>
             <li><a href="<?php echo site_url('Laporan_Angsuran') ?>"> Kredit </a></li>
           </ul>
         </li>
