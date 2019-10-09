@@ -34,14 +34,14 @@
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Laporan Angsuran</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Kode Belanja</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
                     <div class="form-group row">
-                        <label class="col-md-2 col-form-label"> Kode Pemesanan</label>
+                        <label class="col-md-2 col-form-label">No Order</label>
                         <div class="col-md-5">
                           <input type="text" name="kode_pemesanan" id="kode_pemesanan" class="form-control"  >
                           <input type="text" name="kode_pemesanan2" id="kode_pemesanan2" class="form-control"  readonly>
@@ -49,33 +49,12 @@
                     </div>
                     
                     <div class="form-group row">
-                        <label class="col-md-2 col-form-label"> Kode Transaksin</label>
+                        <label class="col-md-2 col-form-label">Total Belanja</label>
                         <div class="col-md-5">
                           <input type="text" name="nofaktur" id="nofaktur" class="form-control"  readonly>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Data Pemesan</label>
-                        <div class="col-md-2">
-                        Nama<input type="text" class="form-control"  name="nama" placeholder="" id="nama">
-                        
-                        Alamat<input type="text" class="form-control"  name="alamat" placeholder="" id="alamat">
-                        </div>
-                        <div class="col-md-2">
-                        Total<input type="text" class="form-control"  name="total" placeholder="" id="total">
-                        Sisa<input type="text" class="form-control"  name="sisa" placeholder="" id="sisa">
-                        </div>
-                        <div class="col-md-2">
-                        Dp<input type="text" class="form-control"  name="bayar" placeholder="" id="bayar">
-                        <input type="hidden" class="form-control"  name="bayarA" placeholder="" id="bayarA">
-                        <input type="hidden" class="form-control"  name="sisaA" placeholder="" id="sisaA">
-                        <input type="hidden" class="form-control"  name="kategori" placeholder="" id="kategori">
-                        </div>
-                        <div class="col-md-2">
-                        BayarLagi<input type="text" class="form-control"  name="bayarL" placeholder="" id="bayarL">
-                        
-                        </div>
-                    </div>
+                    
                     <div class="form-group">
                         <div class="col-md-3 col-sm-offset-5"> 
                         <label  class="control-label">Kredit</label><input type="checkbox" class="minimal"  id="kondisi" name="kondisi" >  
@@ -85,7 +64,7 @@
 
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" type="submit" id="btn_ambil" class="btn btn-primary">Update</button>
+                  
                   </div>
                 </div>
               </div>
@@ -103,37 +82,39 @@
                     <label  class="col-sm-1 control-label">Tanggal</label> 
                         <div class="col-sm-3 ">
                         <div class="input-group">
-                                
                             <div class="input-group">
                                 <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                                 </div>
+                                
                                 <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  readonly="readonly" >
                             </div>
                         </div>
                         </div>
-                      </div>
+                      </br>
 
+                    <br>
                      <div class="form-group">
                        <label class="col-sm-1 control-label">Total</label>
                           <div class="col-sm-3">
                           <input type="text" class="form-control"  name="qty" id="qty">
                           </div>
                         </div>
+                      </br>
                                                   
             <!-- /.box-header -->
-            <div class="box-header with-border">
-              <div class="form-group">
+            <div class="form-group">
+              <div class="box-header with-border">
                 <div class="col-md-3">
                     <select class="form-control select2 " style="width: 100%;" name="filter" id="filter">
                         <option value="hariini"  >Hari Ini</option>
                         <option value="mingguini"  >Minggu Ini</option>
                         <option value="bulanini"  >Bulan Ini</option>
                         <option value="tahunini"> Tahun ini</option>
-                        <option value="semua"  >Semua</option>
-                        
+                        <option value="semua"  >Semua</option> 
                     </select>
                 </div>
+
                 <a href="<?php echo site_url('laporan_transaksi/cetakHarian')?>" class="btn btn-success" name="harian" id="harian"><li class="fa fa-print"></li>Cetak</a>  
                 <a href="<?php echo site_url('laporan_transaksi/cetakMingguan')?>" class="btn btn-success" name="mingguan" id="mingguan"><li class="fa fa-print"></li>Cetak</a>  
                 <a href="<?php echo site_url('laporan_transaksi/cetakBulanan')?>" class="btn btn-success" name="bulanan" id="bulanan"><li class="fa fa-print"></li>Cetak</a>
@@ -141,6 +122,7 @@
                 <a href="<?php echo site_url('laporan_transaksi/cetakAll')?>" class="btn btn-success" name="semua" id="semua"><li class="fa fa-print"></li>Cetak</a>
               </div>
             </div>
+
             <div class="box-body">
                <table id="example1" class="table  table-striped" >
                 <thead>
