@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 <html lang="en">
 <head>
-<title>Laporan Transaksi | JHP</title>
+<title>Laporan Pemesanan | Libra</title>
   <?php $this->load->view('_partials/head')?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -19,83 +19,96 @@
   </aside>
   
 
-  <!-- Content Wrapper. Contains page content -->
+   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-10 col-sm-offset-1"   >
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-10 col-sm-offset-1">
+                        <div class="box box-info">
+                            <!-- <form enctype="multipart/form-data" class="form-horizontal" method="post" id="formnya" > -->
+                            <div class="box-header">
 
-
-          <!-- form detail -->
-           <!-- Modal ambil -->
+                                <div class="form-horizontal">
+                                    <div class="box-body">
+        <!-- Modal detail-->
           <form>
-            <div class="modal fade" id="Modal_Ambil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade in" id="Modal_Ambil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <
-                    <h5 class="modal-title" id="exampleModalLabel">Kode Belanja</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Belanja</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                     <label  class="col-sm-1 control-label">Tanggal</label> 
+                      <span aria-hidden="true">&times;</span>       
+                      </div>
+
+                      <div class="form-group">
+                      <label class="col-sm-2 control-label ">Kode Belanja</label>
                         <div class="col-sm-3 ">
-                        <div class="input-group">
+                         <input type="text" class="form-control"  name="name" id="name">
+                        </div> 
+                        
+                        <label  class="col-sm-2 control-label">Tanggal</label> 
+                        <div class="col-sm-3 ">
+                        <div class="input-group"> 
                             <div class="input-group">
                                 <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                                 </div>
-                                
                                 <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  readonly="readonly" >
                             </div>
                         </div>
                         </div>
+                      </div>
 
-                  </div>
-                  <div class="modal-body">
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">No Order</label>
-                        <div class="col-md-5">
-                          <input type="text" name="kode_pemesanan" id="kode_pemesanan" class="form-control"  >
-                          <input type="text" name="kode_pemesanan2" id="kode_pemesanan2" class="form-control"  readonly>
-                        </div>
+                      <div class="form-group">
+                      <label class="col-sm-2 control-label">No Order</label>
+                      <div class="col-sm-3">
+                        <input type="text" class="form-control"  name="name" id="name">
+                      </div>
                     </div>
-                    
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Total Belanja</label>
-                        <div class="col-md-5">
-                          <input type="text" name="nofaktur" id="nofaktur" class="form-control"  readonly>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="col-md-3 col-sm-offset-5"> 
-                        <label  class="control-label">Kredit</label><input type="checkbox" class="minimal"  id="kondisi" name="kondisi" >  
-                        </div>
-                    </div>
-                  </div>
 
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <div class="form-group">
+                      <label class="col-sm-2 control-label">Total Belanja</label>
+                      <div class="col-sm-3">
+                        <input type="text" class="form-control"  name="name" id="name">
+                      </div>
+                    </div>
+
+                    <table id="example2" class="table  table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info" >
+                <thead>
+                <tr>
+                  <th>Nama Barang</th>
+                  <th>Jumlah</th>
+                  <th>Harga Beli</th>
+                  <th>Sub Total</th>
+                </thead>
+                <tbody></tbody>
+                    </table>
+
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
                   
-                  </div>
                 </div>
               </div>
             </div>
+
           </form>
           <!-- / Modal ambil -->
-
+                 
           <!-- form table -->
           <div class="box ">
             <div class="box-header">
-                <div style="text-align: center;">
+              <div class="col-xs-10 col-sm-offset-1">
+                 <div style="text-align: center;">
                     <span style=" font-size: 20px;">Data Belanja</span>
                     </div>
-                    <br>
+                    
+                    <div class="form-group">
                     <label  class="col-sm-1 control-label">Tanggal</label> 
-                        <div class="col-sm-3 ">
-                        <div class="input-group">
+                        <div class="col-sm-4 ">
                             <div class="input-group">
                                 <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
@@ -105,9 +118,7 @@
                             </div>
                         </div>
                         </div>
-                      </br>
-
-                    <br>
+          
                      <div class="form-group">
                        <label class="col-sm-1 control-label">Total</label>
                           <div class="col-sm-3">
@@ -115,6 +126,7 @@
                           </div>
                         </div>
                       </br>
+          <!-- form table -->
                                                   
             <!-- /.box-header -->
             <div class="form-group">
@@ -129,29 +141,27 @@
                     </select>
                 </div>
 
-                <a href="<?php echo site_url('laporan_transaksi/cetakHarian')?>" class="btn btn-success" name="harian" id="harian"><li class="fa fa-print"></li>Cetak</a>  
+                <!-- <a href="<?php echo site_url('laporan_transaksi/cetakHarian')?>" class="btn btn-success" name="harian" id="harian"><li class="fa fa-print"></li>Cetak</a>  
                 <a href="<?php echo site_url('laporan_transaksi/cetakMingguan')?>" class="btn btn-success" name="mingguan" id="mingguan"><li class="fa fa-print"></li>Cetak</a>  
                 <a href="<?php echo site_url('laporan_transaksi/cetakBulanan')?>" class="btn btn-success" name="bulanan" id="bulanan"><li class="fa fa-print"></li>Cetak</a>
-                <a href="<?php echo site_url('laporan_transaksi/cetakTahunan')?>" class="btn btn-success" name="tahunan" id="tahunan"><li class="fa fa-print"></li>Cetak</a>
+                <a href="<?php echo site_url('laporan_transaksi/cetakTahunan')?>" class="btn btn-success" name="tahunan" id="tahunan"><li class="fa fa-print"></li>Cetak</a> -->
                 <a href="<?php echo site_url('laporan_transaksi/cetakAll')?>" class="btn btn-success" name="semua" id="semua"><li class="fa fa-print"></li>Cetak</a>
               </div>
-            </div>
-
             <div class="box-body">
-               <table id="example1" class="table  table-striped" >
+              <table id="example1" class="table  table-striped" >
                 <thead>
                 <tr>
                   <th>No</th>
                   <th>Kode Belanja</th>
-                  <th>Total Belanja</th>
+                  <th>Total</th>
                   <th>Status</th>
                   <th>Opsi</th>
-                </tr>
                 </thead>
                 <tbody id="showData">
 
                 </tbody>
               </table>
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -171,64 +181,11 @@
 
 <?php $this->load->view('_partials/script');?>
 <script type="text/javascript">
-          $("#mingguan").hide();
-          $("#bulanan").hide();
-          $("#tahunan").hide();
-          $("#semua").hide();
+
     //crud
-   
+    showRecord(); //munculkan data
+    
     //function showdata
-    showRecordharian()
-    //
-    $('#cetakTransaksi').on('click',function(e){
-      $.ajax({
-        type: 'ajax',
-        url: '<?php echo site_url('Laporan_Transaksi/hariQ')?>',
-        async: true,
-        dataType: 'JSON',
-      });
-    });
-    //getStokBarang
-    $("#filter").change(function(){
-        var filter = $(this).val();
-        if(filter=="hariini"){
-          showRecordharian();
-          $("#harian").show();
-          $("#mingguan").hide();
-          $("#bulanan").hide();
-          $("#tahunan").hide();
-          $("#semua").hide();
-        }else if(filter=="mingguini"){
-          showRecordmingguan();
-          $("#harian").hide();
-          $("#mingguan").show();
-          $("#bulanan").hide();
-          $("#tahunan").hide();
-          $("#semua").hide();
-        }else if(filter=="bulanini"){
-          showRecordbulanan();
-          $("#harian").hide();
-          $("#mingguan").hide();
-          $("#bulanan").show();
-          $("#tahunan").hide();
-          $("#semua").hide();
-        }else if(filter=="tahunini"){
-          showRecordtahunan();
-          $("#harian").hide();
-          $("#mingguan").hide();
-          $("#bulanan").hide();
-          $("#tahunan").show();
-          $("#semua").hide();
-        }else if(filter=="semua"){
-          showRecord();
-          $("#harian").hide();
-          $("#mingguan").hide();
-          $("#bulanan").hide();
-          $("#tahunan").hide();
-          $("#semua").show();
-        }
-    })
-    //semua
     function showRecord(){
       $.ajax({
         type: 'ajax',
@@ -240,133 +197,217 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += '<tr>'+
-                      '<td>'+data[i].no+'</td>'+
-                      '<td>'+data[i].kode belanja+'</td>'+
-                      '<td>'+data[i].total belanja+'</td>'+
-                      '<td>'+data[i].status+'</td>'+
-                      '<td>'+data[i].opsi+'</td>'+
-                    '<td style="text-align:left;">'+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-nofaktur="'+data[i].kode_pemesanan+'" >Detail</a>'+' '+
-                      '</td>'+
-                    '</tr>';
-                }
-          $('#showData').html(html);
-          $('#ini').dataTable({
-            'searching'   : true,
-            'ordering'    : false,
-          })
-        }
-      });
-    }
-    //harian
-    function showRecordharian(){
-      $.ajax({
-        type: 'ajax',
-        url: '<?php echo site_url('Laporan_Transaksi/getharian')?>',
-        async: true,
-        dataType: 'JSON',
-        success: function(data){
-          var html = '';
-          var i; 
-          for(i=0; i<data.length; i++){
-            html += '<tr>'+
-                      '<td>'+data[i].no+'</td>'+
-                      '<td>'+data[i].kode belanja+'</td>'+
-                      '<td>'+data[i].total belanja+'</td>'+
-                      '<td>'+data[i].status+'</td>'+
-                      '<td>'+data[i].opsi+'</td>'+
+                      '<td>'+(i+1)+'</td>'+
+                      '<td>'+data[i].id_barangmasuk+'</td>'+
+                      '<td>'+data[i].total+'</td>'+
+                      '<td>tersedia</td>'+
                       '<td style="text-align:left;">'+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-nofaktur="'+data[i].kode_pemesanan+'" >Detail</a>'+' '+
+                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'" >Detail</a>'+' '+
                       '</td>'+
                     '</tr>';
                 }
           $('#showData').html(html);
-          $('#ini').dataTable({
-            'searching'   : true,
-            'ordering'    : false,
-          })
-        }
-      });
-    }
-    //mingguan
-    function showRecordmingguan(){
-      $.ajax({
-        type: 'ajax',
-        url: '<?php echo site_url('Laporan_Transaksi/getmingguan')?>',
-        async: true,
-        dataType: 'JSON',
-        success: function(data){
-          var html = '';
-          var i; 
-          for(i=0; i<data.length; i++){
-            html += '<tr>'+
-                      '<td>'+data[i].no+'</td>'+
-                      '<td>'+data[i].kode belanja+'</td>'+
-                      '<td>'+data[i].total belanja+'</td>'+
-                      '<td>'+data[i].status+'</td>'+
-                      '<td>'+data[i].opsi+'</td>'+
-                    '</tr>';
-                }
-          $('#showData').html(html);
           $('#example1').dataTable()
         }
       });
     }
-    //bulanan
-    function showRecordbulanan(){
-      $.ajax({
-        type: 'ajax',
-        url: '<?php echo site_url('Laporan_Transaksi/getbulanan')?>',
-        async: true,
-        dataType: 'JSON',
-        success: function(data){
-          var html = '';
-          var i; 
-          for(i=0; i<data.length; i++){
-            html += '<tr>'+
-                      '<td>'+data[i].no+'</td>'+
-                      '<td>'+data[i].kode belanja+'</td>'+
-                      '<td>'+data[i].total belanja+'</td>'+
-                      '<td>'+data[i].status+'</td>'+
-                      '<td>'+data[i].opsi+'</td>'+
-                    '</tr>';
-                }
-          $('#showData').html(html);
-          $('#example1').dataTable()
-        }
-      });
+    //function setCode
+    function setCode() {
+        var id_pemesanan = $('#id_pemesanan').val();
+        $.ajax({
+            type: "POST",
+            url: "<?php echo site_url('Transaksi/setCode') ?>",
+            dataType: "JSON",
+            data: {
+                id_pemesanan: id_pemesanan
+            },
+            success: function(data) {
+                $('[name="id_pemesanan"]').val(data);
+                
+
+                
+            }
+        });
+        return false;
     }
-    //tahunan
-    function showRecordtahunan(){
-      $.ajax({
-        type: 'ajax',
-        url: '<?php echo site_url('Laporan_Transaksi/gettahunan')?>',
-        async: true,
-        dataType: 'JSON',
-        success: function(data){
-          var html = '';
-          var i; 
-          for(i=0; i<data.length; i++){
-            html += '<tr>'+
-                      '<td>'+data[i].no+'</td>'+
-                      '<td>'+data[i].kode belanja+'</td>'+
-                      '<td>'+data[i].total belanja+'</td>'+
-                      '<td>'+data[i].status+'</td>'+
-                      '<td>'+data[i].opsi+'</td>'+
-                    '</tr>';
-                }
-          $('#showData').html(html);
-          $('#example1').dataTable()
+
+    //hitung
+
+    $("#bayarL").keyup(function(){
+      var sisa = document.getElementById('sisaA').value;
+      var bayar = document.getElementById('bayarA').value;
+      
+      var thisVal = $(this).val()
+      var resul = parseInt(bayar) + parseInt(thisVal);
+      var result = parseInt(sisa) + parseInt(thisVal);
+      
+
+      if(thisVal != ""){
+            $("#bayar").val(resul);
+            $("#sisa").val(result);
+        }else{
+            $("#bayar").val(bayar);
+            $("#sisa").val(sisa);
         }
-      });
+    })
+    //hitung
+    function hitung() {
+        var bayar = document.getElementById('bayar').value;
+        var bayarL = document.getElementById('bayarL').value;
+
+        
+        if (bayarL=="") {
+        document.getElementById('sisa').value = "";
+        }else{
+        document.getElementById('sisa').value = result;
+        if (result == 0) {
+            document.getElementById('sisa').value = "";
+        }  
+        }
     }
-    //function kosongan
-    function kosong(){
-      document.getElementById('nama').value="";
-      document.getElementById('password').value="";
-    }; //akhir
+
+    //ambil datanya dulu
+    $('#showData').on('click','.item_ambil', function(){
+      var id_pemesanan = $(this).data('id_pemesanan');
+      var nama = $(this).data('nama');
+      var tanggal = $(this).data('nama');
+      var bayar = $(this).data('bayar');
+      var sisa = $(this).data('sisa');
+
+      
+      $('#Modal_Ambil').modal('show');
+      $('[name="nama"]').val(pemesan);
+      $('[name="total"]').val(total);
+      $('[name="bayar"]').val(bayar);
+      $('[name="bayarA"]').val(bayar);
+      $('[name="id_pemesanan"]').val(id_pemesanan);
+      $('[name="id_pemesanan2"]').val(id_pemesanan);
+      $('[name="bayarL"]').val("");
+      setCode();
+      $("#kondisi").prop("checked", false);
+      var result = parseInt(bayar) - parseInt(total);
+      $('[name="sisaA"]').val(result);
+      $('[name="sisa"]').val(result);
+      
+
+    });
+
+    //rapcale
+    //function replace at
+    String.prototype.replaceAt=function(index, replacement) {
+    return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
+    }
+
+    //kondisi
+    $('#kondisi').click(function () {
+        if ($(this).is(":checked")) {
+            var id_pemesanan = $('#id_pemesanan').val();
+            var res = "B";
+            var b= "N";
+            var posisi =27;
+            var result = [id_pemesanan.slice(0,posisi), b, id_pemesanan.slice(posisi)].join('');
+            var txt = result.replaceAt(26,res);
+            $('#id_pemesanan').val(txt);
+            $('#kategori').val("kredit");
+        } else {
+            setCode();
+        }
+    });
+    //ambil
+    
+    //simpan
+    $('#btn_ambil').on('click',function(e){
+      var sisa = $('#sisa').val();
+      var kategori = $('#kategori').val();
+      var bayar = $('#nama').val();
+      var namabarang = $('#namabarang').val();
+      var total = $('#total').val();
+      var bayar = $('#bayar').val();
+      var nofaktu = $('#id_pemesanan').val();
+      var res = alamat.substring(0, 4);
+      var id_pemesanan = nofaktu_replaceAt(12,res);
+      var id_pemesanan2 = $('#idpemesanan2').val();
+      // $('#nofaktur').val(txt);
+
+      if(kategori == "kredit"){
+        $.ajax({
+          type : "POST",
+          url  : "<?php echo site_url('Laporan_Pemesanan/edit')?>",
+          dataType : "JSON",
+          data : {id_pemesanan:id_pemesanan , bayar:bayar, id_pemesanan2:id_pemesanan2},
+          success: function(data){
+              $('#Modal_Ambil').modal('hide');
+              
+              showRecord();
+          }
+        });
+      }else{
+        if(parseInt(sisa) >= 0){
+          $.ajax({
+          type : "POST",
+          url  : "<?php echo site_url('Laporan_Pemesanan/edit')?>",
+          dataType : "JSON",
+          data : {id_pemesanan:id_pemesanan , bayar:bayar, id_pemesanan2:id_pemesanan2},
+          success: function(data){
+              $('#Modal_Ambil').modal('hide');
+              showRecord();
+          }
+          });
+        }else{
+          alert("cek bayar jika bukan credit");
+        }
+      }
+    });
+
+    //edit
+    //ambil datanya dulu
+    $('#showData').on('click','.item_belanja', function(){
+      // kosong();
+      // var id_pelanggan = $(this).data('id_pelanggan');
+      // var nama = $(this).data('nama');
+      // var nohp = $(this).data('nohp');
+      // var alamat = $(this).data('alamat');
+      // var email = $(this).data('email');
+      // var password = $(this).data('password');
+      
+      $('#Modal_Ambil').modal('show');
+      // $('[name="id_pelanggan_edit"]').val(id_pelanggan);
+      // $('[name="nama_edit"]').val(nama);
+      // $('[name="nohp_edit"]').val(nohp);
+      // $('[name="alamat_edit"]').val(alamat);
+      // $('[name="email_edit"]').val(email);
+      // $('[name="password_edit"]').val(password);
+    });
+
+
+     //update record to database
+    $('#btn_update').on('click',function(){
+      var id_pelanggan = $('#id_pelanggan_edit').val();
+      var nama = $('#nama_edit').val();
+      var nohp = $('#nohp_edit').val();
+      var alamat = $('#alamat_edit').val();
+      var email = $('#email_edit').val();
+      var password = $('#password_edit').val();
+      $.ajax({
+          type : "POST",
+          url  : "<?php echo site_url('Pelanggan/edit')?>",
+          dataType : "JSON",
+          data : {id_pelanggan:id_pelanggan, nama:nama, nohp:nohp, alamat:alamat, email:email, password:password},
+          success: function(data){
+              $('[name="id_pelanggan_edit"]').val("");
+              $('[name="nama_edit"]').val("");
+              $('[name="nohp_edit"]').val("");
+              $('[name="alamat_edit"]').val("");
+              $('[name="email_edit"]').val("");
+              $('[name="password_edit"]').val("");
+              $('#Modal_Edit').modal('hide');
+              showRecord();
+          }
+      });
+      return false;
+    });
 </script>
 <!-- Script -->
-
+    
 </body>
 </html>
