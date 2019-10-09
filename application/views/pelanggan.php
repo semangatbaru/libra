@@ -221,6 +221,7 @@
       
       kosong();
     })
+
     $(".click-Hide").click(function(e){
       e.preventDefault()
       $(".formedit").fadeOut(1000);
@@ -246,6 +247,16 @@
       
       kosong();
     })
+
+        //jumlah barang
+              $("#hp").keyup(function(){
+                  var hp = $(this).val(); 
+                  var numbers = /^[0-9]+$/;
+                  if(!hp.match(numbers)){
+                  
+                  document.getElementById('hp').value = "";
+                  }
+              })
 
     //crud
 
