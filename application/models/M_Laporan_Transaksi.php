@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Laporan_Transaksi extends CI_Model {
     // deklarasi variable
-    private $_table = "laporan_transaksi";
+    private $_table = "databelanja";
     private $_table1 = "laporan_transaksiharian";
     private $_table2 = "laporan_transaksimingguan";
     private $_table3 = "laporan_transaksibulanan";

@@ -97,7 +97,7 @@
           <div class="box ">
             <div class="box-header">
                 <div style="text-align: center;">
-                    <span style=" font-size: 20px;">Data Barang Masuk</span>
+                    <span style=" font-size: 20px;">Data Belanja</span>
                     </div>
                     <br>
                     <label  class="col-sm-1 control-label">Tanggal</label> 
@@ -244,16 +244,21 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += '<tr>'+
-                      '<td>'+data[i].tangal+'</td>'+
-                      '<td>'+data[i].nofaktur+'</td>'+
-                      '<td>'+data[i].penjual+'</td>'+
-                      '<td>'+data[i].pelanggan+'</td>'+
-                      '<td>'+data[i].total+'</td>'+
-                      '<td>'+data[i].kategori+'</td>'+
+                      '<td>'+data[i].no+'</td>'+
+                      '<td>'+data[i].kode belanja+'</td>'+
+                      '<td>'+data[i].total belanja+'</td>'+
+                      '<td>'+data[i].status+'</td>'+
+                      '<td>'+data[i].opsi+'</td>'+
+                    '<td style="text-align:left;">'+
+                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-nofaktur="'+data[i].kode_pemesanan+'" >Detail</a>'+' '+
+                      '</td>'+
                     '</tr>';
                 }
           $('#showData').html(html);
-          $('#example1').dataTable()
+          $('#ini').dataTable({
+            'searching'   : true,
+            'ordering'    : false,
+          })
         }
       });
     }
@@ -269,16 +274,21 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += '<tr>'+
-                      '<td>'+data[i].tangal+'</td>'+
-                      '<td>'+data[i].nofaktur+'</td>'+
-                      '<td>'+data[i].penjual+'</td>'+
-                      '<td>'+data[i].pelanggan+'</td>'+
-                      '<td>'+data[i].total+'</td>'+
-                      '<td>'+data[i].kategori+'</td>'+
+                      '<td>'+data[i].no+'</td>'+
+                      '<td>'+data[i].kode belanja+'</td>'+
+                      '<td>'+data[i].total belanja+'</td>'+
+                      '<td>'+data[i].status+'</td>'+
+                      '<td>'+data[i].opsi+'</td>'+
+                      '<td style="text-align:left;">'+
+                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-nofaktur="'+data[i].kode_pemesanan+'" >Detail</a>'+' '+
+                      '</td>'+
                     '</tr>';
                 }
           $('#showData').html(html);
-          $('#example1').dataTable()
+          $('#ini').dataTable({
+            'searching'   : true,
+            'ordering'    : false,
+          })
         }
       });
     }
@@ -294,12 +304,11 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += '<tr>'+
-                      '<td>'+data[i].tangal+'</td>'+
-                      '<td>'+data[i].nofaktur+'</td>'+
-                      '<td>'+data[i].penjual+'</td>'+
-                      '<td>'+data[i].pelanggan+'</td>'+
-                      '<td>'+data[i].total+'</td>'+
-                      '<td>'+data[i].kategori+'</td>'+
+                      '<td>'+data[i].no+'</td>'+
+                      '<td>'+data[i].kode belanja+'</td>'+
+                      '<td>'+data[i].total belanja+'</td>'+
+                      '<td>'+data[i].status+'</td>'+
+                      '<td>'+data[i].opsi+'</td>'+
                     '</tr>';
                 }
           $('#showData').html(html);
@@ -319,12 +328,11 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += '<tr>'+
-                      '<td>'+data[i].tangal+'</td>'+
-                      '<td>'+data[i].nofaktur+'</td>'+
-                      '<td>'+data[i].penjual+'</td>'+
-                      '<td>'+data[i].pelanggan+'</td>'+
-                      '<td>'+data[i].total+'</td>'+
-                      '<td>'+data[i].kategori+'</td>'+
+                      '<td>'+data[i].no+'</td>'+
+                      '<td>'+data[i].kode belanja+'</td>'+
+                      '<td>'+data[i].total belanja+'</td>'+
+                      '<td>'+data[i].status+'</td>'+
+                      '<td>'+data[i].opsi+'</td>'+
                     '</tr>';
                 }
           $('#showData').html(html);
@@ -344,12 +352,11 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += '<tr>'+
-                      '<td>'+data[i].tangal+'</td>'+
-                      '<td>'+data[i].nofaktur+'</td>'+
-                      '<td>'+data[i].penjual+'</td>'+
-                      '<td>'+data[i].pelanggan+'</td>'+
-                      '<td>'+data[i].total+'</td>'+
-                      '<td>'+data[i].kategori+'</td>'+
+                      '<td>'+data[i].no+'</td>'+
+                      '<td>'+data[i].kode belanja+'</td>'+
+                      '<td>'+data[i].total belanja+'</td>'+
+                      '<td>'+data[i].status+'</td>'+
+                      '<td>'+data[i].opsi+'</td>'+
                     '</tr>';
                 }
           $('#showData').html(html);
