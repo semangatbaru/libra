@@ -42,6 +42,55 @@
                 <div class="row">
                     <div class="col-xs-7 ">
                         <div class="box box-info">
+                            <form>
+                                <div class="modal fade" id="Modal_Ambil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Edit Laporan Angsuran</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                           <div class="form-group row ">
+                                              <label  class="col-sm-2 control-label">Id Pelanggan</label>
+                                              <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="id_pelanggan" name="id_pelanggan" placeholder="Id Pelanggan"readonly >
+                                              </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                              <label  class="col-sm-2 control-label">Nama</label>
+                                              <div class="col-sm-8">
+                                                <input type="text" class="form-control aturan" id="nama"  name="nama" placeholder="Nama">
+                                              </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                              <label  class="col-sm-2 control-label">No HP</label>
+                                              <div class="col-sm-8">
+                                                <input type="text" class="form-control aturan" id="hp"  name="hp" placeholder="hp">
+                                              </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                              <label  class="col-sm-2 control-label">Alamat</label>
+                                              <div class="col-sm-8">
+                                                <input type="text" class="form-control aturan" id="alamat"  name="alamat" placeholder="Alamat">
+                                              </div>
+                                            </div>
+
+                                      </div>
+
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" type="submit" name="simpan" id="click-simpan" class="btn btn-primary">Simpan</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </form>
                             <!-- <form enctype="multipart/form-data" class="form-horizontal" method="post" id="formnya" > -->
                             <div class="box-header">
 
@@ -49,9 +98,14 @@
                                     <div class="box-body">
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label ">Nama Pemesan</label>
+                                            <label class="col-sm-2 control-label " id="datapemesan">Nama Pemesan</label>
                                             <div class="col-sm-3 ">
-                                                <input type="text" class="form-control"  name="namapemesan" placeholder="Nama Pemesan" id="namapemesan">
+                                                 <select class="form-control select2 j" style="width: 100%;" name="id_pelanggan" id="id_pelanggan">
+                                                    <option value="" disable >Cari Pelanggan</option>
+                                                    <?php foreach ($pelanggan as $p): ?>
+                                                        <option data-nohp="<?php echo $p->hp ?>" data-alamat="<?php echo $p->alamat ?>" data-nama="<?php echo $p->nama ?>" value="<?php echo $p->id_pelanggan?>"><?php echo $p->nama;?></option>
+                                                    <?php endforeach;?>
+                                                </select>
                                                 <input type="hidden" class="form-control"  name="id_pemesanan" placeholder="Nama Pemesan" id="id_pemesanan">
                                             </div>    
                                         </div>
@@ -195,6 +249,45 @@
         });
     
         $(document).ready(function(e) {
+            //simpan
+            $('#click-simpan').on('click',function(e){
+              
+              var id_pelanggan = $('#id_pelanggan').val();
+              var nama = $('#nama').val();
+              var hp = $('#hp').val();
+              var alamat = $('#alamat').val();
+              $.ajax({
+                type: "POST",
+                url: '<?php echo site_url('Pelanggan/add') ?>',
+                dataType: "JSON",
+                data: {id_pelanggan:id_pelanggan, nama:nama, hp:hp, alamat:alamat,},
+                success: function(data){
+                  $('[name="id_pelanggan"]').val("");
+                  $('[name="nama"]').val("");
+                  $('[name="hp"]').val("");
+                  $('[name="alamat"]').val("");
+                  
+                }
+              });
+              
+              $('#Modal_Ambil').modal('hide');
+              return false;
+              
+            });
+            setCodep();
+            function setCodep(){
+                var id_pelanggan = $('#id_pelanggan').val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo site_url('Pelanggan/setCode') ?>",
+                    dataType: "JSON",
+                    data:{id_pelanggan:id_pelanggan},
+                    success : function(data){
+                        $('[name="id_pelanggan"]').val(data);
+                    }
+                });
+            return false;
+            }
 
 
             
@@ -205,6 +298,11 @@
             // date();
             // setTotal();
             //setKremen()
+
+            //getStokBarang
+            $("#datapemesan").click(function(){
+                $('#Modal_Ambil').modal('show');
+            })
 
             //nama barang
             $("#name").keyup(function(){
@@ -220,6 +318,15 @@
                 if(!qty.match(numbers)){
                 
                 document.getElementById('qty').value = "";
+                }
+            })
+            //jumlah barang
+            $("#hp").keyup(function(){
+                var hp = $(this).val(); 
+                var numbers = /^[0-9]+$/;
+                if(!hp.match(numbers)){
+                
+                document.getElementById('hp').value = "";
                 }
             })
 
