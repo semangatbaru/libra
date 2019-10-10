@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Laporan_Debit extends CI_Model {
+class M_Laporan_Kredit extends CI_Model {
     // deklarasi variable
-    private $_table = "debit";
-    private $_table1 = "debitharian";
-    private $_table2 = "debitmingguan";
-    private $_table3 = "debitbulanan";
-    private $_table4 = "debittahunan";
+    private $_table = "kredit";
+    private $_table1 = "kraditharian";
+    private $_table2 = "kreditmingguan";
+    private $_table3 = "kreditbulanan";
+    private $_table4 = "kredittahunan";
 
     //menampilkan data
     public function rule(){

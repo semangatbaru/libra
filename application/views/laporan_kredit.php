@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 <html lang="en">
 <head>
-<title>Debit</title>
+<title>Kredit</title>
   <?php $this->load->view('_partials/head')?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -29,7 +29,7 @@
           <div class="box ">
             <div class="box-header">
               <br><br>
-              <h3 class="box-title">Debit</h3>
+              <h3 class="box-title">Kredit</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-header with-border">
@@ -39,7 +39,7 @@
                         <option value="hariini"  >Hari Ini</option>
                         <option value="mingguini"  >Minggu Ini</option>
                         <option value="bulanini"  >Bulan Ini</option>
-                        <option value="tahunini"> Tahun ini</option>
+                        <option value="tahunini">Tahun ini</option>
                         <option value="semua"  >Semua</option>
                         
                     </select>
@@ -55,8 +55,8 @@
               <table id="example1" class="table  table-striped" >
                 <thead>
                 <tr>
-                  <th>Kode Pemesanan</th>
-                  <th>debit</th>
+                  <th>ID Pemesanan</th>
+                  <th>Kredit</th>
                 </tr>
                 </thead>
                 <tbody id="showData">
@@ -92,10 +92,10 @@
     //function showdata
     showRecordharian()
     //
-    $('#cetakDebit').on('click',function(e){
+    $('#cetakKredit').on('click',function(e){
       $.ajax({
         type: 'ajax',
-        url: '<?php echo site_url('Laporan_Debit/hariQ')?>',
+        url: '<?php echo site_url('Laporan_Kredit/hariQ')?>',
         async: true,
         dataType: 'JSON',
       });
@@ -144,7 +144,7 @@
     function showRecord(){
       $.ajax({
         type: 'ajax',
-        url: '<?php echo site_url('Laporan_Debit/getAll')?>',
+        url: '<?php echo site_url('Laporan_Kredit/getAll')?>',
         async: true,
         dataType: 'JSON',
         success: function(data){
@@ -152,8 +152,8 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += '<tr>'+
-                      '<td>'+data[i].id_barangmasuk+'</td>'+
-                      '<td>'+data[i].debit+'</td>'+
+                      '<td>'+data[i].id_pemesanan+'</td>'+
+                      '<td>'+data[i].kredit+'</td>'+
                     '</tr>';
                 }
           $('#showData').html(html);
@@ -165,7 +165,7 @@
     function showRecordharian(){
       $.ajax({
         type: 'ajax',
-        url: '<?php echo site_url('Laporan_Debit/getharian')?>',
+        url: '<?php echo site_url('Laporan_Kredit/getharian')?>',
         async: true,
         dataType: 'JSON',
         success: function(data){
@@ -173,8 +173,8 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += '<tr>'+
-                    '<td>'+data[i].id_barangmasuk+'</td>'+
-                    '<td>'+data[i].debit+'</td>'+
+                    '<td>'+data[i].id_pemesanan+'</td>'+
+                    '<td>'+data[i].kredit+'</td>'+
                     '</tr>';
                 }
           $('#showData').html(html);
@@ -186,7 +186,7 @@
     function showRecordmingguan(){
       $.ajax({
         type: 'ajax',
-        url: '<?php echo site_url('Laporan_Debit/getmingguan')?>',
+        url: '<?php echo site_url('Laporan_Kredit/getmingguan')?>',
         async: true,
         dataType: 'JSON',
         success: function(data){
@@ -194,8 +194,8 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += '<tr>'+
-                        '<td>'+data[i].id_barangmasuk+'</td>'+
-                        '<td>'+data[i].debit+'</td>'+
+                        '<td>'+data[i].id_pemesanan+'</td>'+
+                        '<td>'+data[i].kredit+'</td>'+
                     '</tr>';
                 }
           $('#showData').html(html);
@@ -207,7 +207,7 @@
     function showRecordbulanan(){
       $.ajax({
         type: 'ajax',
-        url: '<?php echo site_url('Laporan_Debit/getbulanan')?>',
+        url: '<?php echo site_url('Laporan_Kredit/getbulanan')?>',
         async: true,
         dataType: 'JSON',
         success: function(data){
@@ -215,8 +215,8 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += '<tr>'+
-                    '<td>'+data[i].id_barangmasuk+'</td>'+
-                    '<td>'+data[i].debit+'</td>'+
+                    '<td>'+data[i].id_pemesanan+'</td>'+
+                    '<td>'+data[i].kredit+'</td>'+
                     '</tr>';
                 }
           $('#showData').html(html);
@@ -228,7 +228,7 @@
     function showRecordtahunan(){
       $.ajax({
         type: 'ajax',
-        url: '<?php echo site_url('Laporan_Debit/gettahunan')?>',
+        url: '<?php echo site_url('Laporan_Kredit/gettahunan')?>',
         async: true,
         dataType: 'JSON',
         success: function(data){
@@ -236,8 +236,8 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += '<tr>'+
-                    '<td>'+data[i].id_barangmasuk+'</td>'+
-                    '<td>'+data[i].debit+'</td>'+
+                    '<td>'+data[i].id_pemesanan+'</td>'+
+                    '<td>'+data[i].kredit+'</td>'+
                     '</tr>';
                 }
           $('#showData').html(html);

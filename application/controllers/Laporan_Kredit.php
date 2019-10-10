@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Laporan_Debit extends CI_Controller {
+class Laporan_Kredit extends CI_Controller {
     
     function __construct(){
 		parent::__construct();
@@ -13,27 +13,27 @@ class Laporan_Debit extends CI_Controller {
 		}
 	}
 	public function index(){
-		$this->load->view("laporan_kredit.php");
+		$this->load->view("laporan_kredit");
 	}
 
 	public function hariQ(){
-		$this->load->view("laporan_debit/cetak/cetak_penjualan_hariini.php");
+		$this->load->view("laporan_kredit/cetak/cetak_penjualan_hariini.php");
 	}
 
 	public function getAll(){
-		$data=$this->M_Laporan_Debit->ambil_data();
+		$data=$this->M_Laporan_Kredit->ambil_data();
 		echo json_encode($data);
 	}
 	public function getharian(){
-		$data["laporan"] = $this->M_Laporan_Debit->ambil_dataharian();
-		$this->load->view('laporan_debit/cetak/cetak_penjualan_hariini', $data);
+		$data["laporan_kredit"] = $this->M_Laporan_Kredit->ambil_dataharian();
+		$this->load->view('laporan_kredit/cetak/cetak_penjualan_hariini', $data);
 	}
 	public function getmingguan(){
-		$data["laporan"] = $this->M_Laporan_Debit->ambil_datamingguan();
+		$data["laporan_kredit"] = $this->M_Laporan_Debit->ambil_datamingguan();
 		$this->load->view('laporan_debit/cetak/cetak_penjualan_mingguini', $data);
 	}
 	public function getbulanan(){
-		$data=$this->M_Laporan_Debit->ambil_databulanan();
+		$data=$this->M_Laporan_Kredit->ambil_databulanan();
 		echo json_encode($data);
 	}
 	
@@ -45,7 +45,7 @@ class Laporan_Debit extends CI_Controller {
 		$data["laporan_debit"] = $this->M_Laporan_Debit->ambil_dataharian();
 
 		ob_start();    
-	    $this->load->view('laporan_debit/cetak/cetak_penjualan_hariini', $data);    
+	    $this->load->view('laporan_kredit/cetak/cetak_penjualan_hariini', $data);    
 	    $html = ob_get_contents();        
 
 	    ob_end_clean();                
@@ -55,10 +55,10 @@ class Laporan_Debit extends CI_Controller {
 	    $pdf->Output('Laporan Harian.pdf', 'D'); 
 	}
 	public function cetakMingguan(){
-		$data["laporan_debit"] = $this->M_Laporan_Debit->ambil_datamingguan();
+		$data["laporan_kredit"] = $this->M_Laporan_Kredit->ambil_datamingguan();
 
 		ob_start();    
-	    $this->load->view('laporan_debit/cetak/cetak_penjualan_mingguini', $data);    
+	    $this->load->view('laporan_kredit/cetak/cetak_penjualan_mingguini', $data);    
 	    $html = ob_get_contents();        
 
 	    ob_end_clean();                
@@ -68,10 +68,10 @@ class Laporan_Debit extends CI_Controller {
 	    $pdf->Output('Laporan Mingguan.pdf', 'D'); 
 	}
 	public function cetakBulanan(){
-		$data["laporan_debit"] = $this->M_Laporan_Debit->ambil_databulanan();
+		$data["laporan_kredit"] = $this->M_Laporan_Kredit->ambil_databulanan();
 
 		ob_start();    
-	    $this->load->view('laporan_debit/cetak/cetak_penjualan_bulanini', $data);    
+	    $this->load->view('laporan_kredit/cetak/cetak_penjualan_bulanini', $data);    
 	    $html = ob_get_contents();        
 
 	    ob_end_clean();                
@@ -81,7 +81,7 @@ class Laporan_Debit extends CI_Controller {
 	    $pdf->Output('Laporan Bulanan.pdf', 'D'); 
 	}
 	public function cetakTahunan(){
-		$data["laporan_debit"] = $this->M_Laporan_Debit->ambil_datatahunan();
+		$data["laporan_kredit"] = $this->M_Laporan_Kredit->ambil_datatahunan();
 
 		ob_start();    
 	    $this->load->view('laporan_debit/cetak/cetak_penjualan_tahunini', $data);    
@@ -95,10 +95,10 @@ class Laporan_Debit extends CI_Controller {
 	}
 	
 	public function cetakAll(){
-		$data["laporan_debit"] = $this->M_Laporan_Debit->ambil_data();
+		$data["laporan_kredit"] = $this->M_Laporan_Kredit->ambil_data();
 
 		ob_start();    
-	    $this->load->view('laporan_debit/cetak/cetak_penjualan_semua', $data);    
+	    $this->load->view('laporan_kredit/cetak/cetak_penjualan_semua', $data);    
 	    $html = ob_get_contents();        
 
 	    ob_end_clean();                
