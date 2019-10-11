@@ -48,38 +48,24 @@
                                 <div class="form-horizontal">
                                     <div class="box-body">
                                         <div style="text-align: center;">
-                    <span style=" font-size: 20px;">Data Barang Masuk</span>
-                    </div>
-                        <br>   
+                                         <span style=" font-size: 20px;">Data Barang Masuk</span>
+                                        </div>
+                  
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label ">Nama Pemesan</label>
-                                        <div class="col-sm-3 ">
-                                        <select class="form-control select2 " style="width: 100%;" name="namapemesan" id="namapemesan">
-                                    <?php foreach($barangmasuk as $p){ ?>
-                           <option>Pilih Pelanggan</option>             
-                          <option class="form-control"  name="namapemesan" placeholder="Nama Pemesan" id="namapemesan"  value="<?php echo $p->nama; ?>"> <?php echo $p->nama;?>    </option>
-                            <br>
-                            <?php } ?>
-                                
-                             </select>
-                        <input type="text" class="form-control">
-                        </div> 
-                        <label  class="col-sm-2 control-label">Tanggal</label> 
-                        <div class="col-sm-3 ">
-                        <div class="input-group">
-                                
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  readonly="readonly" >
-                            </div>
-                        </div>
-                        </div>
-
-                       
-                                        </div>
+                                             <label class="col-sm-2 control-label ">Nama Pemesan</label>
+                                                <div class="col-sm-3 ">
+                                                    <select class="form-control select2 " style="width: 100%;" name="namapemesan" id="namapemesan">
+                                                    <?php foreach($barangmasuk as $p){ ?>
+                                                       <option>Pilih Pelanggan</option>             
+                                                      <option class="form-control"  name="namapemesan" placeholder="Nama Pemesan" id="namapemesan"  value="<?php echo $p->nama; ?>"> <?php echo $p->nama;?>    </option>
+                                                        <br>
+                                                        <?php } ?>
+                                                    
+                                                    </select>
+                                            
+                                                 </div> 
+                                            </div>
 
                                         
 
@@ -90,7 +76,7 @@
                                             <div class="col-sm-3">
                                                 <input type="text" class="form-control"  name="name" placeholder="Nama Barang" id="name">
                                                 
-                                                <input type="text" class="form-control" readonly name="id" placeholder="nomor" id="id" value="">
+                                                <input type="text" class="form-control" readonly name="id_barangmasuk" placeholder="nomor" id="id_barangmasuk" value="">
                                             </div>
                                             <div class="col-sm-2">
                                                 <input type="text" class="form-control"  name="qty" placeholder="Jumlah" id="qty">
@@ -154,28 +140,7 @@
     <script type="text/javascript">     
         $(document).ready(function(e) {
 
-       
-        //     var rupiah = document.getElementById('price');
-        // rupiah.addEventListener('keyup', function(e){
-        //     // tambahkan 'Rp.' pada saat form di ketik
-        //     // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-        //     rupiah.value = formatRupiah(this.value, 'Rp. ');
-        // });
-        // /* Fungsi formatRupiah */
-        // function formatRupiah(angka, prefix){
-        //     var number_string = angka.replace(/[^,\d]/g, '').toString(),
-        //     split           = number_string.split(','),
-        //     sisa            = split[0].length % 3,
-        //     rupiah          = split[0].substr(0, sisa),
-        //     ribuan          = split[0].substr(sisa).match(/\d{3}/gi);
-        //     // tambahkan titik jika yang di input sudah menjadi angka ribuan
-        //     if(ribuan){
-        //         separator = sisa ? '.' : '';
-        //         rupiah += separator + ribuan.join('.');
-        //     }
-        //     rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-        //     return prefix == undefined ? rupiah : (rupiah ? ' ' + rupiah : '');
-        // }
+      
 
             //set kode
             setCode();
@@ -203,19 +168,18 @@
             setKremen()
             
 
-            
-
+            setCode()
             function setCode() {
-                var id_pemesanan = $('#id_pemesanan').val();
+                var id_barangmasuk = $('#id_barangmasuk').val();
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo site_url('Pemesanan1/setCode') ?>",
+                    url: "<?php echo site_url('Barangmasuk/setCode') ?>",
                     dataType: "JSON",
                     data: {
-                        id_pemesanan: id_pemesanan
+                        id_barangmasuk: id_barangmasuk
                     },
                     success: function(data) {
-                        $('[name="id_pemesanan"]').val(data);
+                        $('[name="id_barangmasuk"]').val(data);
                         
                     }
                 });
@@ -334,21 +298,7 @@
                     }
                 })
             })
-            //kode kredit
-            
-            //cek stok
-            // $("#qty").keyup(function() {
-            //     var stok = parseInt($("#stok").val());
-            //     var thisVal = parseInt($(this).val());
-
-            //     if (thisVal > stok) {
-            //         alert("Stok tidak mecukupi, tersedia = " + stok);
-            //     }
-
-            // })
-            //diskon
-           
-            //hitung
+          
             function hitung() {
                 var total = document.getElementById('total').value;
                 var bayar = document.getElementById('bayar').value;
@@ -366,17 +316,14 @@
             }
             //pemesanan
 
-            $('#pemesanan').on('click', function(e) {
+            $('#barangmasuk').on('click', function(e) {
                 
-                var kode_pemesanan = $('#kode_pemesanan').val();
+                var id_barangmasuk = $('#id_barangmasuk').val();
                 var id_user = $('#id_user').val();
-                var id_pelanggan = $('#id_pelanggan').val();
                 var tanggal = $('#tanggal').val();
-                var total = $('#total').val();
-                var potongan = $('#potongan').val();
-                var bayar = $('#bayar').val();
-                var kategori = $('#kategori').val();
-                var pesan = $('#pesan').val();
+                 var id_pemesanan = $('#id_pemesanan').val();
+                 var total = $('#total').val();
+                
 
                     if (id_pelanggan == "") {
                         document.getElementById("msgP").innerHTML = "*Pelanggannya..";

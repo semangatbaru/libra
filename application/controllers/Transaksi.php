@@ -15,7 +15,7 @@ class Transaksi extends CI_Controller {
 	}
 	public function index(){
 		$data["pelanggan"] = $this->M_Transaksi->ambil_data();
-		$data["barang"] = $this->M_Transaksi->ambilBarang();
+		
     	$this->load->view("transaksi", $data);
 	}
 	public function nota(){
