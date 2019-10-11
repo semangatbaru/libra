@@ -93,7 +93,8 @@ class M_pemesanan extends CI_Model
           $output .= '
             <tr>
                 <th colspan="3">Total</th>
-                <th colspan="2" align="right">'.'Rp '.number_format($this->cart->total()).'</th>
+                
+                <th colspan="2" align="right"><input type="text" id="totall" name="totall" value="' .'Rp '. number_format($this->cart->total()) .  '" class="form-control" style="text-align:right;margin-bottom:5px;" readonly></th>
             </tr>
         ';
           return $output;
@@ -118,10 +119,11 @@ class M_pemesanan extends CI_Model
 
           date_default_timezone_set('Asia/Jakarta');
 
-          $kode_pemesanan = $this->input->post('kode_pemesanan');
+          $id_pemesanan = $this->input->post('id_pemesanan');
           $id_user = $this->session->userdata("id_user");
           $id_pelanggan = $this->input->post('id_pelanggan');
-          $tgl = date('Y-m-d');
+          $ambil = date_format(date_create($this->input->post('ambil')), 'Y-m-d');
+          $tgl=date('Y-m-d');
           $via = 'web';
           $tanggal = $tgl;
           $total = $this->input->post('total');
@@ -129,7 +131,7 @@ class M_pemesanan extends CI_Model
           $pesan = $this->input->post('pesan');
 
           $pemesanan = array(
-               'kode_pemesanan' => $kode_pemesanan,
+               'id_pemesanan' => $id_pemesanan,
                'id_user' => $id_user,
                'id_pelanggan' => $id_pelanggan,
                'tanggal' => $tanggal,
@@ -141,10 +143,10 @@ class M_pemesanan extends CI_Model
      function detail()
      {
           if ($cart = $this->cart->contents()) {
-               $kode_pemesanan = $this->input->post('kode_pemesanan');
+               $id_pemesanan = $this->input->post('id_pemesanan');
                foreach ($cart as $item) {
                     $data_detail = array(
-                         'kode_pemesanan' => $kode_pemesanan,
+                         'id_pemesanan' => $id_pemesanan,
                          'id_barang' => $item['id'],
                          'jumlah' => $item['qty'],
                     );

@@ -75,15 +75,16 @@
                       </div>
                     </div>
 
-                    <table id="example2" class="table  table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info" >
-                <thead>
-                <tr>
-                  <th>Nama Barang</th>
-                  <th>Jumlah</th>
-                  <th>Harga Beli</th>
-                  <th>Sub Total</th>
-                </thead>
-                <tbody></tbody>
+
+                    <table style="padding: 0px 50px 0px 50px" id="example2" class="table  table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info" >
+                      <thead>
+                        <tr>
+                          <th>Nama Barang</th>
+                          <th>Jumlah</th>
+                          <th>Harga Beli</th>
+                          <th>Sub Total</th>
+                        </thead>
+                        <tbody></tbody>
                     </table>
 
                       <div class="modal-footer">
@@ -121,7 +122,7 @@
           
                      <div class="form-group">
                        <label class="col-sm-1 control-label">Total</label>
-                          <div class="col-sm-3">
+                          <div class="col-sm-4">
                           <input type="text" class="form-control"  name="qty" id="qty">
                           </div>
                         </div>
