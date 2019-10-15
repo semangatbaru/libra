@@ -148,7 +148,7 @@ class M_barangmasuk extends CI_Model
                foreach ($cart as $item) {
                     $data_detail = array(
                          'id_barangmasuk' => $id_barangmasuk,
-                    
+                         'nama_barang' => $item['name'],    
                          'jumlah' => $item['qty'],
                           'harga_beli' => $item['price'],
                     );
