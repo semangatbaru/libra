@@ -11,7 +11,7 @@ class M_barangmasuk extends CI_Model
 
         public function get_pemesanan()
     {
-    $query = $this->db->get('pelanggan');
+    $query = $this->db->get('pemesanan');
     return $query->result();
     }
 
@@ -62,26 +62,29 @@ class M_barangmasuk extends CI_Model
           $qty = $this->input->post('qty');
           $price = $this->input->post('price');
           $name = $this->input->post('name');
-          $grosir = array(
+          $data = array(
                'id'     => $id,
                'qty'    => $qty,
                'price'   => $price,
                'name'      => $name
           );
 
-          $this->cart->insert($grosir);
+          $this->cart->insert($data);
           echo $this->show(); 
      }
-     public function show()
+
+       public function show()
      {
           $output = '';
+          $no = 0;
           foreach ($this->cart->contents() as $items) {
                # code...
+               $no++;
                $output .= '
                     <tr>
-                         <td>'.$items['id'].'</td> 
+                         <td>' . $no .'</td> 
                          <td>' . $items['name'] . '</td>
-                         <td>' . $items['qty'] . '</td>
+                         <td>' . number_format($items['qty']) . '</td>
                          <td>' . number_format($items['price']) . '</td>
                          <td>
                               <div class="col-md-10">
@@ -94,8 +97,16 @@ class M_barangmasuk extends CI_Model
                     </tr>
           ';
           }
+          $output .= '
+            <tr>
+                <th colspan="3">Total Belanja</th>
+                
+                <th colspan="2" align="right"><input type="text" id="total" name="total" value="' .'Rp '. number_format($this->cart->total()) .  '" class="form-control" style="text-align:right;margin-bottom:5px;" readonly></th>
+            </tr>
+        ';
           return $output;
      }
+
      public function load()
      {
           echo $this->show();
@@ -117,18 +128,13 @@ class M_barangmasuk extends CI_Model
           date_default_timezone_set('Asia/Jakarta');
 
           $id_barangmasuk = $this->input->post('id_barangmasuk');
-          $id_user = $this->session->userdata("id_user");
-          $id_pelanggan = $this->input->post('id_pelanggan');
+          $id_pemesanan = $this->input->post("id_pemesanan");
           $tgl = date('Y-m-d');
           $via = 'web';
           $tanggal = $tgl;
-          $total = $this->input->post('total');
-          $bayar = $this->input->post('bayar');
-          $pesan = $this->input->post('pesan');
-
+          $total = $this->cart->total();     
           $barangmasuk = array(
                'id_barangmasuk' => $id_barangmasuk,
-               'id_user' => $id_user,
                'tanggal' => $tanggal,
                'id_pemesanan  ' => $id_pemesanan,
                'total' => $total,

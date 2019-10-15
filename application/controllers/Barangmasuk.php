@@ -96,7 +96,7 @@ class Barangmasuk extends CI_Controller
     {
         $data = $this->M_barangmasuk->insTr();
         $data = $this->M_barangmasuk->detail();
-        $data = $this->M_barangmasuk->kredit();
+        
         echo json_encode($data);
     }
 }
