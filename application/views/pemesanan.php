@@ -107,17 +107,6 @@
                                                     <?php endforeach;?>
                                                 </select>
                                                 <input type="hidden" class="form-control"  name="id_pemesanan" placeholder="Nama Pemesan" id="id_pemesanan">
-                                            </div>
-                                            <div class="col-sm-4 ">
-                                                <div class="input-group">
-                                                        
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                        <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask   >
-                                                    </div>
-                                                </div>
                                             </div>    
                                         </div>
                                         
@@ -158,7 +147,6 @@
                                         </div>
                                         <div class="form-group ">
                                             <div class="col-sm-4 col-sm-offset-2">
-                                                <input type="hidden" class="form-control"  name="total" placeholder="Bayar" id="total">
                                                 <input type="text" class="form-control"  name="bayar" placeholder="Bayar" id="bayar">
                                                 
                                             </div>    
@@ -306,26 +294,12 @@
 
             //set kode
             setCode();
-            
-            // date();
-            setTotal();
-            //setKremen()
-            function setTotal(){
-                var total = $('#total').val();
-                $.ajax({
-                    type: "POST",
-                    url: "<?php echo site_url('Pemesanan/total') ?>",
-                    dataType: "JSON",
-                    data:{total:total},
-                    success : function(data){
-                        $('[name="total"]').val(data);
-                        
-                    }
-                });
-                return false;
-            }
-            //getStokBarang
 
+            // date();
+            // setTotal();
+            //setKremen()
+
+            //getStokBarang
             $("#datapemesan").click(function(){
                 $('#Modal_Ambil').modal('show');
             })
@@ -385,6 +359,49 @@
                 });
                 return false;
             }
+           
+            
+
+            
+            //set total
+            function setTotal() {
+                var total = $('#total').val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo site_url('Pemesanan/total') ?>",
+                    dataType: "JSON",
+                    data: {
+                        total: total
+                    },
+                    success: function(data) {
+                        $('[name="total"]').val(data);
+                        $('[name="hargaAwal"]').val(data);
+                    }
+                });
+                return false;
+            }
+            //hari
+            function date() {
+                var today = new Date();
+                var dd = today.getDate();
+
+                var mm = today.getMonth() + 1;
+                var yyyy = today.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+                today = dd + '/' + mm + '/' + yyyy;
+                $('[name="tanggal"]').val(today);
+            }
+            //get alamat
+           
+
+            //getStokBarang
+           
+
             function kosong() {
                 
                 
@@ -412,7 +429,12 @@
                     success: function(data) {
                         
                         $("#detailCart").html(data);
+                        var id = $('#id').val();
+                        var result = parseInt(id)+1;
+                        document.getElementById('id').value = result;
+
                         kosong();
+                        // setTotal()
                     }
                 });
                 
@@ -450,10 +472,6 @@
 
             // })
             //diskon
-            $("#bayar").keyup(function(){
-                hitung();
-              
-            })
            
             //hitung
             function hitung() {
