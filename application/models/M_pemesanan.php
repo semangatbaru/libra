@@ -118,34 +118,36 @@ class M_pemesanan extends CI_Model
 
           date_default_timezone_set('Asia/Jakarta');
 
-          $kode_pemesanan = $this->input->post('kode_pemesanan');
+          $id_pemesanan = $this->input->post('id_pemesanan');
           $id_user = $this->session->userdata("id_user");
           $id_pelanggan = $this->input->post('id_pelanggan');
-          $tgl = date('Y-m-d');
-          $via = 'web';
+          $tgl=date('Y-m-d');
           $tanggal = $tgl;
+          $ambil = date('Y-d-m', strtotime($this->input->post('ambil')));
           $total = $this->input->post('total');
           $bayar = $this->input->post('bayar');
           $pesan = $this->input->post('pesan');
 
           $pemesanan = array(
-               'kode_pemesanan' => $kode_pemesanan,
+               'id_pemesanan' => $id_pemesanan,
                'id_user' => $id_user,
                'id_pelanggan' => $id_pelanggan,
                'tanggal' => $tanggal,
                'total' => $total,
                'bayar' => $bayar,
+               'ambil' => $ambil,
           );
           $result = $this->db->insert($this->_tT, $pemesanan);
      }
      function detail()
      {
           if ($cart = $this->cart->contents()) {
-               $kode_pemesanan = $this->input->post('kode_pemesanan');
+               $id_pemesanan = $this->input->post('id_pemesanan');
                foreach ($cart as $item) {
                     $data_detail = array(
-                         'kode_pemesanan' => $kode_pemesanan,
-                         'id_barang' => $item['id'],
+                         'id_pemesanan' => $id_pemesanan,
+                         'nama_barang' => $item['name'],
+                         'harga' => $item['price'],
                          'jumlah' => $item['qty'],
                     );
                     $this->db->insert($this->_tDT, $data_detail);
