@@ -1,117 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>
-    
-  </title>
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css" media="print">
+        @page {
+    /* size: landscape; */
+    margin: 0;
+
+  }
+
+  .body {
+    margin:0in 0.2in 0in 0.3in;
+    /* margin: 1.6cm;
+    mso-header-margin:.5in;
+    mso-footer-margin:.5in;
+    mso-paper-source:4; */
+    font-family: Arial, Helvetica, sans-serif;
+   }
+
+   .footer{
+    position:absolute;
+    /* right:0; */
+    bottom:0;
+  }
+  p, td{
+      font-size: 12px;
+  }
+
+    </style>
 </head>
-<body>
-
-    <div>
-      
-      <div >
-        <h4 >
-          <h1><B>PT. Jatim Herbal Perkasa</B></h1>
-          Pasar, Sengon, Kec. Mantingan, Kabupaten Ngawi, Jawa Timur 
-          <br>
-          Telp. 085883680093
-        </h4>
-        <br>
-        <br>
-        <h5><B>
-          <?php foreach ($print as $t): ?> nofaktur : <?php echo $t->nofaktur?> <?php endforeach; ?>
-        </B></h5>
-        <h5><B>
-          <?php foreach ($print as $t): ?> Kasir : <?php echo $t->username?> <?php endforeach; ?>
-        </B></h5>
-      
-      </div>
-    </div>
-
-    <div >
-
-      <div class="col-sm-2 ">
-        <br>
-          <h4 align="right">
-          <h5>Ngawi, <?php $tgl=date('d-m-Y'); echo $tgl;?></h5>
-          <h5 align="center">Kepada Yth.</h5>
-          <?php foreach ($print as $t): ?>  <?php echo $t->nama?> <?php endforeach; ?>
-          <br> 
-          </h4>
-          
-      </div>
-
-      <div > 
-      <div >
-          <table width="500px" border="1" border-collapse: collapse  align="center">
-            <thead>
-             <tr align="center" >
-                <th>nama barang</th>
-                <th>jumlah</th>
-                <th>harga</th>
-                <th>subtotal</th>
-            </tr> 
-            </thead>
-
-            <tbody>
-            
-              <?php foreach ($print as $t): ?>
-                <tr>
-                  <td>
-                  <?php echo $t->namabarang?>
-                  </td>
-                     <td>
-                  <?php echo $t->jumlah;
-                  $subtotal = $t->jumlah * $t->harga;
-                  ?>
-                  </td>
-               
-                  <td>
-                  <?php echo $t->harga?>
-                  </td>    
-                  <td>
-                  <?php echo $subtotal?>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-            <tfoot>
-              <tr align="center" >
-                  <th colspan="2"></th>
-                  <th>total</th>
-                  <th><?php echo $t->harga ?></th>
-              </tr> 
-            </tfoot>
-
-          </table>
-           
-          <div >
-           <div >
-            <br>
-            <h4 align="right">
-            <h5>Tanda Terima, </h5>
-            </h4>
-            </div>
-
-          </div>
-
-    <div class="form-group">
-
-      <div class="col-sm-5 ">
-        <h4 align="right">
-        <h5 align="right" >Hormat Kami, </h5>
-        </h4>
-      </div>
-
-    </div>
-      </div>
-    </div>
-    </div>
+<!--  -->
+<body onload="">
+    <h5 style="text-align:center;">Libra Conveksi<br>Jln. Prov M. Yamin. 60 Bogo Nganjuk</h5>
+    <table>
+        <tr>
+            <td><?php foreach ($print as $t): ?> id_pemesanan : <?php echo $t->id_pemesanan?> <?php endforeach; ?></td>
+        </tr>
+        <tr>
+            <td> <?php echo date('d-m-y h:m:s') ?></td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr>
+            <td>Set Kaos Futsal</td>
+        </tr>
+        <tr>
+            <td>150.000 X 13 = 750.000</td>
+        </tr>
+        <tr>
+            <td>Desain</td>
+        </tr>
+        <tr>
+            <td>100.000 X 1 = 100.000</td>
+        </tr>
+    </table>
+    <hr style="border-top : dotted 1px;">
+    <table>
+        <tr>
+            <td>Total</td>
+            <td>Rp. 850.000</td>
+        </tr>
+        <tr>
+            <td>Dp</td>
+            <td>Rp. 500.000</td>
+        </tr>
+        <tr>
+            <td>Sisa</td>
+            <td>Rp. 350.000</td>
+        </tr>
+    </table>
+    <hr style="border-top : dotted 1px;">
+    <p style="text-align:center;">Layanan Konsumen : 0899988263</p>
 </body>
-<script>
-		window.print();
-    document.location.href = "http://localhost/herbal/Transaksi"; 
-	</script>
 </html>
-
