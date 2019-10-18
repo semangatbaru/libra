@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Laporan_Transaksi extends CI_Model {
+class M_Detail_belanja extends CI_Model {
     // deklarasi variable
     private $_table = "barangmasuk";
     private $_table1 = "laporan_transaksiharian";
@@ -18,10 +18,33 @@ class M_Laporan_Transaksi extends CI_Model {
             `rules` => `required`],
         ];
     }
-
+    
     //menampilkan data
     public function ambil_data(){
-        return $this->db->get($this->_table)->result();
+        $id_barangmasuk = $_GET['id_barangmasuk'];
+        $this->db->select('*');
+        $this->db->from('id_barangmasuk');
+        $this->db->join()
+        $this->db->where('barangmasuk.id_barangmasuk', $id_barangmasuk);
+        $hasil = $this->db->get();
+        return $hasil->result();
+    }
+
+     //Update data
+    public function update()
+    {
+        $post = $this->input->post();
+        $this->id_barangmasuk = $post["id_barangmasuk"];
+        $this->bayar = $post["bayar"];
+
+        $this->db->update($this->_table1, $this, array('id_barangmasuk' => $post['id_barangmasuk2']));
+    }
+    
+    public function update2()
+    {
+        $post = $this->input->post();
+        $this->id_barangmasuk = $post["id_barangmasuk"];
+        $this->db->update($this->_table2, $this, array('id_barangmasuk' => $post['id_barangmasuk2']));
     }
 
     public function ambil_dataharian(){

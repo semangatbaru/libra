@@ -3,6 +3,20 @@
 <head>
 <title>Detail Belanja | Libra</title>
   <?php $this->load->view('_partials/head')?>
+   <style type="text/css">
+
+    body{
+        background-color: #E8E9EC;
+    }
+
+    .dropzone {
+        border: 2px dashed #0087F7;
+    }
+    .margin {
+        margin-top: 50px;
+    }
+
+    </style> 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -31,76 +45,7 @@
 
                                 <div class="form-horizontal">
                                     <div class="box-body">
-        <!-- Modal detail-->
-          <form>
-            <div class="modal fade in" id="Modal_Ambil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail Belanja</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>       
-                      </div>
-
-                      <div class="form-group">
-                      <label class="col-sm-2 control-label ">Kode Belanja</label>
-                        <div class="col-sm-3 ">
-                          <input value="" disable >Kode Belanja</input>
-                                                    <?php foreach ($pelanggan as $p): ?>
-                                                        <option data-nohp="<?php echo $p->hp ?>" data-alamat="<?php echo $p->alamat ?>" data-nama="<?php echo $p->nama ?>" value="<?php echo $p->id_pelanggan?>"><?php echo $p->nama;?></option>
-                                                    <?php endforeach;?>
-                        </div> 
-                        
-                        <label  class="col-sm-2 control-label">Tanggal</label> 
-                        <div class="col-sm-3 ">
-                        <div class="input-group"> 
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  readonly="readonly" >
-                            </div>
-                        </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                      <label class="col-sm-2 control-label">No Order</label>
-                      <div class="col-sm-3">
-                        <input type="text" class="form-control"  name="name" id="name">
-                      </div>
-                    </div>
-
-                      <div class="form-group">
-                      <label class="col-sm-2 control-label">Total Belanja</label>
-                      <div class="col-sm-3">
-                        <input type="text" class="form-control"  name="name" id="name">
-                      </div>
-                    </div>
-
-                    <table id="example2" class="table  table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info" >
-                <thead>
-                <tr>
-                  <th>Nama Barang</th>
-                  <th>Jumlah</th>
-                  <th>Harga Beli</th>
-                  <th>Sub Total</th>
-                </thead>
-                <tbody></tbody>
-                    </table>
-
-                      <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-
-          </form>
-          <!-- / Modal ambil -->
-                 
+        
           <!-- form table -->
           <div class="box ">
             <div class="box-header">
