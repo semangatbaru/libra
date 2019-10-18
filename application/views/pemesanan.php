@@ -518,6 +518,7 @@
                                 $('[name="kembalian"]').val("");
                                 $('[name="ambil"]').val("");
                                 $('#detailCart').load("<?php echo base_url(); ?>Pemesanan/hapusSemua");
+                                window.location="<?php echo base_url().'Pemesanan/nota/' ?>"+id_pemesanan
                             },
                             error: function(data) {
                                 console.log(data);

@@ -130,5 +130,21 @@ class Pemesanan extends CI_Controller
 
 		}
 		echo "{}";
+    }
+    public function nota($id_pemesanan){
+        $where = array('id_pemesanan' -> $id_pemesanan) ;
+		$data["print"] = $this->M_Transaksi->nota('detailnya', $where)->result();
+		$this->load->view("nota", $data);
+		/** 
+		ob_start();    
+	    
+	    $html = ob_get_contents();        
+
+	    ob_end_clean();                
+	    require_once('./assets/html2pdf/html2pdf.class.php');    
+	    $pdf = new HTML2PDF('L','A4','en');
+	    $pdf->WriteHTML($html);    
+		$pdf->Output('Laporan Harian.pdf', 'D');
+		*/
 	}
 }
