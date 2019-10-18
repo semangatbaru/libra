@@ -24,95 +24,11 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
+        
+
         <div class="col-xs-12 col-sm-offset-0">
           <!-- Modal ambil -->
-          <form>
-            <div class="modal fade in" id="Modal_Ambil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail Pemesanan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="form-group row">
-                        <div class="col-md-3 col-sm-offset-0">
-                          <input type="text" name="id_pemesanan" id="id_pemesanan" class="form-control" placeholder="ID Pemesanan" >
-                          
-                        </div>
-                        <div class="col-md-4">
-                        <label  class="col-sm-3 control-label">Tanggal</label> 
-                        <div class="col-sm-7 ">
-                        <div class="input-group">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  readonly="readonly" >
-                            </div>
-                        </div>
-                        </div>
-                        </div>
-                        
-                    <!-- /.row -->
-                    </div>
-                    
-                    <div class="form-group row">
-                        <div class="col-md-3 col-sm-offset-5">
-                        <textarea></textarea>
-                        </div>
-                    </div>
-
-                      
-                    <div class="form-group row">
-                        <div class="col-md-3">
-                        <input type="text" class="form-control"  name="nama" placeholder="Nama Pemesan" id="nama">
-                        </div>
-                        <div class="col-md-3">
-                        <input type="text" class="form-control"  name="hp" placeholder="No HP" id="nama">
-                        </div>
-                        <div class="col-md-3">
-                        <input type="text" class="form-control"  name="alamat" placeholder="Alamat" id="nama">
-                        </div>
-                    </div>
-                    <div class="form-group row ">
-                      <div class="col-md-3">
-                          <button type="button" type="submit" id="btn_ambil" class="btn btn-primary">Tambah</button>
-                          <br><br>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-2 col-form-label">DP       :</label>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-2 col-form-label">Sisa     :</label>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-2">
-                        <input type="hidden" class="form-control"  name="bayarA" placeholder="" id="bayarA">
-                        <input type="hidden" class="form-control"  name="sisaA" placeholder="" id="sisaA">
-                        <input type="hidden" class="form-control"  name="kategori" placeholder="" id="kategori">
-                        </div>
-                        <div class="col-md-2">
-                        <input type="text" class="form-control"  name="bayarL" placeholder="Bayar Lagi" id="bayarL">
-                        </div>
-                      </div>
-                    </div>
-                      
-                    <div class="modal-footer">
-                    
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" type="submit" id="btn_ambil" class="btn btn-primary">Simpan</button>
-                    
-                  </div>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </form>
+          
           <!-- / Modal ambil -->
           <!-- form table -->
           <div class="box ">
@@ -151,6 +67,11 @@
           </div>
           <!-- /.box -->
         </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- table baru -->
+        
 
         <!-- /.col -->
       </div>
@@ -170,6 +91,7 @@
     //crud
     showRecord(); //munculkan data
     
+    //$(".atas").fadeOut();
     //function showdata
     function showRecord(){
       $.ajax({
@@ -188,8 +110,8 @@
                       '<td>'+data[i].bayar+'</td>'+
                       '<td>'+data[i].sisa+'</td>'+
                       '<td style="text-align:left;">'+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'" >Detail</a>'+' '+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_ambil" data-id_pemesanan="'+data[i].id_pemesanan+'" data-nama="'+data[i].nama+'" data-tanggal="'+data[i].tanggal+'" data-bayar="'+data[i].bayar+'" data-sisa="'+data[i].sisa+'">Ambil</a>'+
+                        '<a href="<?php echo site_url('Detail_Pemesanan') ?>" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'" >Detail</a>'+' '+
+                        '<a href="<?php echo site_url('Detail_Pemesanan') ?>" class="btn btn-info btn-sm item_ambil" data-id_pemesanan="'+data[i].id_pemesanan+'" data-nama="'+data[i].nama+'" data-tanggal="'+data[i].tanggal+'" data-bayar="'+data[i].bayar+'" data-sisa="'+data[i].sisa+'">Ambil</a>'+
                       '</td>'+
                     '</tr>';
                 }
@@ -350,20 +272,15 @@
     //ambil datanya dulu
     $('#showData').on('click','.item_belanja', function(){
       // kosong();
-      // var id_pelanggan = $(this).data('id_pelanggan');
+      var id_pemesanan = $(this).data('id_pemesanan');
       // var nama = $(this).data('nama');
       // var nohp = $(this).data('nohp');
       // var alamat = $(this).data('alamat');
       // var email = $(this).data('email');
       // var password = $(this).data('password');
+      window.location="<?php echo base_url().'Detail_Pemesanan/'; ?>"+id_pemesanan
       
-      $('#Modal_Ambil').modal('show');
-      // $('[name="id_pelanggan_edit"]').val(id_pelanggan);
-      // $('[name="nama_edit"]').val(nama);
-      // $('[name="nohp_edit"]').val(nohp);
-      // $('[name="alamat_edit"]').val(alamat);
-      // $('[name="email_edit"]').val(email);
-      // $('[name="password_edit"]').val(password);
+       
     });
 
 
@@ -398,3 +315,4 @@
     
 </body>
 </html>
+<!--  -->
