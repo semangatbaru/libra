@@ -45,7 +45,10 @@
                       <div class="form-group">
                       <label class="col-sm-2 control-label ">Kode Belanja</label>
                         <div class="col-sm-3 ">
-                         <input type="text" class="form-control"  name="name" id="name">
+                          <input value="" disable >Kode Belanja</input>
+                                                    <?php foreach ($pelanggan as $p): ?>
+                                                        <option data-nohp="<?php echo $p->hp ?>" data-alamat="<?php echo $p->alamat ?>" data-nama="<?php echo $p->nama ?>" value="<?php echo $p->id_pelanggan?>"><?php echo $p->nama;?></option>
+                                                    <?php endforeach;?>
                         </div> 
                         
                         <label  class="col-sm-2 control-label">Tanggal</label> 
