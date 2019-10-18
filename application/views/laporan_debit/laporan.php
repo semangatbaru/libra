@@ -82,7 +82,6 @@
 
 <?php $this->load->view('_partials/script');?>
 <script type="text/javascript">
-          $("#harini").hide();
           $("#mingguan").hide();
           $("#bulanan").hide();
           $("#tahunan").hide();

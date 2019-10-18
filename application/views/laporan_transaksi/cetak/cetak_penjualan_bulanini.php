@@ -1,12 +1,12 @@
 <h4 style="text-align: center;">
-  <br><h1><B>PT. Jatim Herbal Perkasa</B></h1>
+  <br><h1><B>Libra Konveksi dan Bordir Komputer</B></h1>
   Pasar, Sengon, Kec. Mantingan, Kabupaten Ngawi, Jawa Timur 
   <br>
   Telp. 085883680093
 </h4>
 <h5 style="text-align: center;">
   <hr>
-  <br><h4>LAPORAN PENJUALAN JAMU BULAN INI</h4>
+  <br><h4>LAPORAN DATA BELANJA BULAN INI</h4>
 </h5>
 <hr>
 <br>
@@ -14,7 +14,7 @@
   <thead>
    <tr align="center"  bgcolor="yellow">
       <th>tanggal</th>
-      <th>nofaktur</th>
+      <th>kode belanja</th>
       <th>penjual</th>
       <th>pelanggan</th>
       <th>total</th>
