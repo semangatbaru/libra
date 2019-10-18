@@ -24,8 +24,11 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
+        
+
         <div class="col-xs-12 col-sm-offset-0">
           <!-- Modal ambil -->
+
           <form>
             <div class="modal fade in" id="Modal_Ambil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
@@ -173,6 +176,13 @@
           </div>
           <!-- /.box -->
         </div>
+
+        </div>
+        <!-- /.row -->
+
+        <!-- table baru -->
+        
+
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -191,6 +201,7 @@
     //crud
     showRecord(); //munculkan data
     
+    //$(".atas").fadeOut();
     //function showdata
     function showRecord(){
       $.ajax({
@@ -210,7 +221,7 @@
                       '<td>'+data[i].sisa+'</td>'+
                       '<td style="text-align:left;">'+
                         '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'" >Detail</a>'+' '+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_ambil" data-id_pemesanan="'+data[i].id_pemesanan+'" data-nama="'+data[i].nama+'" data-tanggal="'+data[i].tanggal+'" data-bayar="'+data[i].bayar+'" data-sisa="'+data[i].sisa+'">Ambil</a>'+
+                        '<a href="<?php echo site_url('Detail_Pemesanan') ?>" class="btn btn-info btn-sm item_ambil" data-id_pemesanan="'+data[i].id_pemesanan+'" data-nama="'+data[i].nama+'" data-tanggal="'+data[i].tanggal+'" data-bayar="'+data[i].bayar+'" data-sisa="'+data[i].sisa+'">Ambil</a>'+
                       '</td>'+
                     '</tr>';
                 }
@@ -371,20 +382,11 @@
     //ambil datanya dulu
     $('#showData').on('click','.item_belanja', function(){
       // kosong();
-      // var id_pelanggan = $(this).data('id_pelanggan');
-      // var nama = $(this).data('nama');
-      // var nohp = $(this).data('nohp');
-      // var alamat = $(this).data('alamat');
-      // var email = $(this).data('email');
-      // var password = $(this).data('password');
+      var id_pemesanan = $(this).data('id_pemesanan');
       
-      $('#Modal_Ambil').modal('show');
-      // $('[name="id_pelanggan_edit"]').val(id_pelanggan);
-      // $('[name="nama_edit"]').val(nama);
-      // $('[name="nohp_edit"]').val(nohp);
-      // $('[name="alamat_edit"]').val(alamat);
-      // $('[name="email_edit"]').val(email);
-      // $('[name="password_edit"]').val(password);
+      window.location="<?php echo base_url().'Detail_Pemesanan/index/' ?>"+id_pemesanan
+      
+       
     });
 
 
@@ -419,3 +421,4 @@
     
 </body>
 </html>
+<!--  -->
