@@ -28,9 +28,7 @@
 
         <div class="col-xs-12 col-sm-offset-0">
           <!-- Modal ambil -->
-<<<<<<< HEAD
-          
-=======
+
           <form>
             <div class="modal fade in" id="Modal_Ambil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
@@ -137,7 +135,6 @@
               </div>
             </div>
           </form>
->>>>>>> 303a5aedab2831d95f5b4bc84200c8cf03e35293
           <!-- / Modal ambil -->
           <!-- form table -->
           <div class="box ">
@@ -179,15 +176,13 @@
           </div>
           <!-- /.box -->
         </div>
-<<<<<<< HEAD
+
         </div>
         <!-- /.row -->
 
         <!-- table baru -->
         
 
-=======
->>>>>>> 303a5aedab2831d95f5b4bc84200c8cf03e35293
         <!-- /.col -->
       </div>
       <!-- /.row -->
@@ -225,7 +220,7 @@
                       '<td>'+data[i].bayar+'</td>'+
                       '<td>'+data[i].sisa+'</td>'+
                       '<td style="text-align:left;">'+
-                        '<a href="<?php echo site_url('Detail_Pemesanan') ?>" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'" >Detail</a>'+' '+
+                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'" >Detail</a>'+' '+
                         '<a href="<?php echo site_url('Detail_Pemesanan') ?>" class="btn btn-info btn-sm item_ambil" data-id_pemesanan="'+data[i].id_pemesanan+'" data-nama="'+data[i].nama+'" data-tanggal="'+data[i].tanggal+'" data-bayar="'+data[i].bayar+'" data-sisa="'+data[i].sisa+'">Ambil</a>'+
                       '</td>'+
                     '</tr>';
@@ -388,12 +383,8 @@
     $('#showData').on('click','.item_belanja', function(){
       // kosong();
       var id_pemesanan = $(this).data('id_pemesanan');
-      // var nama = $(this).data('nama');
-      // var nohp = $(this).data('nohp');
-      // var alamat = $(this).data('alamat');
-      // var email = $(this).data('email');
-      // var password = $(this).data('password');
-      window.location="<?php echo base_url().'Detail_Pemesanan/'; ?>"+id_pemesanan
+      
+      window.location="<?php echo base_url().'Detail_Pemesanan/index/' ?>"+id_pemesanan
       
        
     });
