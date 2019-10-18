@@ -99,15 +99,15 @@
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label " id="datapemesan">Nama Pemesan</label>
-                                            <div class="col-sm-3 ">
-                                                 <select class="form-control select2 j" style="width: 100%;" name="id_pelanggan" id="id_pelanggan">
+                                            <div class="col-sm-4 ">
+                                                 <select class="form-control select2 j" style="width: 100%;" name="id_pelangganB" id="id_pelangganB">
                                                     <option value="" disable >Cari Pelanggan</option>
                                                     <?php foreach ($pelanggan as $p): ?>
                                                         <option data-nohp="<?php echo $p->hp ?>" data-alamat="<?php echo $p->alamat ?>" data-nama="<?php echo $p->nama ?>" value="<?php echo $p->id_pelanggan?>"><?php echo $p->nama;?></option>
                                                     <?php endforeach;?>
                                                 </select>
                                                 <input type="hidden" class="form-control"  name="id_pemesanan" placeholder="Nama Pemesan" id="id_pemesanan">
-                                            </div>
+                                            </div>    
                                             <div class="col-sm-4 ">
                                                 <div class="input-group">
                                                         
@@ -115,10 +115,10 @@
                                                         <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask   >
+                                                        <input type="text" name="ambil" id="ambil" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask   >
                                                     </div>
                                                 </div>
-                                            </div>    
+                                            </div>
                                         </div>
                                         
                                         <div class="form-group">
@@ -157,10 +157,11 @@
                                             </table>
                                         </div>
                                         <div class="form-group ">
+
                                             <div class="col-sm-4 col-sm-offset-2">
-                                                <input type="hidden" class="form-control"  name="total" placeholder="Bayar" id="total">
                                                 <input type="text" class="form-control"  name="bayar" placeholder="Bayar" id="bayar">
-                                                
+                                                <input type="text" class="form-control"  name="total" placeholder="total" id="total">
+                                                <input type="text" class="form-control"  name="hargaAwal" placeholder="hargawal" id="hargaAwal">
                                             </div>    
                                             <div class="col-sm-4 ">
                                                 <input type="text" class="form-control"  name="kembalian" placeholder="Kembalian" id="kembalian" readonly>
@@ -168,7 +169,7 @@
                                         </div>
                                         
                                         <div class="col-md-12 col-sm-offset-1 ">
-                                            <button style="padding:6px 210px 6px 210px" class="btn   btn-social btn-instagram" name="keranjang" id="keranjang">Pesan</button>
+                                            <button style="padding:6px 210px 6px 210px" class="btn   btn-social btn-instagram" name="pemesanan" id="pemesanan">Pesan</button>
                                         </div>
                                     </div>
                                 </div>
@@ -306,26 +307,12 @@
 
             //set kode
             setCode();
-            
+
             // date();
             setTotal();
             //setKremen()
-            function setTotal(){
-                var total = $('#total').val();
-                $.ajax({
-                    type: "POST",
-                    url: "<?php echo site_url('Pemesanan/total') ?>",
-                    dataType: "JSON",
-                    data:{total:total},
-                    success : function(data){
-                        $('[name="total"]').val(data);
-                        
-                    }
-                });
-                return false;
-            }
-            //getStokBarang
 
+            //getStokBarang
             $("#datapemesan").click(function(){
                 $('#Modal_Ambil').modal('show');
             })
@@ -385,6 +372,37 @@
                 });
                 return false;
             }
+           
+            
+
+            
+            //set total
+            function setTotal() {
+                var total = $('#total').val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo site_url('Pemesanan/total') ?>",
+                    dataType: "JSON",
+                    data: {
+                        total: total
+                    },
+                    success: function(data) {
+                        $('[name="total"]').val(data);
+                        $('[name="hargaAwal"]').val(data);
+                    }
+                });
+                return false;
+            }
+
+            $("#bayar").keyup(function(){
+                hitung();
+              
+            })
+           
+
+            //getStokBarang
+           
+
             function kosong() {
                 
                 
@@ -412,7 +430,12 @@
                     success: function(data) {
                         
                         $("#detailCart").html(data);
+                        var id = $('#id').val();
+                        var result = parseInt(id)+1;
+                        document.getElementById('id').value = result;
+
                         kosong();
+                        setTotal()
                     }
                 });
                 
@@ -437,23 +460,6 @@
                     }
                 })
             })
-            //kode kredit
-            
-            //cek stok
-            // $("#qty").keyup(function() {
-            //     var stok = parseInt($("#stok").val());
-            //     var thisVal = parseInt($(this).val());
-
-            //     if (thisVal > stok) {
-            //         alert("Stok tidak mecukupi, tersedia = " + stok);
-            //     }
-
-            // })
-            //diskon
-            $("#bayar").keyup(function(){
-                hitung();
-              
-            })
            
             //hitung
             function hitung() {
@@ -475,47 +481,42 @@
 
             $('#pemesanan').on('click', function(e) {
                 
-                var kode_pemesanan = $('#kode_pemesanan').val();
-                var id_user = $('#id_user').val();
-                var id_pelanggan = $('#id_pelanggan').val();
-                var tanggal = $('#tanggal').val();
+                var id_pemesanan = $('#id_pemesanan').val();
+                
+                var id_pelanggan = $('#id_pelangganB').val();
+                var ambil = $('#ambil').val();
                 var total = $('#total').val();
-                var potongan = $('#potongan').val();
                 var bayar = $('#bayar').val();
-                var kategori = $('#kategori').val();
-                var pesan = $('#pesan').val();
 
                     if (id_pelanggan == "") {
-                        document.getElementById("msgP").innerHTML = "*Pelanggannya..";
-                   } else if (bayar == "") {
-                        document.getElementById("msgB").innerHTML = "*Bayarnya...";
+                        alert("pelanggan");
+                    } else if (bayar == "") {
+                        alert("bayar");
+                    } else if (ambil == "") {
+                        alert("ambil");
                     } else {
                         $.ajax({
                             type: "POST",
                             url: '<?php echo site_url('Pemesanan/add'); ?>',
                             dataType: "JSON",
                             data: {
-                                kode_pemesanan: kode_pemesanan,
-                                id_user: id_user,
+                                id_pemesanan: id_pemesanan,
+                                
                                 id_pelanggan: id_pelanggan,
-                                tanggal: tanggal,
+                                ambil: ambil,
                                 bayar: bayar,
                                 total: total,
-                                pesan: pesan,
                                 
                             },
                             success: function(data) {
                                 setCode();
-                                date();
+                                
                                 document.getElementById('id_pelanggan').value = "";
-                                $('[name="alamat"]').val("");
                                 $('[name="kategori"]').val("");
                                 $('[name="bayar"]').val("");
                                 $('[name="total"]').val("");
-                                $("#id_pelanggan").prop("selected", false);
-                                $("#namaBarang").prop("selected", false);
-                                $('[name="potongan"]').val("");
                                 $('[name="kembalian"]').val("");
+                                $('[name="ambil"]').val("");
                                 $('#detailCart').load("<?php echo base_url(); ?>Pemesanan/hapusSemua");
                             },
                             error: function(data) {

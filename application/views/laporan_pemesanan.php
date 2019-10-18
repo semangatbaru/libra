@@ -40,7 +40,7 @@
                     <div class="form-group row">
                         <div class="col-md-3 col-sm-offset-0">
                           <input type="text" name="id_pemesanan" id="id_pemesanan" class="form-control" placeholder="ID Pemesanan" >
-                          
+                          <input type="text" name="id_pemesanan2" id="id_pemesanan2" class="form-control"  readonly>
                         </div>
                         <div class="col-md-4">
                         <label  class="col-sm-3 control-label">Tanggal</label> 
@@ -55,17 +55,39 @@
                         </div>
                         </div>
                         </div>
+                        <div class="col-xs-4 col-sm-offset-0">
+                        <div class="box box-info">
+                            <!-- <form enctype="multipart/form-data" class="form-horizontal" method="post" id="formnya" > -->
+                            <div class="box-header">
+                            <center><h3 class="box-title">Tambah Gambar</h3></center>
+                                <div class="form-horizontal">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <div class="col-sm-12 dropzone dz-message">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- </form> -->
+                        </div>
+
+                        <!-- /.col -->
+                        </div>
                         
                     <!-- /.row -->
                     </div>
                     
                     <div class="form-group row">
-                        <div class="col-md-3 col-sm-offset-5">
-                        <textarea></textarea>
-                        </div>
+                          
                     </div>
 
-                      
+                      <div class="form-group row ">
+                        <div class="col-md-3 ">
+                            <button type="button" type="submit" id="btn_ambil" class="btn btn-primary">Tambah</button>
+                              <br><br>
+                        </div>
+                      </div>
                     <div class="form-group row">
                         <div class="col-md-3">
                         <input type="text" class="form-control"  name="nama" placeholder="Nama Pemesan" id="nama">
@@ -77,14 +99,11 @@
                         <input type="text" class="form-control"  name="alamat" placeholder="Alamat" id="nama">
                         </div>
                     </div>
-                    <div class="form-group row ">
-                      <div class="col-md-3">
-                          <button type="button" type="submit" id="btn_ambil" class="btn btn-primary">Tambah</button>
-                          <br><br>
-                      </div>
-                    </div>
+
+                    
+
                     <div class="form-group row">
-                      <label class="col-md-2 col-form-label">DP       :</label>
+                      <label class="col-md-2 col-form-label">DP     :</label>
                     </div>
                     <div class="form-group row">
                       <label class="col-md-2 col-form-label">Sisa     :</label>
@@ -122,7 +141,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-header with-border">
+                  
                   <div class="col-md-3">
+                    <div class="form-group">
+                    </div>
                     <div class="form-group">
                       <div class="col-md-3 col-sm-offset-5">
                         <button class="btn btn-success" name="cetak_barang"><li class="fa fa-print"></li>Cetak</button>
@@ -151,7 +173,6 @@
           </div>
           <!-- /.box -->
         </div>
-
         <!-- /.col -->
       </div>
       <!-- /.row -->

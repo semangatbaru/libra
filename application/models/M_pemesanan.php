@@ -93,8 +93,7 @@ class M_pemesanan extends CI_Model
           $output .= '
             <tr>
                 <th colspan="3">Total</th>
-                
-                <th colspan="2" align="right"><input type="text" id="totall" name="totall" value="' .'Rp '. number_format($this->cart->total()) .  '" class="form-control" style="text-align:right;margin-bottom:5px;" readonly></th>
+                <th colspan="2" align="right">'.'Rp '.number_format($this->cart->total()).'</th>
             </tr>
         ';
           return $output;
@@ -122,10 +121,9 @@ class M_pemesanan extends CI_Model
           $id_pemesanan = $this->input->post('id_pemesanan');
           $id_user = $this->session->userdata("id_user");
           $id_pelanggan = $this->input->post('id_pelanggan');
-          $ambil = date_format(date_create($this->input->post('ambil')), 'Y-m-d');
           $tgl=date('Y-m-d');
-          $via = 'web';
           $tanggal = $tgl;
+          $ambil = date('Y-d-m', strtotime($this->input->post('ambil')));
           $total = $this->input->post('total');
           $bayar = $this->input->post('bayar');
           $pesan = $this->input->post('pesan');
@@ -137,6 +135,7 @@ class M_pemesanan extends CI_Model
                'tanggal' => $tanggal,
                'total' => $total,
                'bayar' => $bayar,
+               'ambil' => $ambil,
           );
           $result = $this->db->insert($this->_tT, $pemesanan);
      }
@@ -147,7 +146,8 @@ class M_pemesanan extends CI_Model
                foreach ($cart as $item) {
                     $data_detail = array(
                          'id_pemesanan' => $id_pemesanan,
-                         'id_barang' => $item['id'],
+                         'nama_barang' => $item['name'],
+                         'harga' => $item['price'],
                          'jumlah' => $item['qty'],
                     );
                     $this->db->insert($this->_tDT, $data_detail);
