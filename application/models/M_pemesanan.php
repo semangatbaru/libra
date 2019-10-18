@@ -154,7 +154,7 @@ class M_pemesanan extends CI_Model
                }
           }
      }
-     function nota($table,$where){
+     public function nota($table,$where){
           return $this->db->get_where($table,$where);
      }
 }
