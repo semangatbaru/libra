@@ -160,8 +160,8 @@
 
                                             <div class="col-sm-4 col-sm-offset-2">
                                                 <input type="text" class="form-control"  name="bayar" placeholder="Bayar" id="bayar">
-                                                <input type="text" class="form-control"  name="total" placeholder="total" id="total">
-                                                <input type="text" class="form-control"  name="hargaAwal" placeholder="hargawal" id="hargaAwal">
+                                                <input type="hidden" class="form-control"  name="total" placeholder="total" id="total">
+                                                <input type="hidden" class="form-control"  name="hargaAwal" placeholder="hargawal" id="hargaAwal">
                                             </div>    
                                             <div class="col-sm-4 ">
                                                 <input type="text" class="form-control"  name="kembalian" placeholder="Kembalian" id="kembalian" readonly>
