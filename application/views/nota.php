@@ -37,7 +37,7 @@
     <h5 style="text-align:center;">Libra Conveksi<br>Jln. Prov M. Yamin. 60 Bogo Nganjuk</h5>
     <table>
         <tr>
-            <td><?php foreach ($print as $t): ?> id_pemesanan : <?php echo $t->id_pemesanan?> <?php endforeach; ?></td>
+            <td><?php foreach ($print as $t): ?> <?php echo $t->id_pemesanan?> <?php endforeach; ?></td>
         </tr>
         <tr>
             <td> <?php echo date('d-m-y h:m:s') ?></td>
@@ -45,18 +45,14 @@
     </table>
     <br>
     <table>
+    <td><?php foreach ($print as $t): ?>
         <tr>
-            <td>Set Kaos Futsal</td>
+            <td><?php echo $t->id_pemesanan?></td>
         </tr>
         <tr>
             <td>150.000 X 13 = 750.000</td>
         </tr>
-        <tr>
-            <td>Desain</td>
-        </tr>
-        <tr>
-            <td>100.000 X 1 = 100.000</td>
-        </tr>
+        <?php endforeach; ?>
     </table>
     <hr style="border-top : dotted 1px;">
     <table>
