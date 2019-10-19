@@ -67,7 +67,7 @@ class Pemesanan extends CI_Controller
     function load_cart()
     {
         $data = $this->M_pemesanan->load();
-        echo json_encode($data);
+        echo json_encode($data); 
     }
     function hapus_keranjang()
     {
@@ -83,6 +83,7 @@ class Pemesanan extends CI_Controller
     {
         $data = $this->cart->destroy();
         echo json_encode($data);
+        
     }
     public function add()
     {

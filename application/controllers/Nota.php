@@ -17,10 +17,9 @@ class Nota extends CI_Controller {
     public function index($id_pemesanan)
 	{
 		$where = array('id_pemesanan' => $id_pemesanan );
-        $data['pemesanan'] = $this->M_pemesanan->nota('detG',$where, )->result();
+        $data['pemesanan'] = $this->M_pemesanan->nota('detG',$where )->result();
         $data['detail'] = $this->M_pemesanan->nota('detail_pemesanan',$where)->result();
 		$this->load->view("nota",$data);
 	}
-
     
 }

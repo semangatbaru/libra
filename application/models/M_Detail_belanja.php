@@ -29,7 +29,8 @@ class M_Detail_belanja extends CI_Model {
         // $this->db->where('barangmasuk.id_barangmasuk', $id_barangmasuk);
         return $this->db->get_where($table,$where);
     }
-     //Update data
+
+    //Update data
     public function update()
     {
         $post = $this->input->post();

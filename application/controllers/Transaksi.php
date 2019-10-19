@@ -22,6 +22,8 @@ class Transaksi extends CI_Controller {
 		$data["print"] = $this->M_Transaksi->nota();
 		$this->load->view("nota", $data);
 		/** 
+
+
 		ob_start();    
 	    
 	    $html = ob_get_contents();        

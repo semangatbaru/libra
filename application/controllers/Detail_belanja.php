@@ -19,6 +19,7 @@ class Detail_belanja extends CI_Controller {
 		$data['print'] = $this->M_Detail_belanja->ambil_data('barangmasuk',$where)->result();
 		$this->load->view("detail_belanja",$data);
 	}
+
 	public function getAll(){
 		$data=$this->M_Detail_belanja->ambil_data();
 		echo json_encode($data);

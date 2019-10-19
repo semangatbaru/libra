@@ -100,5 +100,6 @@
 <script>
     window.print();
     document.location.href = "http://localhost/libra/Pemesanan"; 
+     
 </script>
 </html>

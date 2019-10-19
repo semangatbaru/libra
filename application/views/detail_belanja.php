@@ -85,6 +85,9 @@
                                 </div>
                               </div>
 
+                              <?php foreach($data as $d):?>
+                                <?php echo $d->detail_belanja?>
+                              <?php endforeach?>
                               <table id="example2" class="table  table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info" >
                                 <thead>
                                   <tr>
@@ -92,8 +95,11 @@
                                     <th>Jumlah</th>
                                     <th>Harga Beli</th>
                                     <th>Sub Total</th>
+                                  </tr>
+                                  
                                 </thead>
                               </table>
+                            
 
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
