@@ -98,14 +98,10 @@
                                     <div class="box-body">
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label " id="datapemesan">Nama Pemesan</label>
+                                               <div class="col-sm-4">
+                                                <input type="text" class="form-control"  name="qty" placeholder="ID Pemesanan" id="qty">
+                                            </div>
                                             <div class="col-sm-4 ">
-                                                 <select class="form-control select2 j" style="width: 100%;" name="id_pelangganB" id="id_pelangganB">
-                                                    <option value="" disable >Cari Pelanggan</option>
-                                                    <?php foreach ($pelanggan as $p): ?>
-                                                        <option data-nohp="<?php echo $p->hp ?>" data-alamat="<?php echo $p->alamat ?>" data-nama="<?php echo $p->nama ?>" value="<?php echo $p->id_pelanggan?>"><?php echo $p->nama;?></option>
-                                                    <?php endforeach;?>
-                                                </select>
                                                 <input type="hidden" class="form-control"  name="id_pemesanan" placeholder="Nama Pemesan" id="id_pemesanan">
                                             </div>    
                                             <div class="col-sm-4 ">
@@ -123,33 +119,33 @@
                                         
                                         <div class="form-group">
                                             <!-- kontrol baris kedua -->
-                                            <label class="col-sm-2 control-label">Data Barang</label>
-                                            <div class="col-sm-3">
-                                                <input type="text" class="form-control"  name="name" placeholder="Nama Barang" id="name">
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control"  name="name" placeholder="Nama Pelanggan" id="name">
                                                 
                                                 <input type="hidden" class="form-control" readonly name="id" placeholder="nomor" id="id" value="">
                                             </div>
-                                            <div class="col-sm-2">
-                                                <input type="text" class="form-control"  name="qty" placeholder="Jumlah" id="qty">
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control"  name="qty" placeholder="HP" id="qty">
                                             </div>
-                                            <div class="col-sm-3">
-                                                <input type="text" class="form-control"  name="price" placeholder="Harga" id="price">
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control"  name="price" placeholder="Alamat" id="price">
                                             </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <div class="col-xs-2">
-                                                <button class="add_keranjang btn btn-flat  btn-success" name="keranjang" id="keranjang">Tambah</button>
-                                            </div>
+                                                    <button class="add_keranjang btn btn-flat  btn-success" name="keranjang" id="keranjang">Tambah</button>
+                                                </div>
                                         </div>
                                         
                                         <div class="col-sm-12 ">
                                             <table class="table table-striped table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>No</th>
                                                         <th>Nama Barang</th>
-                                                        <th>Jumlah</th>
                                                         <th>Harga</th>
+                                                        <th>Jumlah</th>
                                                         <th>Subtotal</th>
-                                                        <th>Pilihan</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="detailCart">
