@@ -297,12 +297,13 @@
     //ambil datanya dulu
     $('#showData').on('click','.item_belanja', function(){
       // kosong();
-      // var id_pelanggan = $(this).data('id_pelanggan');
+      var id_barangmasuk = $(this).data('id_barangmasuk');
       // var nama = $(this).data('nama');
       // var nohp = $(this).data('nohp');
       // var alamat = $(this).data('alamat');
       // var email = $(this).data('email');
       // var password = $(this).data('password');
+      window.location="<?php echo base_url().'Detail_belanja/index/' ?>"+id_barangmasuk
       
       $('#Modal_Ambil').modal('show');
       // $('[name="id_pelanggan_edit"]').val(id_pelanggan);
