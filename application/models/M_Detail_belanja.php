@@ -8,6 +8,7 @@ class M_Detail_belanja extends CI_Model {
     private $_table2 = "laporan_transaksimingguan";
     private $_table3 = "laporan_transaksibulanan";
     private $_table4 = "laporan_transaksitahunan";
+    private $_table5 = "detail_belanja";
 
     //menampilkan data
     public function rule(){
@@ -20,14 +21,13 @@ class M_Detail_belanja extends CI_Model {
     }
     
     //menampilkan data
-    public function ambil_data(){
-        $id_barangmasuk = $_GET['id_barangmasuk'];
-        $this->db->select('*');
-        $this->db->from('id_barangmasuk');
-        $this->db->join()
-        $this->db->where('barangmasuk.id_barangmasuk', $id_barangmasuk);
-        $hasil = $this->db->get();
-        return $hasil->result();
+    public function ambil_data($table, $where){
+        // $id_barangmasuk = $_GET['id_barangmasuk'];
+        // $this->db->select('*');
+        // $this->db->from('id_barangmasuk');
+        // $this->db->join()
+        // $this->db->where('barangmasuk.id_barangmasuk', $id_barangmasuk);
+        return $this->db->get_where($table,$where);
     }
 
      //Update data

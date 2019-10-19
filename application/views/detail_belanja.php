@@ -37,93 +37,84 @@
   <div class="content-wrapper">
             <!-- Main content -->
             <section class="content">
-                <div class="row">
-                    <div class="col-xs-10 col-sm-offset-1">
-                        <div class="box box-info">
-                            <!-- <form enctype="multipart/form-data" class="form-horizontal" method="post" id="formnya" > -->
-                            <div class="box-header">
+              <div class="row">
+                <div class="col-xs-10 col-sm-offset-1">
+                  <div class="box box-info">
+                    <!-- <form enctype="multipart/form-data" class="form-horizontal" method="post" id="formnya" > -->
+                    <div class="form-horizontal">
+                      <div class="box-body">
 
-                                <div class="form-horizontal">
-                                    <div class="box-body">
-        
-          <!-- form table -->
-          <div class="box ">
-            <div class="box-header">
-              <div class="col-xs-10 col-sm-offset-1">
-                 <div style="text-align: center;">
-                    <span style=" font-size: 20px;">Data Belanja</span>
-                    </div>
-                    
-                    <div class="form-group">
-                    <label  class="col-sm-1 control-label">Tanggal</label> 
-                        <div class="col-sm-4 ">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
+                        <!-- form table -->
+                        <div class="box ">
+                          <div class="box-header">
+                            <div class="col-xs-10 col-sm-offset-1">
+                              <div style="text-align: center;">
+                                <span style=" font-size: 20px;">Detail Belanja</span>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label ">Kode Belanja</label>
+                                <div class="col-sm-3 ">
+                                  <input value="" class="form-control"></input>
                                 </div>
-                                
-                                <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  readonly="readonly" >
+
+                                <label class="col-sm-2 control-label">Tanggal</label>
+                                <div class="col-sm-3 ">
+                                  <div class="input-group">
+                                    <div class="input-group-addon">
+                                      <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  readonly="readonly" >
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label">No Order</label>
+                                <div class="col-sm-3">
+                                  <input type="text" class="form-control"  name="name" id="name">
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label class="col-sm-2 control-label">Total Belanja</label>
+                                <div class="col-sm-3">
+                                  <input type="text" class="form-control"  name="name" id="name">
+                                </div>
+                              </div>
+
+                              <table id="example2" class="table  table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info" >
+                                <thead>
+                                  <tr>
+                                    <th>Nama Barang</th>
+                                    <th>Jumlah</th>
+                                    <th>Harga Beli</th>
+                                    <th>Sub Total</th>
+                                </thead>
+                              </table>
+
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                              </div>
+                            
                             </div>
-                        </div>
-                        </div>
-          
-                     <div class="form-group">
-                       <label class="col-sm-1 control-label">Total</label>
-                          <div class="col-sm-3">
-                          <input type="text" class="form-control"  name="qty" id="qty">
                           </div>
                         </div>
-                      </br>
-          <!-- form table -->
-                                                  
-            <!-- /.box-header -->
-            <div class="form-group">
-              <div class="box-header with-border">
-                <div class="col-md-3">
-                    <select class="form-control select2 " style="width: 100%;" name="filter" id="filter">
-                        <option value="hariini"  >Hari Ini</option>
-                        <option value="mingguini"  >Minggu Ini</option>
-                        <option value="bulanini"  >Bulan Ini</option>
-                        <option value="tahunini"> Tahun ini</option>
-                        <option value="semua"  >Semua</option> 
-                    </select>
+
+                      </div>
+                    </div>
+                  <!-- form table -->
+                  </div>
+                <!-- /.box -->
                 </div>
-
-                <!-- <a href="<?php echo site_url('laporan_transaksi/cetakHarian')?>" class="btn btn-success" name="harian" id="harian"><li class="fa fa-print"></li>Cetak</a>  
-                <a href="<?php echo site_url('laporan_transaksi/cetakMingguan')?>" class="btn btn-success" name="mingguan" id="mingguan"><li class="fa fa-print"></li>Cetak</a>  
-                <a href="<?php echo site_url('laporan_transaksi/cetakBulanan')?>" class="btn btn-success" name="bulanan" id="bulanan"><li class="fa fa-print"></li>Cetak</a>
-                <a href="<?php echo site_url('laporan_transaksi/cetakTahunan')?>" class="btn btn-success" name="tahunan" id="tahunan"><li class="fa fa-print"></li>Cetak</a> -->
-                <a href="<?php echo site_url('laporan_transaksi/cetakAll')?>" class="btn btn-success" name="semua" id="semua"><li class="fa fa-print"></li>Cetak</a>
+              <!-- /.col -->
               </div>
-            <div class="box-body">
-              <table id="example1" class="table  table-striped" >
-                <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Kode Belanja</th>
-                  <th>Total</th>
-                  <th>Status</th>
-                  <th>Opsi</th>
-                </thead>
-                <tbody id="showData">
-
-                </tbody>
-              </table>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
+              <!-- /.row -->
+            </section>
+            <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <!-- Control Sidebar -->
-  <?php //$this->load->view('_partials/aside');?>
 </div>
 <!-- ./wrapper -->
 

@@ -136,7 +136,7 @@
                       '<td>'+data[i].total+'</td>'+
                       '<td>tersedia</td>'+
                       '<td style="text-align:left;">'+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'" >Detail</a>'+' '+
+                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-id_barangmasuk="'+data[i].id_barangmasuk+'" >Detail</a>'+' '+
                       '</td>'+
                     '</tr>';
                 }

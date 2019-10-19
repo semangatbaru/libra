@@ -13,10 +13,11 @@ class Detail_belanja extends CI_Controller {
 		}
 	}
 
-	public function index()
+	public function index($id_barangmasuk)
 	{
-		$data["print"] = $this->M_Detail_belanja->ambil_data();
-		$this->load->view("detail_belanja");
+		$where = array('id_barangmasuk' => $id_barangmasuk);
+		$data['print'] = $this->M_Detail_belanja->ambil_data('barangmasuk',$where)->result();
+		$this->load->view("detail_belanja",$data);
 	}
 	public function getAll(){
 		$data=$this->M_Detail_belanja->ambil_data();
@@ -32,7 +33,6 @@ class Detail_belanja extends CI_Controller {
 		$this->load->view("laporan_transaksi/cetak/cetak_penjualan_hariini.php");
 	}
 
-	}
 	public function getharian(){
 		$data["laporan"] = $this->M_Laporan_Transaksi->ambil_dataharian();
 		$this->load->view('laporan_transaksi/cetak/cetak_penjualan_hariini', $data);
