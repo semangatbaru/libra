@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 <html lang="en">
 <head>
-<title>Laporan Pemesanan | Libra</title>
+<title>Laporan Data Belanja | Libra</title>
   <?php $this->load->view('_partials/head')?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">

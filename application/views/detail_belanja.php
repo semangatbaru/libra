@@ -55,7 +55,9 @@
                               <div class="form-group">
                                 <label class="col-sm-2 control-label ">Kode Belanja</label>
                                 <div class="col-sm-3 ">
-                                  <input value="" class="form-control"></input>
+                                  <input value="" class="form-control">
+                                  <td><?php foreach ($print as $t): ?> <?php echo $t->id_barangmasuk?> <?php endforeach; ?></td>
+                                </input>
                                 </div>
 
                                 <label class="col-sm-2 control-label">Tanggal</label>
