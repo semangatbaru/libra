@@ -12,10 +12,11 @@ class Detail_Pemesanan extends CI_Controller {
 				redirect(base_url(""));
 		}
 	}
-	public function index()
+	public function index($id_pemesanan)
 	{
-		$data["print"] = $this->M_Detail_Pemesanan->ambil_data();
-		$this->load->view("detail_pemesanan");
+		$where = array('id_pemesanan' => $id_pemesanan );
+		$data['print'] = $this->M_Detail_Pemesanan->ambil_data('pemesanan',$where)->result();
+		$this->load->view("detail_pemesanan",$data);
 	}
 	public function getAll(){
 		$data=$this->M_Detail_Pemesanan->ambil_data();

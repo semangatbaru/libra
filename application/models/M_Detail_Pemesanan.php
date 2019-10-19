@@ -18,16 +18,17 @@ class M_Detail_Pemesanan extends CI_Model {
     }
 
     //menampilkan data
-    public function ambil_data(){
-        $id_pemesanan = $_GET['id_pemesanan'];
-        $this->db->select('*');
-        $this->db->from('pemesanan');
-        $this->db->join('detail_pemesanan', 'detail_pemesanan.id_pemesanan = pemesanan.id_pemesanan');
-        $this->db->join('detail_gambar', 'detail_gambar.id_pemesanan = pemesanan.id_pemesanan');
-        $this->db->join('tb_user', 'pemesanan.id_user = tb_user.id_user');
-        $this->db->where('pemesanan.id_pemesanan', $id_pemesanan);
-        $hasil= $this->db->get();
-        return $hasil->result();
+    public function ambil_data($table,$where){
+        // $id_pemesanan = $_GET['id_pemesanan'];
+        // $this->db->select('*');
+        // $this->db->from('pemesanan');
+        // $this->db->join('detail_pemesanan', 'detail_pemesanan.id_pemesanan = pemesanan.id_pemesanan');
+        // $this->db->join('detail_gambar', 'detail_gambar.id_pemesanan = pemesanan.id_pemesanan');
+        // $this->db->join('tb_user', 'pemesanan.id_user = tb_user.id_user');
+        // $this->db->where('pemesanan.id_pemesanan', $id_pemesanan);
+        // $hasil= $this->db->get();
+        // return $hasil->result();
+        return $this->db->get_where($table,$where);
     }
 
     //Update data
