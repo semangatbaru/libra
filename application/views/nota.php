@@ -33,43 +33,72 @@
     </style>
 </head>
 <!--  -->
-<body onload="">
+<body >
     <h5 style="text-align:center;">Libra Conveksi<br>Jln. Prov M. Yamin. 60 Bogo Nganjuk</h5>
     <table>
         <tr>
-            <td><?php foreach ($print as $t): ?> <?php echo $t->id_pemesanan?> <?php endforeach; ?></td>
+            <td><?php foreach ($pemesanan as $t): ?> <?php echo $t->id_pemesanan?><?php endforeach; ?></td>
         </tr>
         <tr>
-            <td> <?php echo date('d-m-y h:m:s') ?></td>
+            <td><?php foreach ($pemesanan as $t): ?>Kasir</td>
+            <td>:  <?php echo $t->username?><?php endforeach; ?></td>
+        </tr>
+        <tr>
+            <td> <?php foreach ($pemesanan as $j): ?>Pelanggan</td>
+            <td>:  <?php echo $j->nama?></td> <?php endforeach; ?></td>
         </tr>
     </table>
+    <hr style="border-top : dotted 1px;">
     <br>
     <table>
-    <td><?php foreach ($print as $t): ?>
+    <td><?php foreach ($detail as $t): ?>
         <tr>
-            <td><?php echo $t->id_pemesanan?></td>
+            <td><?php echo $t->nama_barang?></td>
         </tr>
         <tr>
-            <td>150.000 X 13 = 750.000</td>
+            <td><?php echo $t->harga?> X <?php echo $t->jumlah?> = <?php echo ($t->jumlah * $t->harga)?></td>
         </tr>
         <?php endforeach; ?>
     </table>
     <hr style="border-top : dotted 1px;">
     <table>
         <tr>
+        <?php $awal=0; ?>
             <td>Total</td>
-            <td>Rp. 850.000</td>
+            <td><?php foreach ($pemesanan as $t): ?> <?php echo $t->total?></td> <?php endforeach; ?>
         </tr>
         <tr>
-            <td>Dp</td>
-            <td>Rp. 500.000</td>
+            <td>Bayar</td>
+            <td><?php foreach ($pemesanan as $t): ?> <?php echo $t->bayar?> <?php endforeach; ?></td>
         </tr>
         <tr>
-            <td>Sisa</td>
-            <td>Rp. 350.000</td>
+            <td>
+                <?php foreach ($pemesanan as $t):  
+                    if($t->bayar >= $t->total){
+                        echo("Kemballian  ");
+                    }else{
+                        echo("Sisa  ");
+                    }
+                ?>
+                <?php endforeach; ?>
+             </td>
+            <td>
+                <?php foreach ($pemesanan as $t):  
+                    if($t->bayar >= $t->total){
+                        echo ($t->bayar - $t->total) ;
+                    }else{
+                        echo ("-".($t->total - $t->bayar)) ;
+                    }
+                    ?>
+                <?php endforeach; ?>
+             </td>
         </tr>
     </table>
     <hr style="border-top : dotted 1px;">
     <p style="text-align:center;">Layanan Konsumen : 0899988263</p>
 </body>
+<script>
+    window.print();
+    document.location.href = "http://localhost/libra/Pemesanan"; 
+</script>
 </html>
