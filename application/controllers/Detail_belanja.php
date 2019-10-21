@@ -18,6 +18,9 @@ class Detail_belanja extends CI_Controller {
 		$where = array('id_barangmasuk' => $id_barangmasuk);
 		$data['print'] = $this->M_Detail_belanja->ambil_data('barangmasuk',$where)->result();
 		$this->load->view("detail_belanja",$data);
+
+		// $data["print2"] = $this->M_Detail_belanja->getData();
+		// $this->load->view("detail_belanja", $data);
 	}
 
 	public function getAll(){

@@ -85,9 +85,9 @@
                                 </div>
                               </div>
 
-                              <?php foreach($data as $d):?>
-                                <?php echo $d->detail_belanja?>
-                              <?php endforeach?>
+                              <!-- <?php foreach($print as $pt):?>
+                                <?php echo $pt->detail_belanja?>
+                              <?php endforeach?> -->
                               <table id="example2" class="table  table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info" >
                                 <thead>
                                   <tr>
