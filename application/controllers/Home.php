@@ -23,7 +23,7 @@ class Home extends CI_Controller {
 	public function getD(){
 		$id_pemesanan = $this->input->post("id_pemesanan");
 		$data=$this->M_Home->ambil_detail($id_pemesanan);
-		echo json_encode($data);
+		echo json_encode($data); 
 	}
 
 }

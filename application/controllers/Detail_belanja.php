@@ -13,24 +13,17 @@ class Detail_belanja extends CI_Controller {
 		}
 	}
 
-	public function index($id_barangmasuk)
-	{
-		$where = array('id_barangmasuk' => $id_barangmasuk);
-		$data['print'] = $this->M_Detail_belanja->ambil_data('barangmasuk',$where)->result();
-		$this->load->view("detail_belanja",$data);
-
-		// $data["print2"] = $this->M_Detail_belanja->getData();
-		// $this->load->view("detail_belanja", $data);
-	}
-
 	public function getAll(){
 		$data=$this->M_Detail_belanja->ambil_data();
 		echo json_encode($data);
 	}
-	public function edit(){
-		$data=$this->M_Detail_belanja->update2();
-		$data=$this->M_Detail_belanja->update();
-		echo json_encode($data);
+	public function index(){
+		$this->load->view("detail_belanja");
+	}
+	public function getD(){
+		$id_barangmasuk = $this->input->post("id_barangmasuk");
+		$data=$this->M_Detail_belanja->ambil_detail($id_barangmasuk);
+		echo json_encode($data); 
 	}
 
 	public function hariQ(){

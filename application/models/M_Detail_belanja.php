@@ -29,7 +29,12 @@ class M_Detail_belanja extends CI_Model {
         // $this->db->where('barangmasuk.id_barangmasuk', $id_barangmasuk);
         return $this->db->get_where($table,$where);
     }
-
+    public function ambil_detail($id_barangmasuk){
+        $this->db->order_by('id_barangmasuk','ASC');
+        // return $this->db->query("Select DISTINCT pemesanan.*,detail_pemesanan.* FROM pemesanan, detail_pemesanan WHERE pemesanan.id_pemesanan = detail_pemesanan.id_pemesanan AND detail_pemesanan.id_pemesanan = $id_pemesanan")->result();
+        return $this->db->get_where("detail_belanja", array('id_barangmasuk' => $id_barangmasuk))->result();
+      
+    }
     //Update data
     public function update()
     {
