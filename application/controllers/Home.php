@@ -1,34 +1,29 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller
-{
-	function __construct()
-	{
+class Home extends CI_Controller {
+    
+    function __construct(){
 		parent::__construct();
+		$this->load->model("M_Home");
+		$this->load->library('form_validation');
 		$this->load->helper('url');
 		if($this->session->userdata('status') != 'login'){
 				redirect(base_url(""));
 		}
 	}
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function index()
-	{
-		$this->load->view('home');
+	public function getAll(){
+		$data=$this->M_Home->ambil_data();
+		echo json_encode($data);
 	}
+	public function index(){
+		$this->load->view("home");
+	}
+	public function getD(){
+		$id_pemesanan = $this->input->post("id_pemesanan");
+		$data=$this->M_Home->ambil_detail($id_pemesanan);
+		echo json_encode($data);
+	}
+
 }
