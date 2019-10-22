@@ -3,11 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Laporan_Debit extends CI_Model {
     // deklarasi variable
-    private $_table = "debit";
-    private $_table1 = "debitharian";
-    private $_table2 = "debitmingguan";
-    private $_table3 = "debitbulanan";
-    private $_table4 = "debittahunan";
+    private $_table = "debit_al";
+    private $_table1 = "debit_harian";
+    private $_table2 = "debit_mingguan";
+    private $_table3 = "debit_bulanan";
+    private $_table4 = "debit_tahunan";
+    private $_tablesum = "sum_debital";
+    private $_tablesumharian = "sum_dharian";
+    private $_tablesummingguan = "sum_dmingguan";
+    private $_tablesumbulanan = "sum_dbulanan";
+    private $_tablesumtahunan = "sum_dtahunan";
 
     //menampilkan data
     public function rule(){
@@ -36,5 +41,21 @@ class M_Laporan_Debit extends CI_Model {
     }
     public function ambil_datatahunan(){
         return $this->db->get($this->_table4)->result();
+    }
+    public function ambil_sum(){
+        return $this->db->get($this->_tablesum)->result();
+    }
+    public function ambil_sumharian(){
+        return $this->db->get($this->_tablesumharian)->result();
+    }
+    public function ambil_summingguan(){
+        return $this->db->get($this->_tablesummingguan)->result();
+    }
+    public function ambil_sumbulanan(){
+        return $this->db->get($this->_tablesumbulanan)->result();
+    }
+    
+    public function ambil_sumtahunan(){
+        return $this->db->get($this->_tablesumtahunan)->result();
     }
 }
