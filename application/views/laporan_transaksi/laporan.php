@@ -94,9 +94,9 @@
                                 <span style=" font-size: 20px;">Data Belanja</span>
                                 </div>
                                 
-                                <div class="form-group">
+                                <br>
                                 <label  class="col-sm-1 control-label">Tanggal</label> 
-                                    <div class="col-sm-4 ">
+                                    <div class="col-sm-3 ">
                                         <div class="input-group">
                                             <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
@@ -105,7 +105,7 @@
                                             <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  readonly="readonly" >
                                         </div>
                                     </div>
-                                    </div>
+                                    
                       
                                  <div class="form-group">
                                    <label class="col-sm-1 control-label">Total</label>
@@ -114,6 +114,7 @@
                                       </div>
                                     </div>
                                   </br>
+                                  
                       <!-- form table -->
                                                   
             <!-- /.box-header -->

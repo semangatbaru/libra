@@ -48,7 +48,7 @@
                          <input type="text" class="form-control"  name="a" id="a" readonly>
                         </div> 
                         
-                        <label  class="col-sm-2 control-label">Tanggal</label> 
+                        <!-- <label  class="col-sm-2 control-label">Tanggal</label> 
                         <div class="col-sm-3 ">
                         <div class="input-group"> 
                             <div class="input-group">
@@ -58,7 +58,7 @@
                                 <input type="text" name="c" id="c" class="form-control"  data-mask  readonly="readonly" >
                             </div>
                         </div>
-                        </div>
+                        </div> -->
                       </div>
 
                       <div class="form-group">
