@@ -81,7 +81,7 @@ class M_User extends CI_Model
         // return $this->db->delete($this->_table, array("id_user"=> $id_user));
         $id_user = $this->input->post('id_user');
         $this->db->where('id_user', $id_user);
-        $result = $this->db->delete('login');
+        $result = $this->db->delete('tb_user');
         return $result;
     }
 }

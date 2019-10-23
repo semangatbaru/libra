@@ -3,6 +3,19 @@
 <head>
 <title>Laporan Pemesanan | Libra</title>
   <?php $this->load->view('_partials/head')?>
+  <style type="text/css">
+
+    body{
+        background-color: #E8E9EC;
+    }
+
+    .dropzone {
+        border: 2px dashed #0087F7;
+    }
+    .margin {
+        margin-top: 50px;
+    }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -27,116 +40,169 @@
         
 
         <div class="col-xs-12 col-sm-offset-0">
-          <!-- Modal ambil -->
-
+          <!--MODAL DELETE-->
           <form>
-            <div class="modal fade in" id="Modal_Ambil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg" role="document">
+            <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail Pemesanan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <div class="form-group row">
-                        <div class="col-md-3 col-sm-offset-0">
-                          <input type="text" name="id_pemesanan" id="id_pemesanan" class="form-control" placeholder="ID Pemesanan" >
-                          <input type="text" name="id_pemesanan2" id="id_pemesanan2" class="form-control"  readonly>
-                        </div>
-                        <div class="col-md-4">
-                        <label  class="col-sm-3 control-label">Tanggal</label> 
-                        <div class="col-sm-7 ">
-                        <div class="input-group">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" name="tanggal" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask  readonly="readonly" >
-                            </div>
-                        </div>
-                        </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-offset-0">
-                        <div class="box box-info">
-                            <!-- <form enctype="multipart/form-data" class="form-horizontal" method="post" id="formnya" > -->
-                            <div class="box-header">
-                            <center><h3 class="box-title">Tambah Gambar</h3></center>
-                                <div class="form-horizontal">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <div class="col-sm-12 dropzone dz-message">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- </form> -->
-                        </div>
-
-                        <!-- /.col -->
-                        </div>
-                        
-                    <!-- /.row -->
-                    </div>
-                    
-                    <div class="form-group row">
-                          
-                    </div>
-
-                      <div class="form-group row ">
-                        <div class="col-md-3 ">
-                            <button type="button" type="submit" id="btn_ambil" class="btn btn-primary">Tambah</button>
-                              <br><br>
-                        </div>
-                      </div>
-                    <div class="form-group row">
-                        <div class="col-md-3">
-                        <input type="text" class="form-control"  name="nama" placeholder="Nama Pemesan" id="nama">
-                        </div>
-                        <div class="col-md-3">
-                        <input type="text" class="form-control"  name="hp" placeholder="No HP" id="nama">
-                        </div>
-                        <div class="col-md-3">
-                        <input type="text" class="form-control"  name="alamat" placeholder="Alamat" id="nama">
-                        </div>
-                    </div>
-
-                    
-
-                    <div class="form-group row">
-                      <label class="col-md-2 col-form-label">DP     :</label>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-2 col-form-label">Sisa     :</label>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-2">
-                        <input type="hidden" class="form-control"  name="bayarA" placeholder="" id="bayarA">
-                        <input type="hidden" class="form-control"  name="sisaA" placeholder="" id="sisaA">
-                        <input type="hidden" class="form-control"  name="kategori" placeholder="" id="kategori">
-                        </div>
-                        <div class="col-md-2">
-                        <input type="text" class="form-control"  name="bayarL" placeholder="Bayar Lagi" id="bayarL">
-                        </div>
-                      </div>
-                    </div>
-                      
-                    <div class="modal-footer">
-                    
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" type="submit" id="btn_ambil" class="btn btn-primary">Simpan</button>
-                    
+                       <strong>Are you sure to delete this record?</strong>
                   </div>
+                  <div class="modal-footer">
+                    <input type="hidden" name="id_pemesanan_delete" id="id_pemesanan_delete" class="form-control">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" type="submit" id="btn_delete" class="btn btn-primary">Yes</button>
                   </div>
-                  
                 </div>
               </div>
             </div>
           </form>
+        <!--END MODAL DELETE-->
+          <!-- Modal ambil -->
+                    <form>
+                      <div class="modal fade in" id="Modal_Ambil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Detail Pemesanan</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>       
+                                </div>
+
+                                <div class="form-group row">
+                                <label class="col-sm-2 col-sm-offset-1 control-label ">ID Pemesanan</label>
+                                  <div class="col-sm-3 ">
+                                   <input type="text" class="form-control"  name="a" id="a" readonly>
+                                  </div> 
+                                  <label  class="col-sm-2 control-label">Tanggal</label> 
+                                  <div class="col-sm-3 ">
+                                  <div class="input-group"> 
+                                      <div class="input-group">
+                                          <div class="input-group-addon">
+                                          <i class="fa fa-calendar"></i>
+                                          </div>
+                                          <input type="text" name="b" id="b" class="form-control"  data-mask  readonly="readonly" >
+                                      </div>
+                                  </div>
+                                  </div>
+                                </div>
+
+                                <div class="form-group row">
+                                  <div class="col-sm-3 col-sm-offset-1">
+                                    <input type="text" class="form-control"  name="d" id="d" readonly placeholder="Nama">
+                                  </div>
+                                  <div class="col-sm-3">
+                                    <input type="text" class="form-control"  name="e" id="e" readonly placeholder="HP">
+                                  </div>
+                                  <div class="col-sm-3">
+                                    <input type="text" class="form-control"  name="f" id="f" readonly placeholder="Alamat">
+                                  </div>
+                                </div>
+
+
+                              <div>
+                              <table style="padding: 0px 50px 0px 50px" id="example2" class="table  table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info" >
+                                <thead>
+                                  <tr>
+                                    <th>No</th>  
+                                    <th>Nama Barang</th>
+                                    <th>Harga</th>
+                                    <th>Jumlah</th>
+                                    <th>Sub Total</th>
+                                  </thead>
+                                  <tbody id="showdata">                           
+                                  </tbody>
+                              </table>
+                              </div>
+
+                              <div class="form-group row">
+                                  <label class="col-sm-1 col-sm-offset-1 control-label ">Total</label>
+                                <div class="col-sm-2"> 
+                                  <input type="text" class="form-control"  name="c" placeholder="total" id="c" readonly>
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                  <label class="col-sm-1 col-sm-offset-1 control-label ">Bayar</label>
+                                <div class="col-sm-2"> 
+                                  <input type="text" class="form-control"  name="g" placeholder="total" id="g" readonly>
+                                </div>
+                              </div>
+
+                              <div class="form-group row">
+                                  <label class="col-sm-1 col-sm-offset-1 control-label ">Kembalian</label>
+                                <div class="col-sm-2"> 
+                                  <input type="text" class="form-control"  name="h" placeholder="total" id="h" readonly>
+                                </div>
+                              </div>
+
+                              
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+
+
+                  
           <!-- / Modal ambil -->
+          <form>
+                      <div class="modal fade in" id="Modal_Gambar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Detail Pemesanan</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>       
+                            </div>
+
+                                <div class="form-group row">
+                                  <label class="col-sm-2 col-sm-offset-1 control-label ">ID Pemesanan</label>
+                                  <div class="col-sm-3 ">
+                                   <input type="text" class="form-control"  name="i" id="i" readonly>
+                                  </div> 
+                                </div>
+
+                               <div class="form-group row">
+                                  <div class="col-sm-10 col-sm-offset-1">
+                                    <table id="example1" class="table  table-striped" >
+                                      
+                                        
+                                        <tbody id="gambar">
+
+                                        </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                                 <div class="form-group row">
+                                  <div class="col-sm-10 col-sm-offset-1 dropzone dz-message">
+                                  </div>
+                                </div>
+
+
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </form>
           <!-- form table -->
+
           <div class="box ">
             <div class="box-header">
               <br><br>
@@ -148,11 +214,7 @@
                   <div class="col-md-3">
                     <div class="form-group">
                     </div>
-                    <div class="form-group">
-                      <div class="col-md-3 col-sm-offset-5">
-                        <button class="btn btn-success" name="cetak_barang"><li class="fa fa-print"></li>Cetak</button>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
             <div class="box-body">
@@ -198,6 +260,47 @@
 <?php $this->load->view('_partials/script');?>
 <script type="text/javascript">
 
+    Dropzone.autoDiscover = false;
+
+        var foto_upload= new Dropzone(".dropzone",{
+        url: "<?php echo base_url('Pemesanan/proses_upload') ?>",
+        maxFilesize: 2,
+        method:"post",
+        acceptedFiles:"image/*",
+        paramName:"userfile",
+        dictInvalidFileType:"Type file ini tidak dizinkan",
+        addRemoveLinks:true,
+        });
+
+
+        //Event ketika Memulai mengupload
+        foto_upload.on("sending",function(a,b,c){
+            a.token=Math.random();
+            b.id_pemesanan = $('#i').val();
+            c.append("token_foto",a.token); //Menmpersiapkan token untuk masing masing foto
+            c.append("id_pemesanan",b.id_pemesanan); 
+        });
+
+
+        //Event ketika foto dihapus
+        foto_upload.on("removedfile",function(a){
+            var token=a.token;
+            $.ajax({
+                type:"post",
+                data:{token:token},
+                url:"<?php echo base_url('Pemesanan/remove_foto') ?>",
+                cache:false,
+                dataType: 'json',
+                success: function(){
+                    console.log("Foto terhapus");
+                },
+                error: function(){
+                    console.log("Error");
+
+                }
+            });
+        });
+
     //crud
     showRecord(); //munculkan data
     
@@ -220,8 +323,10 @@
                       '<td>'+data[i].bayar+'</td>'+
                       '<td>'+data[i].sisa+'</td>'+
                       '<td style="text-align:left;">'+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'" >Detail</a>'+' '+
-                        '<a href="<?php echo site_url('Detail_Pemesanan') ?>" class="btn btn-info btn-sm item_ambil" data-id_pemesanan="'+data[i].id_pemesanan+'" data-nama="'+data[i].nama+'" data-tanggal="'+data[i].tanggal+'" data-bayar="'+data[i].bayar+'" data-sisa="'+data[i].sisa+'">Ambil</a>'+
+                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'"  data-nama="'+data[i].nama+'"  data-hp="'+data[i].hp+'"  data-alamat="'+data[i].alamat+'" data-total="'+data[i].total+'" data-bayar="'+data[i].bayar+'" " data-sisa="'+data[i].sisa+'">Detail</a>'+
+                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_gambar" data-id_pemesanan="'+data[i].id_pemesanan+'" >Gambar</a>'+
+                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_ambil" data-id_pemesanan="'+data[i].id_pemesanan+'" data-total="'+data[i].total+'" data-tanggal="'+data[i].tanggal+'" data-bayar="'+data[i].bayar+'" data-sisa="'+data[i].sisa+'">Ambil</a>'+
+                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_delete" data-id_pemesanan="'+data[i].id_pemesanan+'" >Hapus</a>'+
                       '</td>'+
                     '</tr>';
                 }
@@ -230,192 +335,133 @@
         }
       });
     }
-    //function setCode
-    function setCode() {
-        var id_pemesanan = $('#id_pemesanan').val();
-        $.ajax({
-            type: "POST",
-            url: "<?php echo site_url('Transaksi/setCode') ?>",
-            dataType: "JSON",
-            data: {
-                id_pemesanan: id_pemesanan
-            },
-            success: function(data) {
-                $('[name="id_pemesanan"]').val(data);
-                
 
-                
-            }
-        });
-        return false;
-    }
 
-    //hitung
-
-    $("#bayarL").keyup(function(){
-      var sisa = document.getElementById('sisaA').value;
-      var bayar = document.getElementById('bayarA').value;
-      
-      var thisVal = $(this).val()
-      var resul = parseInt(bayar) + parseInt(thisVal);
-      var result = parseInt(sisa) + parseInt(thisVal);
-      
-
-      if(thisVal != ""){
-            $("#bayar").val(resul);
-            $("#sisa").val(result);
-        }else{
-            $("#bayar").val(bayar);
-            $("#sisa").val(sisa);
-        }
-    })
-    //hitung
-    function hitung() {
-        var bayar = document.getElementById('bayar').value;
-        var bayarL = document.getElementById('bayarL').value;
-
-        
-        if (bayarL=="") {
-        document.getElementById('sisa').value = "";
-        }else{
-        document.getElementById('sisa').value = result;
-        if (result == 0) {
-            document.getElementById('sisa').value = "";
-        }  
-        }
-    }
-
-    //ambil datanya dulu
-    $('#showData').on('click','.item_ambil', function(){
-      var id_pemesanan = $(this).data('id_pemesanan');
-      var nama = $(this).data('nama');
-      var tanggal = $(this).data('nama');
-      var bayar = $(this).data('bayar');
-      var sisa = $(this).data('sisa');
-
-      
-      $('#Modal_Ambil').modal('show');
-      $('[name="nama"]').val(pemesan);
-      $('[name="total"]').val(total);
-      $('[name="bayar"]').val(bayar);
-      $('[name="bayarA"]').val(bayar);
-      $('[name="id_pemesanan"]').val(id_pemesanan);
-      $('[name="id_pemesanan2"]').val(id_pemesanan);
-      $('[name="bayarL"]').val("");
-      setCode();
-      $("#kondisi").prop("checked", false);
-      var result = parseInt(bayar) - parseInt(total);
-      $('[name="sisaA"]').val(result);
-      $('[name="sisa"]').val(result);
-      
-
-    });
-
-    //rapcale
-    //function replace at
-    String.prototype.replaceAt=function(index, replacement) {
-    return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
-    }
-
-    //kondisi
-    $('#kondisi').click(function () {
-        if ($(this).is(":checked")) {
-            var id_pemesanan = $('#id_pemesanan').val();
-            var res = "B";
-            var b= "N";
-            var posisi =27;
-            var result = [id_pemesanan.slice(0,posisi), b, id_pemesanan.slice(posisi)].join('');
-            var txt = result.replaceAt(26,res);
-            $('#id_pemesanan').val(txt);
-            $('#kategori').val("kredit");
-        } else {
-            setCode();
-        }
-    });
-    //ambil
-    
-    //simpan
-    $('#btn_ambil').on('click',function(e){
-      var sisa = $('#sisa').val();
-      var kategori = $('#kategori').val();
-      var bayar = $('#nama').val();
-      var namabarang = $('#namabarang').val();
-      var total = $('#total').val();
-      var bayar = $('#bayar').val();
-      var nofaktu = $('#id_pemesanan').val();
-      var res = alamat.substring(0, 4);
-      var id_pemesanan = nofaktu_replaceAt(12,res);
-      var id_pemesanan2 = $('#idpemesanan2').val();
-      // $('#nofaktur').val(txt);
-
-      if(kategori == "kredit"){
-        $.ajax({
-          type : "POST",
-          url  : "<?php echo site_url('Laporan_Pemesanan/edit')?>",
-          dataType : "JSON",
-          data : {id_pemesanan:id_pemesanan , bayar:bayar, id_pemesanan2:id_pemesanan2},
-          success: function(data){
-              $('#Modal_Ambil').modal('hide');
-              
-              showRecord();
-          }
-        });
-      }else{
-        if(parseInt(sisa) >= 0){
-          $.ajax({
-          type : "POST",
-          url  : "<?php echo site_url('Laporan_Pemesanan/edit')?>",
-          dataType : "JSON",
-          data : {id_pemesanan:id_pemesanan , bayar:bayar, id_pemesanan2:id_pemesanan2},
-          success: function(data){
-              $('#Modal_Ambil').modal('hide');
-              showRecord();
-          }
-          });
-        }else{
-          alert("cek bayar jika bukan credit");
-        }
-      }
-    });
-
-    //edit
-    //ambil datanya dulu
+    //ambil datanya dulu button detail
     $('#showData').on('click','.item_belanja', function(){
-      // kosong();
-      var id_pemesanan = $(this).data('id_pemesanan');
-      
-      window.location="<?php echo base_url().'Detail_Pemesanan/index/' ?>"+id_pemesanan
-      
-       
+       // kosong();
+       var id_pemesanan = $(this).data('id_pemesanan');
+       var tanggal = $(this).data('tanggal');
+       var total = $(this).data('total');
+       var nama = $(this).data('nama');
+       var hp = $(this).data('hp');
+       var alamat = $(this).data('alamat');
+       var bayar = $(this).data('bayar');
+       var sisa = $(this).data('sisa');
+
+      $('#Modal_Ambil').modal('show');
+       $('[name="a"]').val(id_pemesanan);
+       $('[name="b"]').val(tanggal);
+       $('[name="c"]').val(total);
+       $('[name="d"]').val(nama);
+       $('[name="e"]').val(hp);
+       $('[name="f"]').val(alamat);
+       $('[name="g"]').val(bayar);
+       $('[name="h"]').val(sisa);
+
+      $.ajax({
+        type: 'POST',
+        url: '<?php echo site_url('Laporan_Pemesanan/getD')?>',
+        data : {id_pemesanan, id_pemesanan},
+        async: true,
+        dataType: 'JSON',
+        success: function(data){
+          var html = '';
+          var i; 
+          for(i=0; i<data.length; i++){
+            html += '<tr>'+
+                      '<td>'+(i+1)+'</td>'+
+                      '<td>'+data[i].nama_barang+'</td>'+
+                      '<td>'+data[i].harga+'</td>'+
+                      '<td>'+data[i].jumlah+'</td>'+
+                      '<td>'+(data[i].harga*data[i].jumlah)+'</td>'+
+                    '</tr>';
+                }
+          $('#showdata').html(html);
+          $('#example1').dataTable()
+        }
+      });
     });
 
+    //ambil data button ambil
+    $('#showData').on('click','.item_ambil', function(){
+       // kosong();
+       var id_pemesanan = $(this).data('id_pemesanan');
+       var tanggal = $(this).data('tanggal');
+       var kredit = $(this).data('total');
 
-     //update record to database
-    $('#btn_update').on('click',function(){
-      var id_pelanggan = $('#id_pelanggan_edit').val();
-      var nama = $('#nama_edit').val();
-      var nohp = $('#nohp_edit').val();
-      var alamat = $('#alamat_edit').val();
-      var email = $('#email_edit').val();
-      var password = $('#password_edit').val();
       $.ajax({
-          type : "POST",
-          url  : "<?php echo site_url('Pelanggan/edit')?>",
-          dataType : "JSON",
-          data : {id_pelanggan:id_pelanggan, nama:nama, nohp:nohp, alamat:alamat, email:email, password:password},
-          success: function(data){
-              $('[name="id_pelanggan_edit"]').val("");
-              $('[name="nama_edit"]').val("");
-              $('[name="nohp_edit"]').val("");
-              $('[name="alamat_edit"]').val("");
-              $('[name="email_edit"]').val("");
-              $('[name="password_edit"]').val("");
-              $('#Modal_Edit').modal('hide');
-              showRecord();
-          }
+        type: 'POST',
+        url: '<?php echo site_url('Laporan_Pemesanan/ambil')?>',
+        data : {id_pemesanan : id_pemesanan, tanggal : tanggal, kredit : kredit},
+        async: true,
+        dataType: 'JSON',
+        success: function(data){
+          showRecord();
+        }
+      });
+    });
+
+    //ambil data button gambar
+    $('#showData').on('click','.item_gambar', function(){
+       // kosong();
+       var id_pemesanan = $(this).data('id_pemesanan');
+
+      $('#Modal_Gambar').modal('show');
+      $('[name="i"]').val(id_pemesanan);
+      
+
+      $.ajax({
+        type: 'POST',
+        url: '<?php echo site_url('Laporan_Pemesanan/getG')?>',
+        data : {id_pemesanan, id_pemesanan},
+        async: true,
+        dataType: 'JSON',
+        success: function(data){
+          var html = '';
+          var i; 
+          for(i=0; i<data.length; i++){
+            html += '<tr>'+
+                      '<td><img src="upload/'+data[i].nama_gambar+'" width="100px" height="100px"></td>'+
+                      
+                    '</tr>';
+                }
+          $('#gambar').html(html);
+        }
+      });
+    });
+
+    //hapus
+    //ambil datanya dulu
+    $('#showData').on('click','.item_delete',function(){
+      var id_pemesanan = $(this).data('id_pemesanan');
+        
+      $('#modalDelete').modal('show');
+      $('[name="id_pemesanan_delete"]').val(id_pemesanan);
+    });
+
+    //delete record for db
+    $('#btn_delete').on('click', function(){
+      var id_pemesanan = $('#id_pemesanan_delete').val();
+      $.ajax({
+        type: "POST",
+        url: "<?php echo site_url('Laporan_Pemesanan/hapus')?>",
+        dataType: "JSON",
+        data:{id_pemesanan :id_pemesanan},
+        success : function(data){
+          $('[name="id_pemesanan_delete"]').val("");
+          $('#modalDelete').modal('hide');
+          showRecord();
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+        }
       });
       return false;
     });
+
+
 </script>
 <!-- Script -->
     

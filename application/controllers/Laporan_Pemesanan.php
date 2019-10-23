@@ -25,4 +25,44 @@ class Laporan_Pemesanan extends CI_Controller {
 		$data=$this->M_Laporan_Pemesanan->update();
 		echo json_encode($data);
 	}
+	public function getD(){
+		$id_pemesanan = $this->input->post("id_pemesanan");
+		$data=$this->M_Laporan_Pemesanan->ambil_detail($id_pemesanan);
+		echo json_encode($data); 
+	}
+	public function getG(){
+		$id_pemesanan = $this->input->post("id_pemesanan");
+		$data=$this->M_Laporan_Pemesanan->ambil_gambar($id_pemesanan);
+		echo json_encode($data); 
+	}
+	public function cetak()
+	{
+		$pemesanan = $this->input->post("id_pemesanan");
+		$data["laporan_pemesanan"] = $this->M_Laporan_Pemesanan->ambil_data($pemesanan);
+		ob_start();
+		$this->load->view('laporan_pemesanan/cetak/cetak_barang', $data);
+		$html = ob_get_contents();
+
+		ob_end_clean();
+		require_once('./assets/html2pdf/html2pdf.class.php');
+		$pdf = new HTML2PDF('P', 'A4', 'en');
+		$pdf->WriteHTML($html);
+		$pdf->Output('Laporan Pemesanan.pdf', 'D');
+	}
+
+	public function ambil(){
+		$data = $this->M_Laporan_Pemesanan->save();
+		$data = $this->M_Laporan_Pemesanan->delete();
+		$data = $this->M_Laporan_Pemesanan->delete1();
+		$data = $this->M_Laporan_Pemesanan->delete2();
+		echo json_encode($data);
+	}
+
+	public function hapus(){
+		
+		$data = $this->M_Laporan_Pemesanan->delete();
+		$data = $this->M_Laporan_Pemesanan->delete1();
+		$data = $this->M_Laporan_Pemesanan->delete2();
+		echo json_encode($data);
+	}
 }
