@@ -92,7 +92,7 @@
                                                 <input type="text" class="form-control"  name="name" placeholder="Nama Barang" id="name">
                                                 <input type="hidden" class="form-control" readonly name="id" placeholder="nomor" id="id" value="">
 
-                                                <input type="text" class="form-control" readonly name="id_barangmasuk" placeholder="nomor" id="id_barangmasuk" value="">
+                                                <input type="hidden" class="form-control" readonly name="id_barangmasuk" placeholder="nomor" id="id_barangmasuk" value="">
                                             </div>
                                             <div class="col-sm-2">
                                                 <input type="text" class="form-control"  name="qty" placeholder="Jumlah" id="qty">

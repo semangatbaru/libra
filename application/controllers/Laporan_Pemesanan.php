@@ -55,6 +55,8 @@ class Laporan_Pemesanan extends CI_Controller {
 		$data = $this->M_Laporan_Pemesanan->delete();
 		$data = $this->M_Laporan_Pemesanan->delete1();
 		$data = $this->M_Laporan_Pemesanan->delete2();
+		$data = $this->M_Laporan_Pemesanan->delete3();
+		$data = $this->M_Laporan_Pemesanan->delete4();
 		echo json_encode($data);
 	}
 
@@ -63,6 +65,8 @@ class Laporan_Pemesanan extends CI_Controller {
 		$data = $this->M_Laporan_Pemesanan->delete();
 		$data = $this->M_Laporan_Pemesanan->delete1();
 		$data = $this->M_Laporan_Pemesanan->delete2();
+		$data = $this->M_Laporan_Pemesanan->delete3();
+		$data = $this->M_Laporan_Pemesanan->delete4();
 		echo json_encode($data);
 	}
 }

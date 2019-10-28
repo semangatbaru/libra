@@ -17,7 +17,8 @@ class M_Home extends CI_Model{
 	// 	}
 	// }
 	 public function ambil_data(){
-	 	$this->db->order_by('id_pemesanan','ASC');
+		 
+		 $this->db->order_by('ambil','ASC');
 	 	return $this->db->get($this->_table)->result();
     }
     public function ambil_detail($id_pemesanan){

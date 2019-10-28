@@ -80,6 +80,32 @@ class M_Laporan_Pemesanan extends CI_Model {
         $result = $this->db->delete('pemesanan');
         return $result;
     }
+    public function delete4()
+    {
+        // return $this->db->delete($this->_table, array("id_pemesanan"=> $id_pemesanan));
+        $id_pemesanan = $this->input->post('id_pemesanan');
+        $this->db->where('id_pemesanan', $id_pemesanan);
+        
+        
+        $result = $this->db->delete('barangmasuk');
+        return $result;
+    }
+    public function delete3()
+    {
+        // return $this->db->delete($this->_table, array("id_pemesanan"=> $id_pemesanan));
+        $id_pemesanan = $this->input->post('id_pemesanan');
+        $foto = $this->db->where('id_pemesanan', $id_pemesanan);
+        if($foto->num_rows()>0){
+			$hasil=$foto->row();
+			$nama_gambar=$hasil->nama_gambar;
+			if(file_exists($file='./upload/'.$nama_gambar)){
+				unlink($file);
+			}
+            $result = $this->db->delete('detail_gambar');
+
+		}
+		return $result;
+    }
     public function save()
     {
         $post = $this->input->post();

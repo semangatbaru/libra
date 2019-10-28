@@ -281,7 +281,7 @@
                       '<td>'+data[i].alamat+'</td>'+
                       '<td style="text-align:right;">'+
                         '<a href="javascript:void(0);" class="btn btn-info btn-sm item_edit" data-id_pelanggan="'+data[i].id_pelanggan+'" data-nama="'+data[i].nama+'" data-hp="'+data[i].hp+'" data-alamat="'+data[i].alamat+'">Edit</a>'+
-
+                        
                         '<a href="javascript:void(0);" class="btn btn-danger btn-sm item_delete" data-id_pelanggan="'+data[i].id_pelanggan+'">Delete</a>'+
                       '</td>'+
                     '</tr>';

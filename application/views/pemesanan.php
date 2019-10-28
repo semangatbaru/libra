@@ -262,6 +262,8 @@
         });
     
         $(document).ready(function(e) {
+
+            $('#detailCart').load("<?php echo base_url(); ?>Pemesanan/hapusSemua");
             //simpan
             $('#click-simpan').on('click',function(e){
               
@@ -516,8 +518,9 @@
                                 $('[name="total"]').val("");
                                 $('[name="kembalian"]').val("");
                                 $('[name="ambil"]').val("");
+
                                 $('#detailCart').load("<?php echo base_url(); ?>Pemesanan/hapusSemua");
-                                
+                                 
                                 window.location="<?php echo base_url().'Nota/index/' ?>"+id_pemesanan
                             },
                             error: function(data) {

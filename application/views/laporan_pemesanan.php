@@ -64,6 +64,59 @@
             </div>
           </form>
         <!--END MODAL DELETE-->
+        form>
+            <div class="modal fade" id="tahu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><strong>Belum Lunas<strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                       
+                       <div class="form-group row">
+                          <label class="col-sm-2  control-label ">Total</label>
+                          <div class="col-sm-3 ">
+                            <input type="text" class="form-control"  name="ablttl" id="ablttl" readonly>
+                            <input type="hidden" class="form-control"  name="z" id="z" readonly>
+                            <input type="hidden" class="form-control"  name="y" id="y" readonly>
+
+                          </div>
+                          <label class="col-sm-2  control-label ">Bayar</label>
+                          <div class="col-sm-3 ">
+                            <input type="text" class="form-control"  name="ablb" id="ablb" readonly>
+                          </div>
+                          
+                        </div>
+                        <div class="form-group row">
+                        <label class="col-sm-2 s  control-label ">Sisa</label>
+                          <div class="col-sm-3 ">
+                            <input type="text" class="form-control"  name="ablss" id="ablss" readonly>
+                            <input type="text" class="form-control"  name="ablssk" id="ablssk" readonly>
+                          </div> 
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-sm-6 ">
+                            <input type="text" class="form-control"  name="br" id="br" placeholder="angsur..">
+                          </div> 
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-sm-6 ">
+                          </div> 
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" type="submit" style="padding:6px 210px 6px 210px" id="btn_abl" class="btn btn-primary">Yes</button>
+                    
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
           <!-- Modal ambil -->
                     <form>
                       <div class="modal fade in" id="Modal_Ambil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -74,13 +127,13 @@
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>       
                                 </div>
-
+                                <div class="modal-body">
                                 <div class="form-group row">
                                 <label class="col-sm-2 col-sm-offset-1 control-label ">ID Pemesanan</label>
                                   <div class="col-sm-3 ">
                                    <input type="text" class="form-control"  name="a" id="a" readonly>
                                   </div> 
-                                  <label  class="col-sm-2 control-label">Tanggal</label> 
+                                  <label  class="col-sm-2 control-label">Tanggal Ambil</label> 
                                   <div class="col-sm-3 ">
                                   <div class="input-group"> 
                                       <div class="input-group">
@@ -176,7 +229,7 @@
 
                                <div class="form-group row">
                                   <div class="col-sm-10 col-sm-offset-1">
-                                    <table id="example1" class="table  table-striped" >
+                                    <table id="example" class="table  table-striped" >
                                       
                                         
                                         <tbody id="gambar">
@@ -302,10 +355,8 @@
         });
 
     //crud
+    $(document).ready(function(e){
     showRecord(); //munculkan data
-    
-    //$(".atas").fadeOut();
-    //function showdata
     function showRecord(){
       $.ajax({
         type: 'ajax',
@@ -323,9 +374,9 @@
                       '<td>'+data[i].bayar+'</td>'+
                       '<td>'+data[i].sisa+'</td>'+
                       '<td style="text-align:left;">'+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'"  data-nama="'+data[i].nama+'"  data-hp="'+data[i].hp+'"  data-alamat="'+data[i].alamat+'" data-total="'+data[i].total+'" data-bayar="'+data[i].bayar+'" " data-sisa="'+data[i].sisa+'">Detail</a>'+
+                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'" data-ambil="'+data[i].ambil+'"   data-nama="'+data[i].nama+'"  data-hp="'+data[i].hp+'"  data-alamat="'+data[i].alamat+'" data-total="'+data[i].total+'" data-bayar="'+data[i].bayar+'" " data-sisa="'+data[i].sisa+'">Detail</a>'+
                         '<a href="javascript:void(0);" class="btn btn-info btn-sm item_gambar" data-id_pemesanan="'+data[i].id_pemesanan+'" >Gambar</a>'+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_ambil" data-id_pemesanan="'+data[i].id_pemesanan+'" data-total="'+data[i].total+'" data-tanggal="'+data[i].tanggal+'" data-bayar="'+data[i].bayar+'" data-sisa="'+data[i].sisa+'">Ambil</a>'+
+                        '<a href="javascript:void(0);" class="btn btn-success btn-sm item_ambil" data-id_pemesanan="'+data[i].id_pemesanan+'" data-ambil="'+data[i].ambil+'"  data-total="'+data[i].total+'" data-tanggal="'+data[i].tanggal+'" data-bayar="'+data[i].bayar+'" data-sisa="'+data[i].sisa+' ">Ambil</a>'+
                         '<a href="javascript:void(0);" class="btn btn-info btn-sm item_delete" data-id_pemesanan="'+data[i].id_pemesanan+'" >Hapus</a>'+
                       '</td>'+
                     '</tr>';
@@ -348,10 +399,11 @@
        var alamat = $(this).data('alamat');
        var bayar = $(this).data('bayar');
        var sisa = $(this).data('sisa');
+       var ambil = $(this).data('ambil');
 
       $('#Modal_Ambil').modal('show');
        $('[name="a"]').val(id_pemesanan);
-       $('[name="b"]').val(tanggal);
+       $('[name="b"]').val(ambil);
        $('[name="c"]').val(total);
        $('[name="d"]').val(nama);
        $('[name="e"]').val(hp);
@@ -378,7 +430,10 @@
                     '</tr>';
                 }
           $('#showdata').html(html);
-          $('#example1').dataTable()
+          $('#ini').dataTable({
+            'searching'   : true,
+            'ordering'    : false,
+          })
         }
       });
     });
@@ -386,9 +441,70 @@
     //ambil data button ambil
     $('#showData').on('click','.item_ambil', function(){
        // kosong();
+
+
        var id_pemesanan = $(this).data('id_pemesanan');
-       var tanggal = $(this).data('tanggal');
+       var tanggal = $(this).data('ambil');
        var kredit = $(this).data('total');
+       var sisa = $(this).data('sisa');
+       var bayar = $(this).data('bayar');
+
+       if(sisa >= 0){
+          $.ajax({
+          type: 'POST',
+          url: '<?php echo site_url('Laporan_Pemesanan/ambil')?>',
+          data : {id_pemesanan : id_pemesanan, tanggal : tanggal, kredit : kredit},
+          async: true,
+          dataType: 'JSON',
+          success: function(data){
+            showRecord();
+          }
+        });
+       }else{
+        $('#tahu').modal('show');
+        $('#btn_abl').hide();
+        $('#ablssk').show();
+        $('[name="ablttl"]').val(kredit);
+        $('[name="ablss"]').val(sisa);
+        $('[name="ablb"]').val(bayar);
+        $('[name="z"]').val(id_pemesanan);
+        $('[name="y"]').val(tanggal);
+       }
+    });
+    $("#br").keyup(function(){
+        hitung();
+    })
+
+    function hitung() {
+        var ablss = document.getElementById('ablss').value;
+        var br = document.getElementById('br').value;
+
+        var result = parseInt(ablss) + parseInt(br);
+
+        if (br == "") {
+          $('#btn_abl').hide();
+          $('#ablssk').hide();
+          $('#ablss').show();
+        } else {
+          if(result >= 0){
+            $('#btn_abl').show();
+            
+          }
+          $('#ablssk').show();
+          $('#ablss').hide();
+          document.getElementById('ablssk').value = result;
+          
+            if (result == 0) {
+                document.getElementById('ablssk').value = "";
+                
+            }
+        }
+    }
+
+    $('#btn_abl').on('click', function(){
+       var id_pemesanan = $('#z').val();
+       var tanggal = $('#y').val();
+       var kredit = $('#ablttl').val();
 
       $.ajax({
         type: 'POST',
@@ -398,6 +514,7 @@
         dataType: 'JSON',
         success: function(data){
           showRecord();
+          $('#tahu').modal('hide');
         }
       });
     });
@@ -440,6 +557,8 @@
       $('[name="id_pemesanan_delete"]').val(id_pemesanan);
     });
 
+    
+
     //delete record for db
     $('#btn_delete').on('click', function(){
       var id_pemesanan = $('#id_pemesanan_delete').val();
@@ -460,6 +579,9 @@
       });
       return false;
     });
+
+   
+  }); //akhir
 
 
 </script>
