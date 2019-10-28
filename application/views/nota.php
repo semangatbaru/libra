@@ -99,7 +99,7 @@
 </body>
 <script>
     window.print();
-    document.location.href = "http://localhost/libra/Pemesanan"; 
+    window.history.back();
      
 </script>
 </html>
