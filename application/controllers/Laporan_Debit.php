@@ -74,32 +74,29 @@ class Laporan_Debit extends CI_Controller {
 		$data["sum_dbulanan"] = $this->M_Laporan_Debit->ambil_sumbulanan();
 
 		  
-
-		$this->load->view('laporan_debit/cetak/cetak_debit_bulanan', $data);      
-		// ob_start();
+		ob_start();
+		$this->load->view('laporan_debit/cetak/cetak_debit_bulanan', $data); 
+		$html = ob_get_contents();       
 		
-	    // $html = ob_get_contents();        
-
-	    // ob_end_clean();                
-	    // require_once('./assets/html2pdf/html2pdf.class.php');    
-	    // $pdf = new HTML2PDF('P','A4','en');
-	    // $pdf->WriteHTML($html);    
-	    // $pdf->Output('Laporan Mingguan.pdf', 'D'); 
+		ob_end_clean();                
+	    require_once('./assets/html2pdf/html2pdf.class.php');    
+	    $pdf = new HTML2PDF('P','A4','en');
+	    $pdf->WriteHTML($html);    
+	    $pdf->Output('Laporan Mingguan.pdf', 'D');
 	}
 	public function cetakTahunan(){
 		$data["laporan_debit"] = $this->M_Laporan_Debit->ambil_datatahunan();
 		$data["sum_dtahunan"] = $this->M_Laporan_Debit->ambil_sumtahunan();
 
-		$this->load->view('laporan_debit/cetak/cetak_debit_tahunan', $data);    
-		// ob_start();    
-	    
-	    // $html = ob_get_contents();        
-
-	    // ob_end_clean();                
-	    // require_once('./assets/html2pdf/html2pdf.class.php');    
-	    // $pdf = new HTML2PDF('P','A4','en');
-	    // $pdf->WriteHTML($html);    
-	    // $pdf->Output('Laporan Tahunan.pdf', 'D'); 
+		ob_start();
+		$this->load->view('laporan_debit/cetak/cetak_debit_tahunan', $data);
+		$html = ob_get_contents();    
+		
+		ob_end_clean();                
+	    require_once('./assets/html2pdf/html2pdf.class.php');    
+	    $pdf = new HTML2PDF('P','A4','en');
+	    $pdf->WriteHTML($html);    
+	    $pdf->Output('Laporan Mingguan.pdf', 'D');
 	}
 	
 	public function cetakAll(){
