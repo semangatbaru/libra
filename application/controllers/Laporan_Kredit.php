@@ -57,7 +57,7 @@ class Laporan_Kredit extends CI_Controller {
 	}
 	public function cetakMingguan(){
 		$data["laporan_kredit"] = $this->M_Laporan_Kredit->ambil_datamingguan();
-		$data["sum_dmingguan"] = $this->M_Laporan_Kredit->ambil_summingguan();
+		$data["sum_kmingguan"] = $this->M_Laporan_Kredit->ambil_summingguan();
 
 		ob_start();    
 	    $this->load->view('laporan_kredit/cetak/cetak_kredit_mingguan', $data);    
@@ -106,14 +106,15 @@ class Laporan_Kredit extends CI_Controller {
 		$data["laporan_kredit"] = $this->M_Laporan_Kredit->ambil_data();
 		$data["sumkredit"] = $this->M_Laporan_Kredit->ambil_sum();
 
-		ob_start();    
-	    $this->load->view('laporan_debit/cetak/cetak_kredit_semua', $data);    
-	    $html = ob_get_contents();        
+		
+		$this->load->view('laporan_kredit/cetak/cetak_kredit_semua', $data);
+		// ob_start();        
+	    // $html = ob_get_contents();        
 
-	    ob_end_clean();                
-	    require_once('./assets/html2pdf/html2pdf.class.php');    
-	    $pdf = new HTML2PDF('P','A4','en');
-	    $pdf->WriteHTML($html);    
-	    $pdf->Output('Laporan Semua.pdf', 'D'); 
+	    // ob_end_clean();                
+	    // require_once('./assets/html2pdf/html2pdf.class.php');    
+	    // $pdf = new HTML2PDF('P','A4','en');
+	    // $pdf->WriteHTML($html);    
+	    // $pdf->Output('Laporan Semua.pdf', 'D'); 
 	}
 }
