@@ -102,7 +102,7 @@ class Pemesanan extends CI_Controller
 	function proses_upload(){
 
         $config['upload_path']   = './upload/';
-        $config['allowed_types'] = 'gif|jpg|png|ico';
+        $config['allowed_types'] = 'gif|jpeg|jpg|png|ico';
         $this->load->library('upload',$config);
 
         if($this->upload->do_upload('userfile')){

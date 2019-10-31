@@ -228,14 +228,8 @@
                                 </div>
 
                                <div class="form-group row">
-                                  <div class="col-sm-10 col-sm-offset-1">
-                                    <table id="example" class="table  table-striped" >
-                                      
-                                        
-                                        <tbody id="gambar">
-
-                                        </tbody>
-                                    </table>
+                                  <div class="col-sm-10 col-sm-offset-1" id="gambar">
+                                    
                                   </div>
                                 </div>
                                  <div class="form-group row">
@@ -355,7 +349,7 @@
         });
 
     //crud
-    $(document).ready(function(e){
+    
     showRecord(); //munculkan data
     function showRecord(){
       $.ajax({
@@ -538,10 +532,10 @@
           var html = '';
           var i; 
           for(i=0; i<data.length; i++){
-            html += '<tr>'+
-                      '<td><img src="upload/'+data[i].nama_gambar+'" width="100px" height="100px"></td>'+
+            html += 
+                      '<td><img src="upload/'+data[i].nama_gambar+'" width="150px" height="150px"></td>';
                       
-                    '</tr>';
+                    
                 }
           $('#gambar').html(html);
         }
@@ -581,7 +575,6 @@
     });
 
    
-  }); //akhir
 
 
 </script>
