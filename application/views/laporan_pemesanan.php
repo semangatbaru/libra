@@ -533,7 +533,7 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += 
-                      '<td><img src="upload/'+data[i].nama_gambar+'" width="150px" height="150px"></td>';
+                      '<td><img src="upload/'+data[i].nama_gambar+ '" width="150px" height="150px" style =" Margin-left: 10px;Margin-right: 10px;"></td> ';
                       
                     
                 }

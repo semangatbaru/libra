@@ -108,9 +108,8 @@ class M_Laporan_Pemesanan extends CI_Model {
 		$foto=$this->db->get_where('detail_gambar',array('id_pemesanan'=>$id_pemesanan));
 
 
-		if($foto->num_rows()>0){
-			$hasil=$foto->row();
-			$nama_gambar=$hasil->nama_gambar;
+		foreach($foto->result() as $row){
+			$nama_gambar=$row->nama_gambar;
 			if(file_exists($file='./upload/'.$nama_gambar)){
 				unlink($file);
 			}

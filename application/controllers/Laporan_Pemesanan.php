@@ -51,6 +51,7 @@ class Laporan_Pemesanan extends CI_Controller {
 	}
 
 	public function ambil(){
+		$data = $this->M_Laporan_Pemesanan->delete9();
 		$data = $this->M_Laporan_Pemesanan->save();
 		$data = $this->M_Laporan_Pemesanan->delete();
 		$data = $this->M_Laporan_Pemesanan->delete1();
@@ -63,10 +64,10 @@ class Laporan_Pemesanan extends CI_Controller {
 	public function hapus(){
 		
 		$data = $this->M_Laporan_Pemesanan->delete9();
-		$data = $this->M_Laporan_Pemesanan->delete();
-		$data = $this->M_Laporan_Pemesanan->delete1();
-		$data = $this->M_Laporan_Pemesanan->delete2();
-		$data = $this->M_Laporan_Pemesanan->delete4();
+		// $data = $this->M_Laporan_Pemesanan->delete();
+		// $data = $this->M_Laporan_Pemesanan->delete1();
+		// $data = $this->M_Laporan_Pemesanan->delete2();
+		// $data = $this->M_Laporan_Pemesanan->delete4();
 		$data = $this->M_Laporan_Pemesanan->delete3();
 		echo json_encode($data);
 	}
