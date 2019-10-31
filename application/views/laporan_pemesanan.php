@@ -368,10 +368,10 @@
                       '<td>'+data[i].bayar+'</td>'+
                       '<td>'+data[i].sisa+'</td>'+
                       '<td style="text-align:left;">'+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'" data-ambil="'+data[i].ambil+'"   data-nama="'+data[i].nama+'"  data-hp="'+data[i].hp+'"  data-alamat="'+data[i].alamat+'" data-total="'+data[i].total+'" data-bayar="'+data[i].bayar+'" " data-sisa="'+data[i].sisa+'">Detail</a>'+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_gambar" data-id_pemesanan="'+data[i].id_pemesanan+'" >Gambar</a>'+
-                        '<a href="javascript:void(0);" class="btn btn-success btn-sm item_ambil" data-id_pemesanan="'+data[i].id_pemesanan+'" data-ambil="'+data[i].ambil+'"  data-total="'+data[i].total+'" data-tanggal="'+data[i].tanggal+'" data-bayar="'+data[i].bayar+'" data-sisa="'+data[i].sisa+' ">Ambil</a>'+
-                        '<a href="javascript:void(0);" class="btn btn-info btn-sm item_delete" data-id_pemesanan="'+data[i].id_pemesanan+'" >Hapus</a>'+
+                        '<a href="javascript:void(0);" class="btn btn-dropbox btn-sm item_belanja" data-id_pemesanan="'+data[i].id_pemesanan+'" data-ambil="'+data[i].ambil+'"   data-nama="'+data[i].nama+'"  data-hp="'+data[i].hp+'"  data-alamat="'+data[i].alamat+'" data-total="'+data[i].total+'" data-bayar="'+data[i].bayar+'" " data-sisa="'+data[i].sisa+'">Detail</a>'+' '+
+                        '<a href="javascript:void(0);" class="btn btn-instagram btn-sm item_gambar" data-id_pemesanan="'+data[i].id_pemesanan+'" >Gambar</a>'+' '+
+                        '<a href="javascript:void(0);" class="btn btn-success btn-sm item_ambil" data-id_pemesanan="'+data[i].id_pemesanan+'" data-ambil="'+data[i].ambil+'"  data-total="'+data[i].total+'" data-tanggal="'+data[i].tanggal+'" data-bayar="'+data[i].bayar+'" data-sisa="'+data[i].sisa+' ">Ambil</a>'+' '+
+                        '<a href="javascript:void(0);" class="btn btn-google btn-sm item_delete" data-id_pemesanan="'+data[i].id_pemesanan+'" >Hapus</a>'+' '+
                       '</td>'+
                     '</tr>';
                 }
