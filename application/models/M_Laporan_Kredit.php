@@ -3,16 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Laporan_Kredit extends CI_Model {
     // deklarasi variable
-    private $_table = "kredit_al";
+    private $_table = "kredit_all";
     private $_table1 = "kredit_harian";
     private $_table2 = "kredit_mingguan";
     private $_table3 = "kredit_bulanan";
     private $_table4 = "kredit_tahunan";
-    private $_tablesum = "sum_kredital";
-    private $_tablesumharian = "sum_kharian";
-    private $_tablesummingguan = "sum_kmingguan";
-    private $_tablesumbulanan = "sum_kbulanan";
-    private $_tablesumtahunan = "sum_ktahunan";
+    private $_tablesum = "sumkredital";
+    private $_tablesumharian = "sumkharian";
+    private $_tablesummingguan = "sumkmingguan";
+    private $_tablesumbulanan = "sumkbulanan";
+    private $_tablesumtahunan = "sumktahunan";
 
     //menampilkan data
     public function rule(){

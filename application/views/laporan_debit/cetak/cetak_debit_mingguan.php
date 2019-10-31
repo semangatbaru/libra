@@ -38,7 +38,7 @@
 
 <h1>Total : <?php foreach ($sum_dmingguan as $su):?><?php  echo $su->sumdebit?><?php endforeach; ?></h1>
 <script>
-    window.print();
-    window.history.back();
+    // window.print();
+    // window.history.back();
      
 </script>

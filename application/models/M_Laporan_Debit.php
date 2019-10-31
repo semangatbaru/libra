@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Laporan_Debit extends CI_Model {
     // deklarasi variable
-    private $_table = "debit_al";
+    private $_table = "debit_all";
     private $_table1 = "debit_harian";
     private $_table2 = "debit_mingguan";
     private $_table3 = "debit_bulanan";

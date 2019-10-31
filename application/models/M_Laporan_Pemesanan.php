@@ -119,9 +119,11 @@ class M_Laporan_Pemesanan extends CI_Model {
     }
     public function save()
     {
+        date_default_timezone_set('Asia/Jakarta');
+        $tgl=date('Y-m-d');
         $post = $this->input->post();
         $this->id_pemesanan = $post["id_pemesanan"];
-        $this->tanggal = $post["tanggal"];
+        $this->tanggal = $tgl;
         $this->kredit = $post["kredit"];
 
         $result = $this->db->insert($this->_table3, $this);

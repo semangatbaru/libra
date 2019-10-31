@@ -49,7 +49,7 @@
         </tr>
     </table>
     <hr style="border-top : dotted 1px;">
-    <br>
+    
     <table>
     <td><?php foreach ($detail as $t): ?>
         <tr>
