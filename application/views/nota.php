@@ -34,7 +34,7 @@
 </head>
 <!--  -->
 <body >
-    <h5 style="text-align:center;">Libra Conveksi<br>Jln. Prov M. Yamin. 60 Bogo Nganjuk</h5>
+    <h5 style="text-align:center;">Libra Conveksi & Bordir Computer<br>Jln. Prov M. Yamin. 60 Bogo Nganjuk</h5>
     <table>
         <tr>
             <td><?php foreach ($pemesanan as $t): ?> <?php echo $t->id_pemesanan?><?php endforeach; ?></td>
@@ -95,7 +95,7 @@
         </tr>
     </table>
     <hr style="border-top : dotted 1px;">
-    <p style="text-align:center;">Layanan Konsumen : 0899988263</p>
+    <p style="text-align:center;">Layanan Konsumen : 0852-3578-6923</p>
 </body>
 <script>
     window.print();

@@ -45,29 +45,17 @@ class Laporan_Kredit extends CI_Controller {
 		$data["laporan_kredit"] = $this->M_Laporan_Kredit->ambil_dataharian();
 		$data["sum_kharian"] = $this->M_Laporan_Kredit->ambil_sumharian();
 
-		ob_start();    
+		  
 	    $this->load->view('laporan_kredit/cetak/cetak_kredit_harian', $data);    
-	    $html = ob_get_contents();        
-
-	    ob_end_clean();                
-	    require_once('./assets/html2pdf/html2pdf.class.php');    
-	    $pdf = new HTML2PDF('P','A4','en');
-	    $pdf->WriteHTML($html);    
-	    $pdf->Output('Laporan Harian.pdf', 'D'); 
+	   
 	}
 	public function cetakMingguan(){
 		$data["laporan_kredit"] = $this->M_Laporan_Kredit->ambil_datamingguan();
 		$data["sum_kmingguan"] = $this->M_Laporan_Kredit->ambil_summingguan();
 
-		ob_start();    
+		  
 	    $this->load->view('laporan_kredit/cetak/cetak_kredit_mingguan', $data);    
-	    $html = ob_get_contents();        
-
-	    ob_end_clean();                
-	    require_once('./assets/html2pdf/html2pdf.class.php');    
-	    $pdf = new HTML2PDF('P','A4','en');
-	    $pdf->WriteHTML($html);    
-	    $pdf->Output('Laporan Mingguan.pdf', 'D'); 
+	    
 	}
 	public function cetakBulanan(){
 		$data["laporan_kredit"] = $this->M_Laporan_Kredit->ambil_databulanan();
@@ -76,30 +64,14 @@ class Laporan_Kredit extends CI_Controller {
 		  
 
 		$this->load->view('laporan_kredit/cetak/cetak_kredit_bulanan', $data);      
-		// ob_start();
 		
-	    // $html = ob_get_contents();        
-
-	    // ob_end_clean();                
-	    // require_once('./assets/html2pdf/html2pdf.class.php');    
-	    // $pdf = new HTML2PDF('P','A4','en');
-	    // $pdf->WriteHTML($html);    
-	    // $pdf->Output('Laporan Mingguan.pdf', 'D'); 
 	}
 	public function cetakTahunan(){
 		$data["laporan_kredit"] = $this->M_Laporan_Kredit->ambil_datatahunan();
 		$data["sum_ktahunan"] = $this->M_Laporan_Kredit->ambil_sumtahunan();
 
 		$this->load->view('laporan_kredit/cetak/cetak_kredit_tahunan', $data);    
-		// ob_start();    
-	    
-	    // $html = ob_get_contents();        
-
-	    // ob_end_clean();                
-	    // require_once('./assets/html2pdf/html2pdf.class.php');    
-	    // $pdf = new HTML2PDF('P','A4','en');
-	    // $pdf->WriteHTML($html);    
-	    // $pdf->Output('Laporan Tahunan.pdf', 'D'); 
+		
 	}
 	
 	public function cetakAll(){
@@ -108,13 +80,6 @@ class Laporan_Kredit extends CI_Controller {
 
 		
 		$this->load->view('laporan_kredit/cetak/cetak_kredit_semua', $data);
-		// ob_start();        
-	    // $html = ob_get_contents();        
-
-	    // ob_end_clean();                
-	    // require_once('./assets/html2pdf/html2pdf.class.php');    
-	    // $pdf = new HTML2PDF('P','A4','en');
-	    // $pdf->WriteHTML($html);    
-	    // $pdf->Output('Laporan Semua.pdf', 'D'); 
+		
 	}
 }
