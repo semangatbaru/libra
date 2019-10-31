@@ -533,7 +533,12 @@
           var i; 
           for(i=0; i<data.length; i++){
             html += 
-                      '<td><img src="upload/'+data[i].nama_gambar+ '" width="150px" height="150px" style =" Margin-left: 10px;Margin-right: 10px;"></td> ';
+                      '<td>'+
+                      '<img src="upload/'+data[i].nama_gambar+ '" width="150px" height="150px" style =" Margin-left: 10px;Margin-right: 10px;">'+
+                      '<br>'+
+                      '<br>'+
+                      '<a href="javascript:void(0);" class="btn btn-google btn-sm hps" style="padding:6px 60px 6px 75px" data-nama_gambar="'+data[i].nama_gambar+'" >Hapus</a>'+' '+
+                      '</td> ';
                       
                     
                 }
@@ -543,6 +548,23 @@
     });
 
     //hapus
+
+    $('#gambar').on('click','.hps',function(){
+      var nama_gambar = $(this).data('nama_gambar');
+        
+      $.ajax({
+        type: "POST",
+        url: "<?php echo site_url('Laporan_Pemesanan/hps')?>",
+        dataType: "JSON",
+        data:{nama_gambar :nama_gambar},
+        success : function(data){
+          $('#Modal_Gambar').modal('hide');
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          $('#Modal_Gambar').modal('hide');
+        }
+      });
+    });
     //ambil datanya dulu
     $('#showData').on('click','.item_delete',function(){
       var id_pemesanan = $(this).data('id_pemesanan');

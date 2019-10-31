@@ -129,4 +129,24 @@ class M_Laporan_Pemesanan extends CI_Model {
         return $result;
     }
 
+    public function hps()
+    {
+        $nama_gambar =$this->input->post('nama_gambar');
+
+		
+		$foto=$this->db->get_where('detail_gambar',array('nama_gambar'=>$nama_gambar));
+
+
+		if($foto->num_rows()>0){
+			$hasil=$foto->row();
+			$nama_gambar=$hasil->nama_gambar;
+			if(file_exists($file='./upload/'.$nama_gambar)){
+				unlink($file);
+			}
+			$this->db->delete('detail_gambar',array('nama_gambar'=>$nama_gambar));
+
+		}
+		echo "{}";
+    }
+
 }
